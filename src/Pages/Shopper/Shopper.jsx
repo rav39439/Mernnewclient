@@ -8,7 +8,7 @@ import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 import io, { Socket } from "socket.io-client";
 
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("https://mernnewproject.herokuapp.com")
 
 const Shopper = (props) => {
   const { user } = useContext(AuthContext);

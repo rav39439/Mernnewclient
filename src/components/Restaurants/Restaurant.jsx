@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 
 const Restaurant = (props) => {
   const newproduct=props.restaurant.image
-  const mylink="http://localhost:8800/api/images/"+newproduct
+  const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
   const navigate = useNavigate();
 
   const handleClick = () => {

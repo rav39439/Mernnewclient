@@ -7,7 +7,7 @@ import { AuthContext } from '../../components/AuthContext/AuthContext'
 
 import io, { Socket } from "socket.io-client";
 import Newrestorders from '../../components/Newrestorders/Newrestorders'
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("https://mernnewproject.herokuapp.com")
 
 const Restaurantacc = (props) => {
     const arri=[]
@@ -22,7 +22,7 @@ const[arrival,setarrival]=useState([])
 const [data,setdata]=useState({})
 //const newproduct=location.state.image
 
-const mylink="http://localhost:8800/api/images/"+data.image
+const mylink="https://mernnewproject.herokuapp.com/api/images/"+data.image
 
 useEffect(() => {
     props.setIsrestaurant(false)

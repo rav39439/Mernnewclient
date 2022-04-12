@@ -5,7 +5,7 @@ import axios from 'axios'
 import io, { Socket } from "socket.io-client";
 
 
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("https://mernnewproject.herokuapp.com")
 
 const Foodrecieve = ({name,price,email,phone,status,restaurantid,userid,address,quantity,orderid,arrah,setarrah,productname}) => {
 

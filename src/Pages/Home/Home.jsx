@@ -10,7 +10,7 @@ import { AuthContext } from "../../components/AuthContext/AuthContext";
 import Messagetab from '../../components/Message/Messagetab';
 import "./home.css"
 
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("https://mernnewproject.herokuapp.com")
 
 export default function Home(props) {
   const arr=[]

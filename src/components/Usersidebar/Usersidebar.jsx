@@ -4,7 +4,7 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import io, { Socket } from "socket.io-client";
 import axios from 'axios';
 import { useContext, useState } from "react";
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("https://mernnewproject.herokuapp.com")
 const Usersidebar = () => {
   const { user } = useContext(AuthContext);
 
@@ -98,7 +98,7 @@ useEffect(()=>{
           },
         })
 
-        
+
   let p=0
       console.log(res)
       res.data.notification.map((elem,index)=>{

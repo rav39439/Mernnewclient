@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { AuthContext } from "../../components/AuthContext/AuthContext"
 
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("https://mernnewproject.herokuapp.com")
 
 const Singleitem = () => {
 const myusers=[]
@@ -33,7 +33,7 @@ let shopid=''
     //console.log(location)
 const newproduct=location.state.image
 
-    const mylink="http://localhost:8800/api/images/"+newproduct
+    const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
     useEffect(()=>{
       //console.log("SADfasfafdsaf")
               socket.emit('online',user)

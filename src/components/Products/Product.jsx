@@ -15,7 +15,7 @@ const Product = (props) => {
   }
   const newproduct=props.product.image
   console.log(typeof(newproduct))
-const mylink="http://localhost:8800/api/images/"+newproduct
+const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
 
 //const image=props.product.image?"../../../../api/images/"+props.product.image:""
 //console.log(props)

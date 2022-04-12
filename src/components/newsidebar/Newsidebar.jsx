@@ -4,7 +4,7 @@ import { useEffect, useState,useContext } from "react";
 import io, { Socket } from "socket.io-client";
 import { AuthContext } from '../AuthContext/AuthContext';
 import axios from 'axios';
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("https://mernnewproject.herokuapp.com")
 
 const Newsidebar = (props) => {
 
