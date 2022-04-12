@@ -1,0 +1,10 @@
+.settings {
+    display: flex;
+    margin-top: 40px;
+  }
+  
+  .settingsWrapper {
+    flex: 9;
+    padding: 20px;
+  }
+  

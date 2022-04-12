@@ -1,0 +1,166 @@
+import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useState,useContext } from 'react'
+import { AuthContext } from "../AuthContext/AuthContext";
+import io, { Socket } from "socket.io-client";
+
+///const socket=io.connect("http://localhost:8800")
+const Foodorder = ({itemname,itemprice,restaurantid,newdata,socket}) => {
+    const { user } = useContext(AuthContext);
+
+    useEffect(()=>{
+        //console.log("SADfasfafdsaf")
+                socket.emit('online',user)
+        
+            }) 
+
+
+const [ready,setready]=useState(false)
+
+
+
+const [quantity,setquantity]=useState(0)
+const price=itemprice
+const productname=itemname
+const name=user.username
+const email=user.email
+const userid=user._id
+let html=``;
+const [address,setaddress]=useState("")
+const [phone,setphone]=useState("")
+
+const status="pending"
+let orderid=''
+// console.log(itemprice)
+// console.log(itemname)
+const enterquantity=()=>{
+    if(!ready){
+setready(true)
+    }
+    else{
+        setready(false)
+    }
+}
+
+const handleSubmit=async(e)=>{
+    e.preventDefault()
+ //const newitem=e.target.itemname
+const data={
+price,
+name,
+quantity,
+address,
+email,
+restaurantid,
+userid,
+phone,
+productname,
+status,
+orderid
+}
+
+
+try{
+
+    const res=await axios.put("/restaurants/setorder",data,
+    {
+       headers: {
+          token:
+          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+        },
+      })
+    ///console.log("khkahfkaga")
+
+    console.log(res.data.restaurant.postedby)
+    console.log(res.data.id)
+   /// html=`<p>You have an order of item costing ${price} by ${name} have to deliverd at address ${address}</p>`
+    socket.emit("orderpassed",data,res.data.restaurant.postedby,res.data.id)
+    
+setdata(res.data)
+
+
+
+} catch(err){
+
+//console.log(err)
+}
+
+
+try{
+
+    const res=await axios.put("/users/orders",data,
+    {
+       headers: {
+          token:
+          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+        },
+      })
+    console.log(res.data)
+    console.log(res.data.orderplaced.length)
+socket.emit("newnotification",res.data.orderplaced.length,user.username)
+
+}
+catch(err){
+    console.log(err)
+}
+
+
+}
+
+
+  return (
+  
+<>
+<div className='border bg-light'>
+
+    <div style={{display:'flex'}}>
+<span>{itemname}</span><br></br>
+<span className='ml-5' style={{marginLeft:"300px"}}>{itemprice}</span>
+</div>
+
+<label style={{display:ready?'block':'none'}}>quantiity</label>
+
+<input type="number" 
+style={{display:ready?'block':'none'}}
+onChange={(e)=>{
+    setquantity(e.target.value)
+}}
+/>
+
+<label style={{display:ready?'block':'none'}}>itemname</label>
+
+<input type="text" 
+style={{display:ready?'block':'none'}}
+name='itemname'
+defaultValue={itemname}
+
+/>
+
+<label style={{display:ready?'block':'none'}}>address</label>
+<input type="text" 
+style={{display:ready?'block':'none'}}
+onChange={(e)=>{
+    setaddress(e.target.value)
+}}
+/>
+
+
+<label style={{display:ready?'block':'none'}}>phone</label>
+<input type="text" 
+style={{display:ready?'block':'none'}}
+onChange={(e)=>{
+    setphone(e.target.value)
+}}
+/>
+
+
+
+<button onClick={enterquantity}>enterquantity</button>
+<button className='btn btn-primary' onClick={handleSubmit}>order</button>
+</div>
+
+</>
+  )
+}
+
+export default Foodorder

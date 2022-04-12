@@ -1,0 +1,18 @@
+.settings {
+    display: inline-flex;
+   margin-left: 100px;
+   width: 80%;
+  }
+  
+  .settingsWrapper {
+    flex: 9;
+    margin-left: 200px;
+    width: 800px;
+    padding: 20px;
+  }
+
+  .container{
+    width: 1200px;
+    display:inline-flex;
+  }
+  

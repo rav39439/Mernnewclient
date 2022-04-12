@@ -1,0 +1,18 @@
+
+
+.mybutton{
+    height: 50px;
+    width: 150px;
+    margin-left: 50px;
+    float:left;
+}
+.form-inline{
+    margin-left: 300px;
+}
+.nav-item{
+    margin-left: 20px;
+}
+.navbar{
+    margin-left: 20px;
+    position: fixed;
+}
