@@ -4,7 +4,7 @@ import { useEffect, useState,useContext } from "react";
 import io, { Socket } from "socket.io-client";
 import { AuthContext } from '../AuthContext/AuthContext';
 import axios from 'axios';
-const socket=io.connect("https://mernnewproject.herokuapp.com")
+const socket=io.connect("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Newsidebar = (props) => {
 

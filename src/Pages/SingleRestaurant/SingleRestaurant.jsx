@@ -7,7 +7,7 @@ import {Link} from "react-router-dom"
 import { useNavigate } from 'react-router';
 import Foodorder from '../../components/Foodorders/Foodorder';
 import io, { Socket } from "socket.io-client";
-const socket=io.connect("http://localhost:8800")
+const socket=io.connect("http://localhost:8800", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const SingleRestaurant = () => {
   const [fooditems,setfooditems]=useState([])
