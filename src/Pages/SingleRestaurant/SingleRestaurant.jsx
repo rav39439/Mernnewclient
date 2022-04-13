@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useLocation ,useParams} from 'react-router-dom'
 import { useState,useContext } from 'react'
 import { AuthContext } from '../../components/AuthContext/AuthContext';
+import {Link} from "react-router-dom"
 
 import { useNavigate } from 'react-router';
 import Foodorder from '../../components/Foodorders/Foodorder';
@@ -14,7 +15,7 @@ const SingleRestaurant = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const newproduct=location.state.image
-    const mylink="http://localhost:8800/api/images/"+newproduct
+    const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
     const[arr,setarr]=useState([])
     let obj={}
     const arraynew=[]

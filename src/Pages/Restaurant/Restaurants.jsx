@@ -27,7 +27,7 @@ const [restaurants,setrestaurant]=useState([])
          {
           headers: {
              token:
-             "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+             "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
            },
          }
       );

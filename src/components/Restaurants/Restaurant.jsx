@@ -32,7 +32,7 @@ const Restaurant = (props) => {
     <p className="card-text">{props.restaurant.rating}</p>
     <p className="card-text">{props.restaurant.location}</p>
   </div>
-  <button onClick={handleClick}>sendata</button>
+  <button onClick={handleClick}className="btn btn-primary">details</button>
 
 </div>
 

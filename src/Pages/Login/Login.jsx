@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { login } from "../../components/AuthContext/apiCalls";
 import { AuthContext } from "../../components/AuthContext/AuthContext";
 import "./login.css";
-
+import {Link} from "react-router-dom"
 export default function Login() {
 
 
@@ -24,7 +24,7 @@ export default function Login() {
           
         </div>
       </div>
-<div className="container" style={{display:"flex",alignItems:"center",width:"auto",height:"auto"}}>
+<div className="container" style={{alignItems:"center",width:"auto",height:"auto"}}>
         <form>
           <h1>Sign In</h1>
           <input
@@ -46,6 +46,11 @@ export default function Login() {
             bot. <b>Learn more</b>.
           </small>
         </form>
+
+        <p>if not user </p>
+        <p>
+      <Link to= "/Register"className='ml-5'>Regsiter</Link>
+      </p>
       </div>
     </div>
   );

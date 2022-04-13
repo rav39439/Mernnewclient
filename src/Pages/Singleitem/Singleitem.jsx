@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useContext, useState,useEffect } from "react";
 import io, { Socket } from "socket.io-client";
+import {Link} from "react-router-dom"
 
 import { useNavigate } from 'react-router';
 import axios from 'axios';
@@ -16,9 +17,12 @@ const myusers=[]
     const navigate = useNavigate();
     const[ddata,setddata]=useState([])
     const { user } = useContext(AuthContext);
+    const [mystyle,setmystyle]=useState({display:"none"})
 const [address,setaddress]=useState("")
 const [quantity,setquantity]=useState(0)
 const username=user.username
+const [newstyle,setnewstyle]=useState(true)
+const [style,setstyle]=useState(false)
 //const [email,setemail]=useState("")
 const [phone,setphone]=useState()
 const productname=location.state.productname
@@ -32,6 +36,20 @@ let shopid=''
     ///const data=JSON.stringify(location.state)
     //console.log(location)
 const newproduct=location.state.image
+
+const handlestyle=(e)=>{
+if(style){
+
+  setstyle(false)
+}
+else{
+  setstyle(true)
+}
+}
+
+
+
+
 
     const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
     useEffect(()=>{
@@ -75,6 +93,14 @@ shopcode
        }
       );
 
+      
+setnewstyle(false)
+
+let customestyle={
+  display:"block"
+}
+
+setmystyle(customestyle)
       console.log(res.data)
 //       let l=res.data.length;
 
@@ -147,18 +173,19 @@ console.log(err)
       <li className="list-group-item">{location.state.price}</li>
       <li className="list-group-item">{location.state.shoplocation?location.state.shoplocation:""}</li>
       <li className="list-group-item" style={{display:"none"}}>{location.state.shopcode}</li>
-      <button onClick={handleClick}style={{width:"200px"}}>goback</button>
+      <button onClick={handleClick}style={mystyle} className="btn btn-primary">goback</button>
     </ul>
     
     </div>
 
   
 
-    
+    { newstyle?
     <div className='mt-5' style={{marginLeft:"-70px",marginTop:"100px"}}>
-<h3>Place the order </h3>
 
-<form className="settingsForm" onSubmit={handleSubmit}>
+<button className='btn btn-primary' onClick={handlestyle}>Place order</button>
+
+<form className="settingsForm" onSubmit={handleSubmit} style={{display:style?"none":"block"}}>
 
 
 <label>productname</label>
@@ -192,15 +219,24 @@ console.log(err)
             onChange={(e) => setphone(e.target.value)}
           />
 
-<button className="Submit" style={{width:"200px",height:"50px"}} type="submit">order</button>
+<button className="btn btn-primary" type="submit">order</button>
 
 </form>
 
 </div>
+
+:
+<div>
+<p>Your order is sent to the shopowner. You will get reply soon.Keep checking your notifications</p>
+<p> <Link to= "/notification"className='mt-5'>Notification</Link></p>
+
+</div>
+
+}
     </>
 
 
   )
-}
 
+}
 export default Singleitem

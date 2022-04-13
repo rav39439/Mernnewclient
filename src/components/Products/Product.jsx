@@ -41,7 +41,7 @@ const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
     <div className="card-body">
 
     
-    <button onClick={handleClick} >sendata</button>
+    <button onClick={handleClick} className="btn btn-primary" >details</button>
 
     </div>
    

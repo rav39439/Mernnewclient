@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useState,useContext } from 'react'
 import { AuthContext } from "../AuthContext/AuthContext";
 import io, { Socket } from "socket.io-client";
+import {Link} from "react-router-dom"
 
 ///const socket=io.connect("http://localhost:8800")
 const Foodorder = ({itemname,itemprice,restaurantid,newdata,socket}) => {
@@ -20,6 +21,7 @@ const [ready,setready]=useState(false)
 
 
 const [quantity,setquantity]=useState(0)
+const [newstyle,setnewstyle]=useState(true)
 const price=itemprice
 const productname=itemname
 const name=user.username
@@ -73,6 +75,7 @@ try{
 
     console.log(res.data.restaurant.postedby)
     console.log(res.data.id)
+    setnewstyle(false)
    /// html=`<p>You have an order of item costing ${price} by ${name} have to deliverd at address ${address}</p>`
     socket.emit("orderpassed",data,res.data.restaurant.postedby,res.data.id)
     
@@ -111,6 +114,9 @@ catch(err){
   return (
   
 <>
+
+
+{newstyle?
 <div className='border bg-light'>
 
     <div style={{display:'flex'}}>
@@ -157,8 +163,14 @@ onChange={(e)=>{
 
 <button onClick={enterquantity}>enterquantity</button>
 <button className='btn btn-primary' onClick={handleSubmit}>order</button>
+</div>:
+<div>
+<p>Your order is placed. You will get notification from the showner soon regarding the acceptance 
+    of your  order. Kindly keep checking the notification:
+</p>
+<p> <Link to= "/notification"className='mt-5'>Notification</Link></p>
 </div>
-
+}
 </>
   )
 }
