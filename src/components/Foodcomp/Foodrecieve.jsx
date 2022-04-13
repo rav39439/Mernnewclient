@@ -5,7 +5,7 @@ import axios from 'axios'
 import io, { Socket } from "socket.io-client";
 
 
-const socket=io.connect("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Foodrecieve = ({name,price,email,phone,status,restaurantid,userid,address,quantity,orderid,arrah,setarrah,productname}) => {
 

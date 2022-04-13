@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { AuthContext } from "../../components/AuthContext/AuthContext"
 
-const socket=io.connect("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Singleitem = () => {
 const myusers=[]

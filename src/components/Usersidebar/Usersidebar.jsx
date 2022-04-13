@@ -4,7 +4,7 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import io, { Socket } from "socket.io-client";
 import axios from 'axios';
 import { useContext, useState } from "react";
-const socket=io.connect("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 const Usersidebar = () => {
   const { user } = useContext(AuthContext);
 

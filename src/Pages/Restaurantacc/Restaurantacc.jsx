@@ -7,7 +7,7 @@ import { AuthContext } from '../../components/AuthContext/AuthContext'
 
 import io, { Socket } from "socket.io-client";
 import Newrestorders from '../../components/Newrestorders/Newrestorders'
-const socket=io.connect("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Restaurantacc = (props) => {
     const arri=[]
