@@ -68,7 +68,7 @@ try{
     {
        headers: {
           token:
-          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+          "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
         },
       })
     ///console.log("khkahfkaga")
