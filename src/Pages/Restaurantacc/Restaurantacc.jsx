@@ -43,19 +43,23 @@ useEffect(()=>{
 
      
  useEffect(()=>{
+let info
+   //let neworders
         socket.on('neworder',function(data,orderid){
             console.log(orderid)
             console.log(data)
        data['orderid']=orderid
-      
+      info=data
        // arri.push(html)
         setarrival([...arrival,data])
     console.log(arrival)
-      
-      
-        
+
         })
+       
+       
     })
+
+    
 // useEffect(()=>{
 //     socket.on('welcome',function(data){
 //         console.log(data)

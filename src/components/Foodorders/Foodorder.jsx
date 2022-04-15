@@ -6,7 +6,10 @@ import io, { Socket } from "socket.io-client";
 import {Link} from "react-router-dom"
 
 ///const socket=io.connect("http://localhost:8800")
-const Foodorder = ({itemname,itemprice,restaurantid,newdata,socket}) => {
+const Foodorder = ({itemname,itemprice,itemimage,restaurantid,newdata,socket}) => {
+
+    const mylink="https://mernnewproject.herokuapp.com/api/images/"+itemimage
+
     const { user } = useContext(AuthContext);
 
     useEffect(()=>{
@@ -120,6 +123,8 @@ catch(err){
 <div className='border bg-light'>
 
     <div style={{display:'flex'}}>
+
+    <img src={mylink} className="card-img-top" style={{height:"30px",width:"40px",borderRadius:'30px'}} alt="..."/>
 <span>{itemname}</span><br></br>
 <span className='ml-5' style={{marginLeft:"300px"}}>{itemprice}</span>
 </div>

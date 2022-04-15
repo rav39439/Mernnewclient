@@ -10,6 +10,7 @@ import "./restaurantpost.css"
 
 const Restaurantpost = (props) => {
 const [file, setFile] = useState(null);
+const [myfile, setfile] = useState(null);
 const [name, setname] = useState("");
 const [postedby, setpostedby] = useState("");
 const [location, setlocation] = useState("");
@@ -36,11 +37,42 @@ useEffect(() => {
 
 const handleitems =async(e)=>{
 e.preventDefault()
+
+let myfilename=""
+if(myfile){
+  myfilename=myfile.name
+  console.log(myfilename)
+}
+
   const newitem={
     itemname:item,
     itemprice:itemprice,
-    mycode:mycode
+    mycode:mycode,
+    itemimage:myfilename
   }
+
+  if (myfile) {
+    const mydata = new FormData();
+    const filename =myfile.name;
+    mydata.append("name", filename);
+    mydata.append("file", myfile);
+   
+    try {
+      await axios.post("/upload", mydata ,
+      {
+         headers: {
+            token:
+            "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        });
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+
+
 
 try{
   const res = await axios.put("/restaurants/fooditem",newitem ,
@@ -216,6 +248,14 @@ const handleSubmit = async (e) => {
     setmycode(e.target.value)
   }}
   />
+<label htmlFor="fileInput">
+            </label>
+            <input
+              type="file"
+              id="fileInput"
+              onChange={(e) => setfile(e.target.files[0])}
+            />
+
 <label>name of the product</label>
   <input type="text" 
   placeholder='itemname'

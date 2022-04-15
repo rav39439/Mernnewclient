@@ -98,7 +98,7 @@ setarr(arraynew)
 
 <h3>Fooditems offered</h3>
 {arr.map((data,index) => (
-       <Foodorder itemname={data.itemname} itemprice={data.itemprice} restaurantid={location.state._id} newdata={index} socket={socket} />
+       <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state._id} newdata={index} socket={socket} />
       ))}
 
 </div>
