@@ -137,6 +137,12 @@ useEffect(()=>{
       <Link to= "/orderplaced"className='mt-5'>orderplaced</Link>
   <small>{orderplacedcount}</small>
       </li> 
+
+      <li className="nav-item mt-5">
+
+<Link to= "/Allproducts"className='mt-5'>Allproducts</Link>
+
+</li>
     
     </ul>
     

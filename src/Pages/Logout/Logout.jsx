@@ -1,13 +1,25 @@
 import React from 'react'
 import { AuthContext } from '../../components/AuthContext/AuthContext'
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
+import { useNavigate } from 'react-router';
 
-const Logout = () => {
+const Logout = (props) => {
+
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    props.setIsrestaurant(false)
+    props.setIsproduct(false)
+    props.setisother(true)
+  }, [props.Type]);
+
+
 
 const handleclick=(e)=>{
 
 localStorage.removeItem('user')
-
+navigate("/login",{state:""})
 }
 const { user } = useContext(AuthContext);
 

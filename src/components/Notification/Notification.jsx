@@ -6,7 +6,15 @@ import { useContext, useState } from "react";
 
 import axios from 'axios';
 
-const Notification = () => {
+const Notification = (props) => {
+  useEffect(() => {
+    props.setIsrestaurant(false)
+    props.setIsproduct(false)
+    props.setisother(true)
+  }, [props.Type]);
+
+
+
   const { user } = useContext(AuthContext);
 
 const arra=[]

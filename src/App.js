@@ -24,6 +24,8 @@ import Usersidebar from './components/Usersidebar/Usersidebar';
 import Notification from './components/Notification/Notification';
 import Orderplaced from './components/Orderplaced/Orderplaced';
 import Logout from './Pages/Logout/Logout';
+import Allproducts from './components/newAdmin/Allproducts';
+import Updateproduct from './components/Updateproduct/Updateproduct';
 const App = () => {
    const { user } = useContext(AuthContext);
 const [price,setprice]=useState(0)
@@ -74,8 +76,8 @@ const myparentcall=(childcity,childrating)=>{
    
  <div className='col-md-8'>
    <Routes>
-   {!user?<Route exact path= "/Login"element={<Login/>}/>:""}
-   <Route exact path= "/Logout"element={user?<Logout/>:<Login/>}/>
+   {!user?<Route exact path= "/login"element={<Login/>}/>:""}
+   <Route exact path= "/Logout"element={user?<Logout Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct}setisother={setisother}/>:<Login/>}/>
    <Route exact path= "/Register"element={<Register/>}/>
 
    </Routes>
@@ -97,11 +99,12 @@ const myparentcall=(childcity,childrating)=>{
    <Route exact path= "/AccessShop"element={user?<Shopper Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:<Login/>}/>
    <Route exact path= "/AccessRestaurant"element={user?<Restaurantacc Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:<Login/>}/>
 
-   <Route path="/productitem" element={<Singleitem />} />
-   <Route path="/Restaurantitem" element={<SingleRestaurant />} />
-   <Route exact path="/orderplaced" element={<Orderplaced />} />
-   <Route exact path="/notification" element={<Notification />} />
-
+   <Route path="/productitem" element={user?<Singleitem Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:""} />
+   <Route path="/updateproduct" element={user?<Updateproduct Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
+   <Route path="/Restaurantitem" element={user?<SingleRestaurant Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
+   <Route exact path="/orderplaced" element={user?<Orderplaced Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
+   <Route exact path="/notification" element={user?<Notification Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
+   <Route exact path="/Allproducts" element={user?<Allproducts Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
 </Routes>
 </div>
 

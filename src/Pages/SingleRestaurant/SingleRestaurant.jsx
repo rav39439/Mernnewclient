@@ -9,7 +9,15 @@ import Foodorder from '../../components/Foodorders/Foodorder';
 import io, { Socket } from "socket.io-client";
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
-const SingleRestaurant = () => {
+const SingleRestaurant = (props) => {
+
+  useEffect(() => {
+    props.setIsrestaurant(true)
+    props.setIsproduct(false)
+    props.setisother(false)
+  }, [props.Type]);
+
+  
   const [fooditems,setfooditems]=useState([])
   const { user } = useContext(AuthContext);
     const location = useLocation();

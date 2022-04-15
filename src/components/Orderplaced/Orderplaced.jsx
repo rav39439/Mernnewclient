@@ -2,10 +2,18 @@ import React from 'react'
 
 import { AuthContext } from '../AuthContext/AuthContext';
 
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import axios from 'axios';
 
-const Orderplaced = () => {
+const Orderplaced = (props) => {
+
+  useEffect(() => {
+    props.setIsrestaurant(false)
+    props.setIsproduct(false)
+    props.setisother(true)
+  }, [props.Type]);
+
+
 
   const arra=[]
 const arra1=[]

@@ -10,7 +10,18 @@ import { AuthContext } from "../../components/AuthContext/AuthContext"
 
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
-const Singleitem = () => {
+const Singleitem = (props) => {
+
+
+
+
+  useEffect(() => {
+    props.setIsrestaurant(false)
+    props.setIsproduct(true)
+    props.setisother(false)
+  }, [props.Type]);
+
+
 const myusers=[]
     const location = useLocation();
     console.log(location)
