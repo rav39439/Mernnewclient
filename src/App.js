@@ -62,7 +62,8 @@ const myparentcall=(childcity,childrating)=>{
   return (
 <>
    <Router>
-   
+  
+
    {user?<Topbar/>:""}
    
    <div className='container'>
@@ -76,7 +77,7 @@ const myparentcall=(childcity,childrating)=>{
    
  <div className='col-md-8'>
    <Routes>
-   {!user?<Route exact path= "/login"element={<Login/>}/>:""}
+   <Route exact path= "/Login"element={<Login/>}/>
    <Route exact path= "/Logout"element={user?<Logout Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct}setisother={setisother}/>:<Login/>}/>
    <Route exact path= "/Register"element={<Register/>}/>
 

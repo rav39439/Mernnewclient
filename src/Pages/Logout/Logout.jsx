@@ -19,7 +19,8 @@ const Logout = (props) => {
 const handleclick=(e)=>{
 
 localStorage.removeItem('user')
-navigate("/login",{state:""})
+navigate("/Login",{state:""})
+window. location. reload()
 }
 const { user } = useContext(AuthContext);
 

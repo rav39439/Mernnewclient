@@ -23,17 +23,18 @@ const arraynew=[]
 //setbutton("true")
   order.map(function(data,index){
     arraynew.push(data)
-    console.log(index)
-    console.log(data.address)
-    console.log(data.quantity)
-    console.log(data.email)
-    console.log(data.phone)
+   // console.log(index)
+   // console.log(data.address)
+   // console.log(data.quantity)
+    //console.log(data.email)
+   // console.log(data.phone)
+    console.log("the order id of the precious orde is "+data._id)
 
 
   })
   setarr(arraynew)
   //setbutton(true)
-  console.log(arraynew)
+ // console.log(arraynew)
 //    
     }
 // 

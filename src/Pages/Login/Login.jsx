@@ -3,10 +3,13 @@ import { login } from "../../components/AuthContext/apiCalls";
 import { AuthContext } from "../../components/AuthContext/AuthContext";
 import "./login.css";
 import {Link} from "react-router-dom"
+import { useNavigate } from 'react-router';
+
 export default function Login() {
 
 
 
+  const navigate = useNavigate();
 
 
   const [email, setEmail] = useState("");
@@ -16,6 +19,10 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     login({ email, password }, dispatch);
+
+    navigate("/",{state:""})
+
+
   };
   return (
     <div className="login"style={{color: "red",position:"relative",fontFamily:"fantasy"}}>

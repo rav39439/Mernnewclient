@@ -10,7 +10,7 @@ const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocke
 const Foodrecieve = ({name,price,email,phone,status,restaurantid,userid,address,quantity,orderid,arrah,setarrah,productname}) => {
 
   const arra=[]
-
+const[arr,setarr]=useState([])
   const handledelete=async(e)=>{
 
     e.preventDefault()
@@ -78,6 +78,7 @@ const [updatedorder,setorder]=useState({name,price,email,phone,status,restaurant
 name:name,
 phone:phone,
 price:price,
+productname:productname,
 quantity:quantity,
 restaurantid:restaurantid,
 status:status,
@@ -98,6 +99,7 @@ const newdata={
   myorderid:e.target.orderid.value
 }
 
+console.log("the orderid is "+newdata.myorderid)
   //   try{
   // await axios.put(`/restaurants/updateorder?${e.target.orderid.value? "orderid="+e.target.orderid.value:""}
   // &${e.target.restaurantid.value? "restaurantid="+e.target.restaurantid.value:""}`)
@@ -107,23 +109,44 @@ const newdata={
   // console.log(err)
   // }
   try{
-    const res=await axios.put("restaurants/updateorder",newdata)
+    const res=await axios.put("restaurants/updateorder",newdata,
+    {
+       headers: {
+          token:
+          "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
+        },
+      })
     let alldata=res.data
     //console.log(alldata[0])
     let l=alldata.length
     //console.log(alldata[l-1].status)
 alldata.map((elem,index)=>{
+  elem._id===newdata.myorderid&&
   arra.push(elem)
 })
-console.log(arra)
-    setarrah(arrah)
+setarr(arra)
+   // setarrah(arrah)
     //setneworder({...ordernew,...alldata[l-1]})
   //console.log(ordernew)
+console.log("before array")
+console.log(ordernew)
+
+  setneworder(ordernew => ({
+         ...ordernew,
+         ...arra[0]
+       }));
+
+  //setneworder({...ordernew,...arra[0]})
+ // setneworder(arra[0])
   
-  
+       console.log("after array"+ordernew)
+       console.log(arra)
+  //console.log(ordernew.status)
   
   
       }
+
+
     catch(err){
     console.log(err)
     
@@ -131,9 +154,18 @@ console.log(arra)
 
     try{
       const res=await axios.put(`/users/notification?${e.target.quantity.value? "quantity="+e.target.quantity.value:""}&${e.target.price.value? "price="+e.target.price.value:""}
-      &${e.target.userid.value? "userid="+e.target.userid.value:""}&${e.target.orderid.value?"orderid="+e.target.orderid.value:""}&${e.target.productname.value?"productname="+e.target.productname.value:""}`)
+      &${e.target.userid.value? "userid="+e.target.userid.value:""}&${e.target.orderid.value?"orderid="+e.target.orderid.value:""}&${e.target.productname.value?"productname="+e.target.productname.value:""}`,
+      {
+         headers: {
+            token:
+            "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        })
+
+
       console.log(res)
       }
+
       catch(err){
           console.log(err)
       }
@@ -148,17 +180,17 @@ console.log(arra)
 </div>
    <form onSubmit={handleSubmit}>
     <div className='border bg-light mt-3'>
-    <input type="text"readOnly name="price"defaultValue={price}/><br />
-    <input type="text" readOnly name="email"defaultValue={email}/><br />
-    <input type="text" readOnly name="userid"defaultValue={userid}/><br />
-    <input type="text" readOnly name="name"defaultValue={name}/><br />
-    <input type="text" readOnly name="restaurantid"value={restaurantid}/><br />
-    <input type="text" readOnly name="quantity"defaultValue={quantity}/><br /><br />
-    <input type="text" readOnly name="address"defaultValue={address}/><br /><br />
-    <input type="text" readOnly name="phone"defaultValue={phone}/><br /><br/>
-    <input type="text" readOnly name="status" defaultValue={status}/><br /><br />
-    <input type="text" readOnly name="orderid" defaultValue={orderid}/><br /><br />
-    <input type="text" readOnly name="productname" defaultValue={productname}/><br /><br />
+    <input type="text"readOnly name="address"defaultValue={ordernew.address}/><br />
+    <input type="text" readOnly name="email"defaultValue={ordernew.email}/><br />
+    <input type="text" readOnly name="name"defaultValue={ordernew.name}/><br />
+    <input type="text" readOnly name="phone"defaultValue={ordernew.phone}/><br />
+    <input type="text" readOnly name="price"value={ordernew.price}/><br />
+    <input type="text" readOnly name="productname"defaultValue={ordernew.productname}/><br /><br />
+    <input type="text" readOnly name="quantity"defaultValue={ordernew.quantity}/><br /><br />
+    <input type="text" readOnly name="restaurantid"defaultValue={ordernew.restaurantid}/><br /><br/>
+    <input type="text" readOnly name="status" defaultValue={arr[0]!=null?arr[0].status:ordernew.status}/><br /><br />
+    <input type="text" readOnly name="userid" defaultValue={ordernew.userid}/><br /><br />
+    <input type="text" readOnly name="orderid" defaultValue={ordernew._id}/><br /><br />
     <button type='submit' className='btn btn-primary'>Accept</button> 
 
     </div>

@@ -104,7 +104,7 @@ setdata(res.data)
 
 } catch(err){
 
-//console.log(err)
+
 }
 
 
@@ -117,8 +117,7 @@ try{
           "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
         },
       })
-    //console.log(res.data)
-   // console.log(res.data.orderplaced.length)
+   
 socket.emit("newnotification",res.data.orderplaced.length,user.username)
 
 }
@@ -126,7 +125,6 @@ catch(err){
     console.log(err)
 }
 
-//
 
 }
 
