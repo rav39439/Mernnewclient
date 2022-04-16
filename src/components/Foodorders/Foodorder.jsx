@@ -4,13 +4,18 @@ import { useState,useContext } from 'react'
 import { AuthContext } from "../AuthContext/AuthContext";
 import io, { Socket } from "socket.io-client";
 import {Link} from "react-router-dom"
-
+import { getrestaurant, updaterestaurant } from '../RestaurantContext/Restaurantapicalls';
+import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
 ///const socket=io.connect("http://localhost:8800")
 const Foodorder = ({itemname,itemprice,itemimage,restaurantid,newdata,socket}) => {
-
+const {restaurants,dispatch}=useContext(RestaurantContext)
     const mylink="https://mernnewproject.herokuapp.com/api/images/"+itemimage
 
     const { user } = useContext(AuthContext);
+
+   
+
+
 
     useEffect(()=>{
         //console.log("SADfasfafdsaf")
@@ -38,6 +43,16 @@ const status="pending"
 let orderid=''
 // console.log(itemprice)
 // console.log(itemname)
+
+
+useEffect(()=>{
+    getrestaurant(dispatch)
+    console.log(restaurants)
+},[dispatch])
+
+console.log(restaurants)
+
+
 const enterquantity=()=>{
     if(!ready){
 setready(true)
@@ -74,10 +89,11 @@ try{
           "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
         },
       })
-    ///console.log("khkahfkaga")
+      updaterestaurant(res.data.restaurant,dispatch)
+      console.log(res.data.restaurant)
 
-    console.log(res.data.restaurant.postedby)
-    console.log(res.data.id)
+    //console.log(res.data.restaurant.postedby)
+   // console.log(res.data.id)
     setnewstyle(false)
    /// html=`<p>You have an order of item costing ${price} by ${name} have to deliverd at address ${address}</p>`
     socket.emit("orderpassed",data,res.data.restaurant.postedby,res.data.id)
@@ -101,8 +117,8 @@ try{
           "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
         },
       })
-    console.log(res.data)
-    console.log(res.data.orderplaced.length)
+    //console.log(res.data)
+   // console.log(res.data.orderplaced.length)
 socket.emit("newnotification",res.data.orderplaced.length,user.username)
 
 }
@@ -110,6 +126,7 @@ catch(err){
     console.log(err)
 }
 
+//
 
 }
 

@@ -25,7 +25,7 @@ useEffect(()=>{
 
   socket.on("notificationdata",function(data){
 
-    console.log(data)
+   // console.log(data)
     // alert("notification")
     // localStorage.setItem("orderplaced",data)
   setorderplacedcount(data)
@@ -49,8 +49,8 @@ useEffect(()=>{
 
   const countread=async()=>{
   
-    console.log(user._id)
-    console.log(user.username)
+   // console.log(user._id)
+   // console.log(user.username)
   
     let userdetails={
       userid:user._id,
@@ -66,14 +66,14 @@ useEffect(()=>{
           },
         })
   let p=0
-      console.log(res)
+     // console.log(res)
       res.data.orderplaced.map((elem,index)=>{
         
            p+=1;
          
          })
          setorderplacedcount(p)
-        console.log(count)
+       // console.log(count)
     }
     catch(err){
       console.log(err)

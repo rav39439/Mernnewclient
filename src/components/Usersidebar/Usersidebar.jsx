@@ -3,23 +3,27 @@ import {Link} from "react-router-dom"
 import { AuthContext } from '../AuthContext/AuthContext';
 import io, { Socket } from "socket.io-client";
 import axios from 'axios';
+import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
+import { getrestaurant } from '../RestaurantContext/Restaurantapicalls';
 import { useContext, useState } from "react";
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 const Usersidebar = () => {
   const { user } = useContext(AuthContext);
+  const { restaurants,dispatch } = useContext(RestaurantContext);
 
 
   const [count,setcount]=useState(0)
+  const [orderrec,setorderrec]=useState(0)
   const [orderplacedcount,setorderplacedcount]=useState(0)
 
-
+console.log("the restaurants"+restaurants)
   useEffect(()=>{
 
 
     const countread=async()=>{
     
-      console.log(user._id)
-      console.log(user.username)
+     // console.log(user._id)
+    //  console.log(user.username)
     
       let userdetails={
         userid:user._id,
@@ -36,14 +40,14 @@ const Usersidebar = () => {
           })
 
     let p=0
-        console.log(res)
+       // console.log(res)
         res.data.orderplaced.map((elem,index)=>{
           
              p+=1;
            
            })
            setorderplacedcount(p)
-          console.log(count)
+          //console.log(count)
       }
       catch(err){
         console.log(err)
@@ -52,7 +56,23 @@ const Usersidebar = () => {
     countread()
     })
   
-  
+  useEffect(()=>{
+    getrestaurant(dispatch)
+   
+    let m=0
+    restaurants.length!=0&&
+restaurants?.map((restaurant,index)=>{
+restaurant.postedby==user.username&&
+(m=m+restaurant.orders.length)
+  console.log("the my restaurant is "+restaurant.name)
+  console.log(m)
+  //restaurant.postedby==user.username&& (m=m+restaurant[index].orders.length)
+setorderrec(m)
+
+})
+
+//console.log(m)
+  },[dispatch])
 
 
 
@@ -81,8 +101,8 @@ useEffect(()=>{
 
   const countread=async()=>{
   
-    console.log(user._id)
-    console.log(user.username)
+    //console.log(user._id)
+   // console.log(user.username)
   
     let userdetails={
       userid:user._id,
@@ -100,14 +120,14 @@ useEffect(()=>{
 
 
   let p=0
-      console.log(res)
+     // console.log(res)
       res.data.notification.map((elem,index)=>{
          if(elem.read=='unread'){
            p+=1;
          }
          })
         setcount(p)
-        console.log(count)
+       // console.log(count)
     }
     catch(err){
       console.log(err)
@@ -136,6 +156,11 @@ useEffect(()=>{
       <li className="nav-item dropdown mt-5">
       <Link to= "/orderplaced"className='mt-5'>orderplaced</Link>
   <small>{orderplacedcount}</small>
+      </li> 
+
+      <li className="nav-item dropdown mt-5">
+      <Link to= "/orderrecieved"className='mt-5'>orderrecieved</Link>
+  <small>{orderrec}</small>
       </li> 
 
       <li className="nav-item mt-5">

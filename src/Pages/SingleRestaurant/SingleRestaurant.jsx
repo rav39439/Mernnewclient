@@ -7,9 +7,16 @@ import {Link} from "react-router-dom"
 import { useNavigate } from 'react-router';
 import Foodorder from '../../components/Foodorders/Foodorder';
 import io, { Socket } from "socket.io-client";
+
+import { RestaurantContext } from '../../components/RestaurantContext/RestaurantContext'
+import { getrestaurant } from '../../components/RestaurantContext/Restaurantapicalls'
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const SingleRestaurant = (props) => {
+
+
+
+  const {restaurants,dispatch}=useContext(RestaurantContext)
 
   useEffect(() => {
     props.setIsrestaurant(true)
@@ -18,6 +25,7 @@ const SingleRestaurant = (props) => {
   }, [props.Type]);
 
   
+   
   const [fooditems,setfooditems]=useState([])
   const { user } = useContext(AuthContext);
     const location = useLocation();
@@ -37,7 +45,13 @@ const SingleRestaurant = (props) => {
           })
 
 
-
+          useEffect(()=>{
+            getrestaurant(dispatch)
+            console.log(restaurants)
+        },[dispatch])
+    
+        console.log(restaurants)
+    
          
 
     //const product = location;
@@ -76,8 +90,6 @@ setarr(arraynew)
 
 <>
  
-
-
 
 
 
