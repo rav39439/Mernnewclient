@@ -68,7 +68,10 @@ const handleSubmit = async (e) => {
               "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
             },
           });
-      } catch (err) {}
+      } catch (err) {
+
+        console.log(err)
+      }
     }
     try {
       const res = await axios.post("/product/",newProduct ,
@@ -95,7 +98,7 @@ const handleSubmit = async (e) => {
     <div className="settings">
     <div className="settingsWrapper">
     <form className="settingsForm" onSubmit={handleSubmit}>
-          <label>Profile Picture</label>
+          <label>Productimage Picture</label>
           <div className="settingsPP">
             <img
               src={file ? URL.createObjectURL(file) : ""}

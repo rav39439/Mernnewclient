@@ -79,7 +79,6 @@ const handleSubmit = async (e) => {
     filename=file.name
   }
 
-
   const newProduct = {
     
     productname,
@@ -101,7 +100,7 @@ const handleSubmit = async (e) => {
     const filename =file.name;
     data.append("name", filename);
     data.append("file", file);
-   
+    console.log(file)
     try {
       await axios.post("/upload", data ,
       {
@@ -321,7 +320,7 @@ typeof(products[0].images)!='undefined'&&
               alt=""
             />
 <label htmlFor="fileInput">
-              <i className="settingsPPIcon far fa-user-circle"></i>
+         
             </label>
             <input
               type="file"
