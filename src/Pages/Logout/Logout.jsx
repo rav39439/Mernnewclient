@@ -20,7 +20,7 @@ const handleclick=(e)=>{
 
 localStorage.removeItem('user')
 navigate("/Login",{state:""})
-window. location. reload()
+location. reload()
 }
 const { user } = useContext(AuthContext);
 
