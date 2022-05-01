@@ -27,8 +27,11 @@ import Logout from './Pages/Logout/Logout';
 import Allproducts from './components/newAdmin/Allproducts';
 import Updateproduct from './components/Updateproduct/Updateproduct';
 const App = () => {
+  // let user={}
    const { user } = useContext(AuthContext);
 const [price,setprice]=useState(0)
+const [myuser,setmyuser]=useState(user)
+console.log(myuser)
 const [company,setcompany]=useState("")
 const [category,setcategory]=useState("")
 const [isproduct,setisproduct]=useState(false)
@@ -62,23 +65,30 @@ const myparentcall=(childcity,childrating)=>{
   return (
 <>
    <Router>
-  
+ 
 
-   {user?<Topbar/>:""}
+   {myuser?<Topbar/>:""}
    
    <div className='container'>
       <div className='row'>
+
+         {myuser?
 <div className='col-md-4'>
+
+
+
 {isrestaurant?<Newsidebar mynewcallback={myparentcall} />:""}
 {isproduct?<Sidebar newcallback={parentcall} />:""}
 {isother?<Usersidebar/>:""}
-</div>
 
+</div>
+:""}
    
  <div className='col-md-8'>
    <Routes>
-   <Route exact path= "/Login"element={<Login/>}/>
-   <Route exact path= "/Logout"element={user?<Logout Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct}setisother={setisother}/>:<Login/>}/>
+   <Route exact path= "/Login"element={<Login setuser={setmyuser}/>}/>
+
+   <Route exact path= "/Logout"element={myuser?<Logout Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct}setisother={setisother} setmyuser={setmyuser}/>:<Login/>}/>
    <Route exact path= "/Register"element={<Register/>}/>
 
    </Routes>

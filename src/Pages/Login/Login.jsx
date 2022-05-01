@@ -5,7 +5,7 @@ import "./login.css";
 import {Link} from "react-router-dom"
 import { useNavigate } from 'react-router';
 
-export default function Login() {
+export default function Login(props) {
 
 
 
@@ -18,12 +18,27 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login({ email, password }, dispatch);
+    login({ email, password }, dispatch,callback);
 
+  
+
+   //console.log(user)
+
+   
     navigate("/",{state:""})
 
+  
 
-  };
+
+  }
+  function callback(user){
+    console.log("callback is running")
+    console.log(props)
+    console.log(user)
+props.setuser(user)
+  }
+
+
   return (
     <div className="login"style={{color: "red",position:"relative",fontFamily:"fantasy"}}>
       <div className="top">

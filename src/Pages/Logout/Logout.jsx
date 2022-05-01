@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 
 const Logout = (props) => {
 
+  const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -19,10 +20,11 @@ const Logout = (props) => {
 const handleclick=(e)=>{
 
 localStorage.removeItem('user')
-navigate("/Login",{state:""})
-location. reload()
+props.setmyuser(localStorage.getItem('user'))
+navigate("/login")
+
+
 }
-const { user } = useContext(AuthContext);
 
 
 

@@ -72,7 +72,7 @@ const[arr,setarr]=useState([])
 
 const [updatedorder,setorder]=useState({name,price,email,phone,status,restaurantid,userid,address,quantity,orderid,productname})
   //const [updatedstatus,setstatus]=useState(status)
-  const [ordernew,setneworder]=useState({
+  var [ordernew,setneworder]=useState({
     address:address,
     email:email,
 name:name,
@@ -109,38 +109,27 @@ console.log("the orderid is "+newdata.myorderid)
   // console.log(err)
   // }
   try{
-    const res=await axios.put("restaurants/updateorder",newdata,
+    await axios.put("restaurants/updateorder",newdata,
     {
        headers: {
           token:
           "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
         },
+      }).then(res=>{
+        callback(res)
       })
-    let alldata=res.data
-    //console.log(alldata[0])
-    let l=alldata.length
-    //console.log(alldata[l-1].status)
-alldata.map((elem,index)=>{
-  elem._id===newdata.myorderid&&
-  arra.push(elem)
-})
-setarr(arra)
-   // setarrah(arrah)
-    //setneworder({...ordernew,...alldata[l-1]})
-  //console.log(ordernew)
-console.log("before array")
-console.log(ordernew)
 
-  setneworder(ordernew => ({
-         ...ordernew,
-         ...arra[0]
-       }));
+
+
+
+
+
+   
 
   //setneworder({...ordernew,...arra[0]})
  // setneworder(arra[0])
   
-       console.log("after array"+ordernew)
-       console.log(arra)
+      
   //console.log(ordernew.status)
   
   
@@ -151,6 +140,37 @@ console.log(ordernew)
     console.log(err)
     
     }
+
+function callback(res){
+
+  let alldata=res.data
+  //console.log(alldata[0])
+  let l=alldata.length
+  //console.log(alldata[l-1].status)
+alldata.map((elem,index)=>{
+elem._id===newdata.myorderid&&
+arra.push(elem)
+})
+setarr(arra)
+ // setarrah(arrah)
+  //setneworder({...ordernew,...alldata[l-1]})
+//console.log(ordernew)
+console.log("before array")
+console.log(ordernew)
+
+// setneworder(ordernew => ({
+//        ...ordernew,
+//        ...arra[0]
+//      }));
+//ordernew=arr[0]
+setneworder({...ordernew,...alldata[0]})
+
+     console.log("after array"+ordernew)
+     console.log(ordernew)
+
+
+}
+
 
     try{
       const res=await axios.put(`/users/notification?${e.target.quantity.value? "quantity="+e.target.quantity.value:""}&${e.target.price.value? "price="+e.target.price.value:""}
@@ -188,7 +208,7 @@ console.log(ordernew)
     <input type="text" readOnly name="productname"defaultValue={ordernew.productname}/><br /><br />
     <input type="text" readOnly name="quantity"defaultValue={ordernew.quantity}/><br /><br />
     <input type="text" readOnly name="restaurantid"defaultValue={ordernew.restaurantid}/><br /><br/>
-    <input type="text" readOnly name="status" defaultValue={arr[0]!=null?arr[0].status:ordernew.status}/><br /><br />
+    <input type="text" readOnly name="status" defaultValue={ordernew.status}/><br /><br />
     <input type="text" readOnly name="userid" defaultValue={ordernew.userid}/><br /><br />
     <input type="text" readOnly name="orderid" defaultValue={ordernew._id}/><br /><br />
     <button type='submit' className='btn btn-primary'>Accept</button> 
