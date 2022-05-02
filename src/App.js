@@ -1,6 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
-
+import axios from 'axios';
+import { RestaurantContext } from './components/RestaurantContext/RestaurantContext';
+import { getrestaurant } from './components/RestaurantContext/Restaurantapicalls';
 import './App.css';
 import Topbar from './components/topbar/Topbar';
 import Productpost from './Pages/Admin/Productpost';
@@ -9,7 +11,7 @@ import Home from './Pages/Home/Home';
 import Products from './Pages/Product/Products';
 import Restaurants from './Pages/Restaurant/Restaurants';
 import Register from './Pages/Register/Register'
-import { useContext, useState } from "react";
+import { useContext, useState , useEffect} from "react";
 import Newsidebar from './components/newsidebar/Newsidebar';
 import Sidebar from './components/sidbar/Sidebar';
 import { AuthContext } from "./components/AuthContext/AuthContext";
@@ -29,9 +31,15 @@ import Updateproduct from './components/Updateproduct/Updateproduct';
 const App = () => {
   // let user={}
    const { user } = useContext(AuthContext);
+   const { restaurants,dispatch } = useContext(RestaurantContext);
+
 const [price,setprice]=useState(0)
 const [myuser,setmyuser]=useState(user)
 console.log(myuser)
+
+const [orderrec,setorderrec]=useState(0)
+const [neworders,setneworders]=useState(0)
+
 const [company,setcompany]=useState("")
 const [category,setcategory]=useState("")
 const [isproduct,setisproduct]=useState(false)
@@ -40,7 +48,8 @@ const [isother,setisother]=useState(false)
 const [city,setcity]=useState("")
 const [rating,setrating]=useState("")
 const [type,settype]=useState("")
-
+const [orderplace,setorderplaced]=useState(0)
+const [count,setcount]=useState(0)
 
 const parentcall=(childprice,childcompany,childcategory)=>{
 
@@ -49,6 +58,117 @@ const parentcall=(childprice,childcompany,childcategory)=>{
    setcategory(childcategory)
   settype('product')
 }
+
+
+
+//console.log("the is")
+//console.log(orderrec)
+
+
+
+
+useEffect(()=>{
+
+
+   const countread=async()=>{
+   
+    // console.log(user._id)
+   //  console.log(user.username)
+  
+     let userdetails={
+       userid:user._id,
+       username:user.username
+     }
+   
+     try{
+       const res= await axios.post("users/getuser",userdetails ,
+       {
+          headers: {
+             token:
+             "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
+           },
+         })
+
+   let p=0
+      // console.log(res)
+       res.data.orderplaced.map((elem,index)=>{
+         
+            p+=1;
+          
+          })
+          setorderplaced(p)
+         //console.log(count)
+     }
+     catch(err){
+       console.log(err)
+     }
+     }
+   user?countread():setorderplaced(0)
+
+
+
+   })
+
+
+
+   useEffect(()=>{
+
+
+      const countread=async()=>{
+      
+       
+      
+        let userdetails={
+          userid:user._id,
+          username:user.username
+        }
+      
+        try{
+          
+          const res= await axios.post("users/getuser",userdetails ,
+          {
+             headers: {
+                token:
+                "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+              },
+            })
+    
+    
+      let p=0
+         // console.log(res)
+          res.data.notification.map((elem,index)=>{
+             if(elem.read=='unread'){
+               p+=1;
+             }
+             })
+            setcount(p)
+           // console.log(count)
+        }
+        catch(err){
+          console.log(err)
+        }
+        }
+
+      user?countread():setcount(0)
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const myparentcall=(childcity,childrating)=>{
 
@@ -79,14 +199,14 @@ const myparentcall=(childcity,childrating)=>{
 
 {isrestaurant?<Newsidebar mynewcallback={myparentcall} />:""}
 {isproduct?<Sidebar newcallback={parentcall} />:""}
-{isother?<Usersidebar/>:""}
+{isother?<Usersidebar orderplace={orderplace} count={count} orderrec={orderrec} />:""}
 
 </div>
 :""}
    
  <div className='col-md-8'>
    <Routes>
-   <Route exact path= "/Login"element={<Login setuser={setmyuser}/>}/>
+   <Route exact path= "/"element={!myuser?<Login setuser={setmyuser}/>:<Home/>}/>
 
    <Route exact path= "/Logout"element={myuser?<Logout Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct}setisother={setisother} setmyuser={setmyuser}/>:<Login/>}/>
    <Route exact path= "/Register"element={<Register/>}/>
@@ -99,7 +219,7 @@ const myparentcall=(childcity,childrating)=>{
 
 
 
-   <Route exact path= "/"element={user?<Home Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />: <Login/>}/>
+   <Route exact path= "/Home"element={user?<Home Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />: <Login/>}/>
 
    <Route exact path= "/Restaurants"element={user?<Restaurants City={city} Rating={rating} Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:<Login/>}/>
    
@@ -110,11 +230,11 @@ const myparentcall=(childcity,childrating)=>{
    <Route exact path= "/AccessShop"element={user?<Shopper Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:<Login/>}/>
    <Route exact path= "/AccessRestaurant"element={user?<Restaurantacc Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:<Login/>}/>
 
-   <Route path="/productitem" element={user?<Singleitem Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:""} />
+   <Route path="/productitem" element={user?<Singleitem Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
    <Route path="/updateproduct" element={user?<Updateproduct Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
-   <Route path="/Restaurantitem" element={user?<SingleRestaurant Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
-   <Route exact path="/orderplaced" element={user?<Orderplaced Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
-   <Route exact path="/notification" element={user?<Notification Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
+   <Route path="/Restaurantitem" element={user?<SingleRestaurant Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setneworders={setneworders} />:""} />
+   <Route exact path="/orderplaced" element={user?<Orderplaced Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setorderplaced={setorderplaced} />:""} />
+   <Route exact path="/notification" element={user?<Notification Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setcount={setcount} />:""} />
    <Route exact path="/Allproducts" element={user?<Allproducts Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
 </Routes>
 </div>

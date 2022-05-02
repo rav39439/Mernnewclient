@@ -100,6 +100,9 @@ const res=await axios.post("users/cleardata",newdetails ,
 
 setarr(res.data.orderplaced)
 
+props.setorderplaced(res.data.orderplaced.length)
+
+
 }
 catch(err){
 

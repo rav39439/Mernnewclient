@@ -193,7 +193,10 @@ const handledelete=async(e)=>{
             })
             console.log(arra)
    setarr(res.data.notification);
-  console.log(res)
+ 
+
+setcount(res.data.notifcation.length)
+
 //   let k
 // let p=localStorage.getItem('user')
 
@@ -232,7 +235,9 @@ const updateread=async(e)=>{
         },
       })
    setarr(res.data.notification)
-   console.log(res)
+
+props.setcount(res.data.notification.length)
+
   }
 catch(err){
 

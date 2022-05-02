@@ -1,0 +1,13 @@
+.active {
+    font-size: 5px;
+   
+
+
+
+
+
+    @media (max-width: 600px) {
+        
+      background: "red";
+    }
+   }

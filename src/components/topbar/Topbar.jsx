@@ -31,7 +31,7 @@ const Topbar = () => {
       <div className="navbar-nav">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-      <Link to= "/">Home</Link>
+      <Link to= "/Home">Home</Link>
 
       </li>
       <li className="nav-item ml-5">

@@ -100,6 +100,9 @@ const newdata={
 }
 
 console.log("the orderid is "+newdata.myorderid)
+
+
+
   //   try{
   // await axios.put(`/restaurants/updateorder?${e.target.orderid.value? "orderid="+e.target.orderid.value:""}
   // &${e.target.restaurantid.value? "restaurantid="+e.target.restaurantid.value:""}`)
@@ -142,7 +145,8 @@ console.log("the orderid is "+newdata.myorderid)
     }
 
 function callback(res){
-
+console.log("the original")
+console.log(ordernew)
   let alldata=res.data
   //console.log(alldata[0])
   let l=alldata.length
@@ -151,21 +155,25 @@ alldata.map((elem,index)=>{
 elem._id===newdata.myorderid&&
 arra.push(elem)
 })
-setarr(arra)
+//setarr(arra)
  // setarrah(arrah)
   //setneworder({...ordernew,...alldata[l-1]})
 //console.log(ordernew)
-console.log("before array")
-console.log(ordernew)
+console.log("newupdated array")
+console.log(arra[0])
 
-// setneworder(ordernew => ({
-//        ...ordernew,
-//        ...arra[0]
-//      }));
+setneworder(ordernew => ({
+       ...ordernew,
+       ...arra[0]
+     }));
+//ordernew=arra[0]
+//ordernew.status=arra[0].status
+//setarrah(arra)
+//setneworder(arra[0])
 //ordernew=arr[0]
-setneworder({...ordernew,...alldata[0]})
+//setneworder({...ordernew,...arra[0]})
 
-     console.log("after array"+ordernew)
+     console.log("after array")
      console.log(ordernew)
 
 
@@ -208,7 +216,7 @@ setneworder({...ordernew,...alldata[0]})
     <input type="text" readOnly name="productname"defaultValue={ordernew.productname}/><br /><br />
     <input type="text" readOnly name="quantity"defaultValue={ordernew.quantity}/><br /><br />
     <input type="text" readOnly name="restaurantid"defaultValue={ordernew.restaurantid}/><br /><br/>
-    <input type="text" readOnly name="status" defaultValue={ordernew.status}/><br /><br />
+    <input type="text" readOnly name="status" value={ordernew.status}/><br /><br />
     <input type="text" readOnly name="userid" defaultValue={ordernew.userid}/><br /><br />
     <input type="text" readOnly name="orderid" defaultValue={ordernew._id}/><br /><br />
     <button type='submit' className='btn btn-primary'>Accept</button> 

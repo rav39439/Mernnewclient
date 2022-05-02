@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext, useState } from "react";
 import axios from "axios";
 import "./register.css";
-axios.defaults.baseURL ="https://mernnewproject.herokuapp.com/api"
+axios.defaults.baseURL ="http://localhost:8800/api"
 
 
 

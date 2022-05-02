@@ -21,7 +21,10 @@ const handleclick=(e)=>{
 
 localStorage.removeItem('user')
 props.setmyuser(localStorage.getItem('user'))
-navigate("/login")
+
+
+
+navigate("/")
 
 
 }

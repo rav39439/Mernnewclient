@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 
 export default function Login(props) {
 
-
+console.log(props)
 
   const navigate = useNavigate();
 
@@ -25,18 +25,18 @@ export default function Login(props) {
    //console.log(user)
 
    
-    navigate("/",{state:""})
+    navigate("/Home",{state:""})
 
+    function callback(user){
+      console.log("callback is running")
+      console.log(props)
+      console.log(user)
+  props.setuser(user)
+    }
+
+
+  }
   
-
-
-  }
-  function callback(user){
-    console.log("callback is running")
-    console.log(props)
-    console.log(user)
-props.setuser(user)
-  }
 
 
   return (
