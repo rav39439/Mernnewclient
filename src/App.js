@@ -206,7 +206,7 @@ const myparentcall=(childcity,childrating)=>{
    
  <div className='col-md-8'>
    <Routes>
-   <Route exact path= "/"element={!myuser?<Login setuser={setmyuser}/>:<Home/>}/>
+   <Route exact path= "/"element={!myuser?<Login setuser={setmyuser}/>:<Home setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>}/>
 
    <Route exact path= "/Logout"element={myuser?<Logout Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct}setisother={setisother} setmyuser={setmyuser}/>:<Login/>}/>
    <Route exact path= "/Register"element={<Register/>}/>
