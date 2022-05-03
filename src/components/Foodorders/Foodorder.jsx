@@ -7,7 +7,7 @@ import {Link} from "react-router-dom"
 import { getrestaurant, updaterestaurant } from '../RestaurantContext/Restaurantapicalls';
 import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
 ///const socket=io.connect("http://localhost:8800")
-const Foodorder = ({itemname,itemprice,itemimage,restaurantid,newdata,socket}) => {
+const Foodorder = ({itemname,itemprice,itemimage,restaurantid,newdata,socket,setrestaurantorders}) => {
 const {restaurants,dispatch}=useContext(RestaurantContext)
     const mylink="https://mernnewproject.herokuapp.com/api/images/"+itemimage
 
@@ -89,7 +89,7 @@ try{
           "Bearer"+JSON.parse(localStorage.getItem("user")).accessToken,
         },
       })
-      updaterestaurant(res.data.restaurant,dispatch)
+     // updaterestaurant(res.data.restaurant,dispatch)
       console.log(res.data.restaurant)
 
     //console.log(res.data.restaurant.postedby)
@@ -97,7 +97,8 @@ try{
     setnewstyle(false)
    /// html=`<p>You have an order of item costing ${price} by ${name} have to deliverd at address ${address}</p>`
     socket.emit("orderpassed",data,res.data.restaurant.postedby,res.data.id)
-    
+    res.data.restaurant.postedby==user.username &&
+    setrestaurantorders(res.data.restaurant.orders.length)
 setdata(res.data)
 
 
@@ -183,6 +184,17 @@ onChange={(e)=>{
 
 <button onClick={enterquantity}>enterquantity</button>
 <button className='btn btn-primary' onClick={handleSubmit}>order</button>
+
+
+
+
+
+
+
+
+
+
+
 </div>:
 <div>
 <p>Your order is placed. You will get notification from the showner soon regarding the acceptance 

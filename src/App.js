@@ -39,7 +39,7 @@ console.log(myuser)
 
 const [orderrec,setorderrec]=useState(0)
 const [neworders,setneworders]=useState(0)
-
+const [restaurantorders,setrestaurantorders]=useState(0)
 const [company,setcompany]=useState("")
 const [category,setcategory]=useState("")
 const [isproduct,setisproduct]=useState(false)
@@ -155,9 +155,7 @@ useEffect(()=>{
 
 
 
-
-
-
+     
 
 
 
@@ -199,7 +197,7 @@ const myparentcall=(childcity,childrating)=>{
 
 {isrestaurant?<Newsidebar mynewcallback={myparentcall} />:""}
 {isproduct?<Sidebar newcallback={parentcall} />:""}
-{isother?<Usersidebar orderplace={orderplace} count={count} orderrec={orderrec} />:""}
+{isother?<Usersidebar orderplace={orderplace} count={count} orderrec={orderrec} restaurantorders={restaurantorders} setrestaurantorders={setrestaurantorders} />:""}
 
 </div>
 :""}
@@ -232,7 +230,7 @@ const myparentcall=(childcity,childrating)=>{
 
    <Route path="/productitem" element={user?<Singleitem Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
    <Route path="/updateproduct" element={user?<Updateproduct Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
-   <Route path="/Restaurantitem" element={user?<SingleRestaurant Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setneworders={setneworders} />:""} />
+   <Route path="/Restaurantitem" element={user?<SingleRestaurant Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setneworders={setneworders} setrestaurantorders={setrestaurantorders} />:""} />
    <Route exact path="/orderplaced" element={user?<Orderplaced Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setorderplaced={setorderplaced} />:""} />
    <Route exact path="/notification" element={user?<Notification Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setcount={setcount} />:""} />
    <Route exact path="/Allproducts" element={user?<Allproducts Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />

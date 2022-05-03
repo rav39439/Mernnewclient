@@ -6,7 +6,7 @@ getrestaurantSuccess,getrestaurantFailure} from './Restaurantactions';
 export const getrestaurant = async (dispatch) => {
   dispatch(getrestaurantStart());
 
-  console.log("the updaterestaurant is runningn")
+  ///console.log("the updaterestaurant is runningn")
   try {
     const res = await axios.get("restaurants/",{
        headers: {

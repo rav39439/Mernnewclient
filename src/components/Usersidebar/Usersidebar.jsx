@@ -24,18 +24,21 @@ useEffect(()=>{
   console.log(restaurants)
 
   let m=0
+  function myorders(){
   restaurants.length!=0&&
 restaurants?.map((restaurant,index)=>{
-restaurant.postedby==user.username&&
+restaurant.postedby==user?.username&&
 (m=m+restaurant.orders.length)
 console.log("the my restaurant is "+restaurant.name)
 console.log(m)
 //restaurant.postedby==user.username&& (m=m+restaurant[index].orders.length)
-setorderrec(m)
+props.setrestaurantorders(m)
 
 })
-
+}
+myorders()
 },[dispatch])
+
 
 
 
@@ -85,7 +88,7 @@ setorderrec(m)
 
       <li className="nav-item dropdown mt-5">
       <Link to= "/orderrecieved"className='mt-5'>orderrecieved</Link>
-  <small>{orderrec}</small>
+  <small>{props.restaurantorders}</small>
       </li> 
 
       <li className="nav-item mt-5">
