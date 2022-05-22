@@ -91,37 +91,51 @@ const [arr1,setarr1]=useState([])
 
 
 const handleclick=async(e)=>{
-try{
+
+
+}
 
 
 
-  let userdetails={
-    userid:user._id,
-    username:user.username
+useEffect(async()=>{
+
+  try{
+
+
+
+    let userdetails={
+      userid:user._id,
+      username:user.username
+    }
+  
+  
+  
+   //console.log(userdetails.userid)
+  //  console.log(userdetails.username)
+  const res=await axios.post("users/getuser",userdetails ,
+  {
+     headers: {
+        token:
+        "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    })
+  let notification=res.data.notification
+  res.data.notification.map((elem,index)=>{
+    arra1.push(elem)
+  })
+  console.log(arra1)
+  setarr(arra1)
+  
+  } catch(err){
+  
+  console.log(err)
   }
 
 
 
- //console.log(userdetails.userid)
-//  console.log(userdetails.username)
-const res=await axios.post("users/getuser",userdetails ,
-{
-   headers: {
-      token:
-      "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
-    },
-  })
-let notification=res.data.notification
-res.data.notification.map((elem,index)=>{
-  arra1.push(elem)
-})
-console.log(arra1)
-setarr(arra1)
 
-} catch(err){
+},[user])
 
-console.log(err)
-}
 //---------------------------------------------------------------------------------------
 // customnot.notification.map((elem,index)=>{
 // if(elem.read=='unread'){
@@ -167,7 +181,7 @@ console.log(err)
   //   setarr(myarray)
 
   
-}
+
 
 const handledelete=async(e)=>{
   e.preventDefault()
@@ -289,7 +303,6 @@ catch(err){
     </div> */}
 
 
-    <button className='btn btn-primary'onClick={handleclick}>getdata</button>
 
   
 

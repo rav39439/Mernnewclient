@@ -110,7 +110,7 @@ setarr(arraynew)
 
 <h3>Fooditems offered</h3>
 {arr.map((data,index) => (
-       <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state._id} newdata={index} socket={socket} setrestaurantorders={props.setrestaurantorders} />
+       <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state._id} newdata={index} socket={socket} setrestaurantorders={props.setrestaurantorders} setpostedby={props.setpostedby} />
       ))}
 
 </div>

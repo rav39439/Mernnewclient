@@ -32,7 +32,7 @@ const App = () => {
   // let user={}
    const { user } = useContext(AuthContext);
    const { restaurants,dispatch } = useContext(RestaurantContext);
-
+const [postedby,setpostedby]=useState("")
 const [price,setprice]=useState(0)
 const [myuser,setmyuser]=useState(user)
 console.log(myuser)
@@ -154,7 +154,8 @@ useEffect(()=>{
 
 
 
-
+      
+      
      
 
 
@@ -197,7 +198,7 @@ const myparentcall=(childcity,childrating)=>{
 
 {isrestaurant?<Newsidebar mynewcallback={myparentcall} />:""}
 {isproduct?<Sidebar newcallback={parentcall} />:""}
-{isother?<Usersidebar orderplace={orderplace} count={count} orderrec={orderrec} restaurantorders={restaurantorders} setrestaurantorders={setrestaurantorders} />:""}
+{isother?<Usersidebar orderplace={orderplace} count={count} orderrec={orderrec} restaurantorders={restaurantorders} setrestaurantorders={setrestaurantorders} postedby={postedby} setpostedby={setpostedby} />:""}
 
 </div>
 :""}
@@ -230,7 +231,7 @@ const myparentcall=(childcity,childrating)=>{
 
    <Route path="/productitem" element={user?<Singleitem Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
    <Route path="/updateproduct" element={user?<Updateproduct Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />
-   <Route path="/Restaurantitem" element={user?<SingleRestaurant Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setneworders={setneworders} setrestaurantorders={setrestaurantorders} />:""} />
+   <Route path="/Restaurantitem" element={user?<SingleRestaurant Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setneworders={setneworders} setrestaurantorders={setrestaurantorders} setpostedby={setpostedby} />:""} />
    <Route exact path="/orderplaced" element={user?<Orderplaced Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setorderplaced={setorderplaced} />:""} />
    <Route exact path="/notification" element={user?<Notification Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} setcount={setcount} />:""} />
    <Route exact path="/Allproducts" element={user?<Allproducts Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />:""} />

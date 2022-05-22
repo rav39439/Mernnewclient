@@ -6,6 +6,10 @@ import axios from 'axios';
 import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
 import { getrestaurant } from '../RestaurantContext/Restaurantapicalls';
 import { useContext, useState } from "react";
+import Styled from "styled-components";
+
+import "./usersidebar.css";
+
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 const Usersidebar = (props) => {
   const { user } = useContext(AuthContext);
@@ -14,31 +18,41 @@ const Usersidebar = (props) => {
 
   const [orderrec,setorderrec]=useState(0)
   const [orderplacedcount,setorderplacedcount]=useState(0)
+  const heading = Styled.div`
+        Text-align:right;
 
-//console.log("the restaurants"+restaurants)
+            @media (max-width: 767px) {
+                text-align: center;
+            }
+            @media (max-width: 400px) {
+                text-align: left;
+            }`;
+
+  console.log("the new postedby is")
+  console.log(props.postedby)
  
   
-useEffect(()=>{
+  useEffect(()=>{
 
-  getrestaurant(dispatch)
-  console.log(restaurants)
-
-  let m=0
-  function myorders(){
-  restaurants.length!=0&&
-restaurants?.map((restaurant,index)=>{
-restaurant.postedby==user?.username&&
-(m=m+restaurant.orders.length)
-console.log("the my restaurant is "+restaurant.name)
-console.log(m)
-//restaurant.postedby==user.username&& (m=m+restaurant[index].orders.length)
+    getrestaurant(dispatch)
+    console.log(restaurants)
+  
+    let m=0
+    function myorders(){
+    restaurants.length!=0&&
+  restaurants?.map((restaurant,index)=>{
+  restaurant.postedby==user?.username&&
+  (m=m+restaurant.orders.length)
+ props.setpostedby(restaurant.postedby)
+  console.log("the my restaurant is "+restaurant.name)
+  console.log(m)
+  //restaurant.postedby==user.username&& (m=m+restaurant[index].orders.length)
 props.setrestaurantorders(m)
-
-})
-}
-myorders()
-},[dispatch])
-
+  
+  })
+  }
+  myorders()
+  },[dispatch])
 
 
 
@@ -71,9 +85,13 @@ myorders()
     
     <div className="sidebar"style={{color: "red",width:"200px",position:"relative",height:"800px",marginTop:"10px",
     backgroundColor:"#f1f1f1",paddingLeft:"50px",marginLeft:"-60px"}}>
-      <a className="active" href="/Home">Home</a><br></br><br></br>
-    
-    
+
+
+     <li className="nav-item">
+
+     <Link to= "/"className='mt-3' style={{marginTop:"10px"}}>Home</Link>
+
+    </li>
     <ul className="navbar-nav mr-auto">
      
       <li className="nav-item mt-5">
@@ -87,7 +105,7 @@ myorders()
       </li> 
 
       <li className="nav-item dropdown mt-5">
-      <Link to= "/orderrecieved"className='mt-5'>orderrecieved</Link>
+      <Link to= "/AccessRestaurant"className='mt-5'>orderrecieved</Link>
   <small>{props.restaurantorders}</small>
       </li> 
 

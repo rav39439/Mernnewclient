@@ -28,7 +28,7 @@ const[arrival,setarrival]=useState([])
 const [data,setdata]=useState({})
 //const newproduct=location.state.image
 
-const mylink="https://mernnewproject.herokuapp.com/api/images/"+data.image
+const mylink="https://mernnewproject.herokuapp.com/api/images/"+data?.image
 
 useEffect(() => {
     props.setIsrestaurant(false)
@@ -139,17 +139,19 @@ setdata(res.data)
 <hr />
 
 
-{isdata? <div className='border bg-light'>
+{isdata? <div>
 
 
-<div className='border'>
+<div style={{border:"2px solid black"}}>
 
 <img src= {mylink} className="card-img-top"style={{height:"500px",width:"600px"}} alt="..."/><br></br>
+<ul style={{listStyleType:'none'}}>
+<li><strong>City</strong>: {data?.city}</li><br></br>
+<li><strong>Location</strong>: {data?.location}</li><br></br>
+<li><strong>Name</strong>: {data?.name}</li><br></br>
+<li><strong>Rating</strong>: {data?.rating}</li><br></br>
 
-<span>{data.city}</span><br></br>
-<span>{data.location}</span><br></br>
-<span>{data.name}</span><br></br>
-<span>{data.rating}</span><br></br>
+</ul>
 </div>
 
 
@@ -165,8 +167,7 @@ setdata(res.data)
 <div>
 
 
-
-<Foodorderrec order={data.orders} restaurantid={data._id} socket={socket} />
+<Foodorderrec order={data?.orders} restaurantid={data?._id} socket={socket} />
 
 </div>
 

@@ -11,6 +11,40 @@ const Foodrecieve = ({name,price,email,phone,status,restaurantid,userid,address,
 
   const arra=[]
 const[arr,setarr]=useState([])
+
+
+
+
+const handleclear=async(e)=>{
+  e.preventDefault()
+
+  try{
+    const newres=await axios.put(`restaurants/aremovedata?${e.target.restaurantid.value?"restaurantid="+e.target.restaurantid.value:""}&${e.target.orderid.value?"orderid="+e.target.orderid.value:""}`,
+    {
+       headers: {
+          token:
+          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+        },
+      })
+    let alldata=newres.data.orders
+   console.log(alldata)
+   //setarr(alldata)
+   //console.log(arr)
+    //  datac = {
+    //   ...datac,
+    //    Orderrec: alldata,
+    //  };
+    setarrah(alldata);
+    console.log("thedsafghlkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+  console.log(arrah)
+    
+  }
+  catch(err){
+    console.log(err)
+  }
+  
+}
+
   const handledelete=async(e)=>{
 
     e.preventDefault()
@@ -71,7 +105,6 @@ const[arr,setarr]=useState([])
 
 
 const [updatedorder,setorder]=useState({name,price,email,phone,status,restaurantid,userid,address,quantity,orderid,productname})
-  //const [updatedstatus,setstatus]=useState(status)
   var [ordernew,setneworder]=useState({
     address:address,
     email:email,
@@ -145,20 +178,14 @@ console.log("the orderid is "+newdata.myorderid)
     }
 
 function callback(res){
-console.log("the original")
-console.log(ordernew)
+
   let alldata=res.data
-  //console.log(alldata[0])
   let l=alldata.length
-  //console.log(alldata[l-1].status)
 alldata.map((elem,index)=>{
 elem._id===newdata.myorderid&&
 arra.push(elem)
 })
-//setarr(arra)
- // setarrah(arrah)
-  //setneworder({...ordernew,...alldata[l-1]})
-//console.log(ordernew)
+
 console.log("newupdated array")
 console.log(arra[0])
 
@@ -166,17 +193,6 @@ setneworder(ordernew => ({
        ...ordernew,
        ...arra[0]
      }));
-//ordernew=arra[0]
-//ordernew.status=arra[0].status
-//setarrah(arra)
-//setneworder(arra[0])
-//ordernew=arr[0]
-//setneworder({...ordernew,...arra[0]})
-
-     console.log("after array")
-     console.log(ordernew)
-
-
 }
 
 
@@ -202,10 +218,10 @@ setneworder(ordernew => ({
       
   return (
       <>
-      <div>
+      <div class="d inline-flex " style={{display:'inline-flex',border:"2px solid black"}}>
   
 
-</div>
+
    <form onSubmit={handleSubmit}>
     <div className='border bg-light mt-3'>
     <input type="text"readOnly name="address"defaultValue={ordernew.address}/><br />
@@ -221,9 +237,10 @@ setneworder(ordernew => ({
     <input type="text" readOnly name="orderid" defaultValue={ordernew._id}/><br /><br />
     <button type='submit' className='btn btn-primary'>Accept</button> 
 
-    </div>
+   </div>
     </form>
-    <form onSubmit={handledelete}>
+
+    <form onSubmit={handledelete} style={{paddingLeft:"10px"}}>
 <input type='text'style={{display:"none"}} readOnly name="userid"value={userid}/>
 
 <input type='text'style={{display:"none"}} readOnly name="orderid"defaultValue={orderid?orderid:""}/>
@@ -238,6 +255,27 @@ setneworder(ordernew => ({
 
 <button type='submit' className='btn btn-primary'>Delete</button> 
 </form>
+
+
+
+    <form onSubmit={handleclear} style={{paddingLeft:"10px"}}>
+<input type='text'style={{display:"none"}} readOnly name="userid"value={userid}/>
+
+<input type='text'style={{display:"none"}} readOnly name="orderid"defaultValue={orderid?orderid:""}/>
+<input type='text' style={{display:"none"}} readOnly name="restaurantid"defaultValue={restaurantid?restaurantid:""}/>
+<input type="text" style={{display:"none"}} readOnly name="email"defaultValue={email}/><br />
+<input type="text" style={{display:"none"}} readOnly name="name"defaultValue={name}/><br />
+<input type="text" style={{display:"none"}} readOnly name="userid"defaultValue={userid}/><br />
+
+<input type='text' style={{display:"none"}} readOnly name="quantity"defaultValue={quantity?quantity:""}/>
+<input type='text' style={{display:"none"}}  readOnly name="productname"defaultValue={productname?productname:""}/>
+
+
+<button type='submit' className='btn btn-primary'>clear</button> 
+</form>
+</div><br></br><br></br><br></br>
+
+
     </>
   )
 }

@@ -161,21 +161,28 @@ catch (err) {
 <hr></hr>
 
 
-{isdata? <div className='border bg-light'>
-<div>{data._id}</div>
-<li>{data.Name}</li>
-<li>{data.creater?data.creator:""}</li>
+{isdata? <div className='bg-light'>
 
 
-<div>
+
+<ul style={{listStyleType:"none",textAlign:"left"}}>
+
+  <li><strong>ShopId</strong>: {data?._id}</li>
+<li><strong>Shopname</strong>: {data?.Name}</li>
+<li><strong>ShopOwner</strong>: {data?.creater?data.creator:""}</li>
+<li><strong>city</strong>: {data?.city}</li>
+
+</ul>
+
+<div style={{backgroundColor:'white'}}>
 
 
 <button type='submit' className='btn btn-primary'onClick={handleClick}>see orders</button> 
-
-{ arr.map(({_id,username,quantity,address,productname,phone,email,userid},index) => (
+<h1> Your orders</h1>
+{ arr.map(({_id,username,quantity,address,productname,phone,email,userid,status},index) => (
          
 
-         <Order username={username} quantity={quantity} address={address} productname={productname}
+         <Order username={username} quantity={quantity} address={address} productname={productname} status={status}
          phone={phone} email={email} shopid={data?._id} key={index} orderid={_id} setarr={setarr} arr={arr} userid={userid} />
        ))
        
@@ -188,10 +195,10 @@ catch (err) {
 <h1>Notification</h1>
 
 <div className="users">
-      {arrival.map(({price,username,address,quantity,email,productname,phone,userid,shoporderid,shopid},index) => (
+      {arrival.map(({price,username,address,quantity,email,productname,phone,userid,shoporderid,shopid,status},index) => (
      <Newshoporders price={price} username={username} address={address} quantity={quantity} email={email}
      
-     userid={userid} productname={productname} phone={phone} shoporderid={shoporderid} shopid={shopid} socket={socket} newusers={alluse} />
+     userid={userid} status={status} productname={productname} phone={phone} shoporderid={shoporderid} shopid={shopid} socket={socket} newusers={alluse} />
       ))}
     </div>
 

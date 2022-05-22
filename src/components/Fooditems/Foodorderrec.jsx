@@ -47,11 +47,11 @@ const arraynew=[]
    
 <>
 
-<h1>yournew orde3rs</h1>
+<h1>yournew orders</h1>
 
 
 
-<div >
+<div style={{}} >
 
   {
    arr.map(({ price,quantity,name,address,phone,email,restaurantid,userid,status,_id,productname }) => (
@@ -66,10 +66,11 @@ const arraynew=[]
 <button type='submit' className='btn btn-primary'onClick={handleClick}>see orders</button> 
 
 
-</div>
+</div><br></br><br></br>
 
 
 </>
+
   )
 }
 

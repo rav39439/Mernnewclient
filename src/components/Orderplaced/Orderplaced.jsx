@@ -29,51 +29,46 @@ const [arr,setarr]=useState([])
 
     const handleclick=async(e)=>{
 
-      try{
-
-
-
-        let userdetails={
-          userid:user._id,
-          username:user.username
-        }
-      
-      
-      
-       //console.log(userdetails.userid)
-      //  console.log(userdetails.username)
-      const res=await axios.post("users/getuser",userdetails ,
-      {
-         headers: {
-            token:
-            "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
-          },
-        })
-      let notification=res.data.notification
-      res.data.orderplaced.map((elem,index)=>{
-        arra1.push(elem)
-      })
-      console.log(arra1)
-      setarr(arra1)
-      
-      } catch(err){
-      
-      console.log(err)
-      }
-
-
-
-
-
-
-      // arr.map((elem,index)=>{
-      //    myarray.push(elem)
-      //          })
-   
-      //  setarr(myarray)
-   
      
    }
+
+
+
+   useEffect(async()=>{
+
+    try{
+
+
+
+      let userdetails={
+        userid:user._id,
+        username:user.username
+      }
+    
+    
+    
+   
+    const res=await axios.post("users/getuser",userdetails ,
+    {
+       headers: {
+          token:
+          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+        },
+      })
+    let notification=res.data.notification
+    res.data.orderplaced.map((elem,index)=>{
+      arra1.push(elem)
+    })
+    console.log(arra1)
+    setarr(arra1)
+    
+    } catch(err){
+    
+    console.log(err)
+    }
+
+
+   },[user])
 
 
 
@@ -118,7 +113,6 @@ console.log(err)
 
     <h1>Orderplaced</h1>
 
-    <button className='btn btn-primary'onClick={handleclick}>getdata</button>
 
 
     <div className='user'>

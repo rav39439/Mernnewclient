@@ -43,6 +43,7 @@ const shopcode=location.state.shopcode
 const email=user.email
 let shoporderid=''
 let shopid=''
+let status="pending"
     //const product = location;
     ///const data=JSON.stringify(location.state)
     //console.log(location)
@@ -88,6 +89,7 @@ e.preventDefault()
       userid,
       shoporderid,
       shopid,
+      status,
 shopcode
      
     };
@@ -95,7 +97,7 @@ shopcode
     try {
       const res = await axios.put(
         `shop?${address?"address="+address:""}&${quantity?"quantity="+quantity:""}&${
-          username?"username="+username:""}&${ email?"email="+email:""}&${ phone?"phone="+phone:""}&${productname?"productname="+productname:""}&${shopcode?"shopcode="+shopcode:""}&${userid?"userid="+userid:""}`,
+          username?"username="+username:""}&${ email?"email="+email:""}&${ phone?"phone="+phone:""}&${productname?"productname="+productname:""}&${shopcode?"shopcode="+shopcode:""}&${userid?"userid="+userid:""}&${status?"status="+status:""}`,
          {
          headers: {
             token:

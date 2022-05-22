@@ -35,6 +35,7 @@ const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
         
       <li className="list-group-item">{props.product.category}</li>
       <li className="list-group-item">{props.product.price}</li>
+      <li className="list-group-item">{props.product.company}</li>
       <li className="list-group-item">{props.product.shoplocation?props.product.shoplocation:""}</li>
       <li className="list-group-item"style={{display:"none"}}>{props.product.shopcode}</li>
     </ul>

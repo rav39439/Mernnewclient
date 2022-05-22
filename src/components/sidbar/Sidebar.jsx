@@ -34,6 +34,7 @@ backgroundColor:"#f1f1f1",paddingLeft:"50px",marginLeft:"-60px"}}>
             <option value="drgg">drgg</option>
             <option value="vim">vim</option>
             <option value="Toothpaste">Toothpaste</option>
+            <option value="Chair">Chair</option>
            
          
           </select><br></br><br></br><br></br>
@@ -47,7 +48,7 @@ backgroundColor:"#f1f1f1",paddingLeft:"50px",marginLeft:"-60px"}}>
             <option value="allout">allout</option>
             <option value="Lux">Lux</option>
             <option value="nivea">nivea</option>
-            <option value="sfdg">sfdg</option>
+            <option value="New company">New company</option>
            
          
           </select><br></br><br></br><br></br>

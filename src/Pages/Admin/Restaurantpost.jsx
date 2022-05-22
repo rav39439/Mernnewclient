@@ -156,14 +156,13 @@ const handleSubmit = async (e) => {
     <div className="settings">
     <div className="settingsWrapper">
     <form className="settingsForm" onSubmit={handleSubmit}>
-          <label>Profile Picture</label>
+          <label>Restaurant Picture</label>
           <div className="settingsPP">
             <img
               src={file ? URL.createObjectURL(file) : ""}
               alt=""
             />
 <label htmlFor="fileInput">
-              <i className="settingsPPIcon far fa-user-circle"></i>
             </label>
             <input
               type="file"

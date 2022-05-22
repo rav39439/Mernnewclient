@@ -46,7 +46,7 @@ const [restaurants,setrestaurant]=useState([])
 
   return (
     <>
-
+<h1>Restaurants</h1>
 <div className='container' style={{marginLeft:"-100px"}} >
 
 <div className="row">

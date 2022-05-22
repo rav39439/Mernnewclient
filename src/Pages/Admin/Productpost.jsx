@@ -105,7 +105,6 @@ const handleSubmit = async (e) => {
               alt=""
             />
 <label htmlFor="fileInput">
-              <i className="settingsPPIcon far fa-user-circle"></i>
             </label>
             <input
               type="file"

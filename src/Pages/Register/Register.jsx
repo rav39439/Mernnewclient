@@ -6,7 +6,6 @@ axios.defaults.baseURL ="https://mernnewproject.herokuapp.com/api"
 
 
 
-
 const Register = () => {
 
 const [file, setFile] = useState(null);

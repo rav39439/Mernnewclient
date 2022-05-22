@@ -30,10 +30,7 @@ const Topbar = () => {
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div className="navbar-nav">
     <ul className="navbar-nav mr-auto">
-      <li className="nav-item active">
-      <Link to= "/Home">Home</Link>
-
-      </li>
+      
       <li className="nav-item ml-5">
       <Link to= "/Restaurants"className='ml-5'>Restaurants</Link>
       </li>
@@ -65,10 +62,7 @@ const Topbar = () => {
       </li>
     
     </ul>
-    <form className="form-inline my-2 my-lg-0 d-inline-flex">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button className="mybutton ml-5 my-sm-0" type="submit" >Search</button>
-    </form>
+    
     
   </div>
   </div>
