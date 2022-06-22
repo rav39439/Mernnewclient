@@ -54,7 +54,7 @@ getRandomLists()
    
     <>
     <h1>products</h1>
-    <div className='container' style={{marginLeft:"-100px"}} >
+    <div className='container' style={{marginLeft:"-30px"}} >
 
       <div className="row">
       

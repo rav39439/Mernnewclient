@@ -21,7 +21,7 @@ console.log("new world")
 
 
 
- <p key={newdata} style={{marginLeft:isuser?"0px":"100px"}}>{name}:{message}</p>
+ <p key={newdata} style={{marginLeft:isuser?"0px":"100px"}}><span style={{fontSize:"20px"}}><b>{name}</b></span>:<span style={{fontFamily:"cursive"}}>{message}</span></p>
 
 
 

@@ -25,12 +25,18 @@ const Restaurant = (props) => {
   <div className="card mb-3" style={{width:"300px",marginTop:"5px",marginLeft:"20px"}}>
   <img src={mylink} className="card-img-top"style={{height:"300px",width:"300px",paddingRight:"30px",paddingTop:"10px"}} alt="..."/>
   <div className="card-body">
-    <h5 className="card-title">{props.restaurant.name}</h5>
-    <p className="card-text">{props.restaurant.details}</p>
-    <p className="card-text">{props.restaurant.city}</p>
-    <p className="card-text">{props.restaurant.staff}</p>
-    <p className="card-text">{props.restaurant.rating}</p>
-    <p className="card-text">{props.restaurant.location}</p>
+    <h5 className="card-title"><span><b>Name : </b></span><span style={{fontFamily:"san-serif",fontSize:'24px'}}><b>{props.restaurant.name}</b></span></h5>
+    <hr></hr>
+    <p className="card-text" style={{display:"none"}}><b>Details : </b><span style={{fontFamily:"san-serif"}}>{props.restaurant.details}</span></p>
+
+    <p className="card-text"><b>City : </b><span style={{fontFamily:"san-serif"}}>{props.restaurant.city}</span></p>
+
+    <p className="card-text" style={{display:"none"}}><b>Staff : </b><span>{props.restaurant.staff}</span></p>
+    <hr></hr>
+    <p className="card-text"><b>Rating :</b><span style={{fontFamily:"san-serif"}}>{props.restaurant.rating}</span></p>
+    <hr></hr>
+    <p className="card-text"><b>Location : </b><span style={{fontFamily:"san-serif"}}>{props.restaurant.location}</span></p>
+    <hr></hr>
   </div>
   <button onClick={handleClick}className="btn btn-primary">details</button>
 

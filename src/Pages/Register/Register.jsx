@@ -59,22 +59,23 @@ let filename=""
 
   return (
       <>
-    <div className="settings">
-    <div className="settingsWrapper">
-    <form className="settingsForm" onSubmit={handleSubmit}>
-          <label>Profile Picture</label>
-          <div className="settingsPP">
+    <div className="settings border bg-light">
+
+    <div className="settingsWrapper"style={{marginTop:"70px"}}>
+    <h1 style={{fontFamily:"-moz-initial",fontSize:"60px"}}>Register</h1>
+
+    <form className="settingsForm border" onSubmit={handleSubmit}>
+          <label >Profile Picture</label>
+          <div className="settingsPP" >
             <img
               src={file ? URL.createObjectURL(file) : ""}
               alt=""
             />
 <label htmlFor="fileInput">
-              <i className="settingsPPIcon far fa-user-circle"></i>
             </label>
             <input
               type="file"
               id="fileInput"
-              style={{ display: "none" }}
               onChange={(e) => setFile(e.target.files[0])}
             />
  </div>
@@ -102,7 +103,7 @@ let filename=""
             onChange={(e) => setPassword(e.target.value)}
           />
  <button className="settingsSubmit" style={{width:"200px"}}type="submit">
-            Update
+            Register
           </button>
 
          

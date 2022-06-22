@@ -43,14 +43,14 @@ console.log(props)
 
 
 
-  <div className="login wrapper fadeInDown">
-      <div className="formContent">
+  <div className="login wrapper fadeInDown border bg-light"style={{marginLeft:'200px'}} >
+      <div className="formContent"style={{paddingLeft:'100px',marginTop:'40px'}}>
         <div className="fadeIn first">
-        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> 
+        <img src="https://cdn.pixabay.com/photo/2021/11/02/07/20/autumn-6762572__340.jpg" id="icon" alt="User Icon" /> 
         </div>
      
-        <form>
-          <h1>Login</h1>
+        <form >
+          <h1 style={{fontFamily:"monospace",fontSize:"40px"}}>Login</h1>
           <input
             type="email"
             placeholder="Email or phone number"class="fadeIn second"name="login"
@@ -74,7 +74,7 @@ console.log(props)
         </form>
         <br></br>
           <br></br>
-        <p>if not user </p>
+        <p style={{fontFamily:"cursive"}}>If not user </p>
         <p>
       <Link to= "/Register"className='ml-5'>Regsiter</Link>
       </p>
@@ -82,9 +82,7 @@ console.log(props)
           <br></br>
       <br></br>
        
-      <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
+    
     </div>
 
     </div>

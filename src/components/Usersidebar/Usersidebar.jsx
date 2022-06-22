@@ -6,7 +6,7 @@ import axios from 'axios';
 import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
 import { getrestaurant } from '../RestaurantContext/Restaurantapicalls';
 import { useContext, useState } from "react";
-import Styled from "styled-components";
+import styled from "styled-components"; 
 
 import "./usersidebar.css";
 
@@ -18,19 +18,58 @@ const Usersidebar = (props) => {
 
   const [orderrec,setorderrec]=useState(0)
   const [orderplacedcount,setorderplacedcount]=useState(0)
-  const heading = Styled.div`
-        Text-align:right;
+  
 
-            @media (max-width: 767px) {
-                text-align: center;
-            }
-            @media (max-width: 400px) {
-                text-align: left;
-            }`;
-
-  console.log("the new postedby is")
-  console.log(props.postedby)
+  ///console.log("the new postedby is")
+ /// console.log(props.postedby)
  
+  const Container=styled.div `
+  width:230px;
+  height:800px;
+  background-color: black;
+  font-size: 20px;
+  color: white;
+  padding-left:20px;
+  margin-left:-60px;
+  position:relative;
+  
+  @media only screen and (max-width: 600px) {
+  
+    display:none
+     
+    }
+  `;
+  
+  const Montainer=styled.div `
+  width:1000px;
+  height:60px;
+  background-color: black;
+  font-size: 12px;
+  color: white;
+  display:none;
+  @media only screen and (max-width: 600px) {
+
+overflow:auto;
+    display:inline-flex;
+  
+     
+    }
+  `;
+  
+  const Nul=styled.ul `
+  
+  overflow-x:hidden;
+white-space:nowrap; 
+height: 1em;
+width: 100%;
+  
+  
+  `;
+
+
+
+
+
   
   useEffect(()=>{
 
@@ -82,9 +121,8 @@ props.setrestaurantorders(m)
 
   return (
   
-    
-    <div className="sidebar"style={{color: "red",width:"200px",position:"relative",height:"800px",marginTop:"10px",
-    backgroundColor:"#f1f1f1",paddingLeft:"50px",marginLeft:"-60px"}}>
+   <>
+    <Container>
 
 
      <li className="nav-item">
@@ -117,11 +155,42 @@ props.setrestaurantorders(m)
     
     </ul>
     
-    </div>
+    </Container>
     
     
+<Montainer>
 
 
+<div className="nav-item">
+
+<Link to= "/" style={{marginTop:"10px"}}>Home</Link>
+
+</div>
+
+
+ <div className="nav-item">
+
+ <Link to= "/notification">Notification</Link>
+ <small>{props.count}</small>
+ </div>
+ <div className="nav-item dropdown ">
+ <Link to= "/orderplaced">orderplaced</Link>
+<small>{props.orderplace}</small>
+ </div> 
+
+ <div className="nav-item dropdown ">
+ <Link to= "/AccessRestaurant">orderrecieved</Link>
+<small>{props.restaurantorders}</small>
+ </div> 
+
+ <div className="nav-item" >
+
+<Link to= "/Allproducts">Allproducts</Link>
+
+</div>
+
+  </Montainer>
+  </> 
     
   )
 }

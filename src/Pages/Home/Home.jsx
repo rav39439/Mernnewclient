@@ -211,20 +211,19 @@ arrnew.push(data)
 
     <>
   
+<div className='border bg-light' style={{marginTop:"40px",marginRight:"180px"}}>
 
+<form className="settingsForm"style={{padding:"50px"}} onSubmit={handleForm}>
+         <h1 style={{fontFamily:"cursive",fontSize:"60px"}}>Chat With Users</h1>
 
-
-<form className="settingsForm" onSubmit={handleForm}>
-         
-
- <label>person to send message</label>
+<label style={{fontFamily:"initial",marginLeft:'150px'}}><b>Send Message to Person</b></label>
           <input
             type="text"
             placeholder="enter person name"
             name='person'
             onChange={(e) => ontextchange(e)}
           />
- <label>name</label>
+ <label style={{fontFamily:"initial",marginLeft:'200px'}}><b>Your Name</b></label>
           <input
             type="text"
             placeholder="enter person name"
@@ -233,7 +232,7 @@ arrnew.push(data)
            value={user.username}
 
           />
- <label>Info</label>
+ <label style={{fontFamily:"initial",marginLeft:'200px'}}><b>Message</b></label>
           <input
             type="text"
             placeholder="enter information"
@@ -253,42 +252,46 @@ arrnew.push(data)
             />
  </div>
 
-<button type='submit'className="Submit" style={{width:"200px"}}>post</button>
+<button type='submit'className="btn btn-primary" style={{width:"200px",marginLeft:'150px'}}>post</button>
 
 
  </form>
 
+ </div>
 
 
 <hr />
 
-<button className="btn btn-primary" onClick={renderchat} style={{width:"200px"}}>show</button>
+<button className="btn btn-primary" onClick={renderchat} style={{width:"200px",display:'none'}}>show</button>
 
 
 
 
-
-<h1>Your messages</h1>
+<div className='border bg-light' style={{width:'678px'}}>
+<h1 style={{fontFamily:"cursive",fontSize:"60px",marginLeft:'55px'}}>Your messages</h1>
 <div className="users">
 {chat.map(({name,message},index) => (
  <Messagetab name={name} message={message} newdata={index}/>
 ))}
 </div>
+</div>
 
 
+<div className='border bg-light' style={{width:'678px',marginTop:'30px'}}>
+<h1 style={{fontFamily:"cursive",fontSize:"60px"}}>Your private messages</h1>
 
-
-<h1>Your private messages</h1>
 {
 aperson?
+
+
 <div className="users">
       {yourchat.map((data) => (
-        <div className="user">{data.username}:{data.message}</div>
+        <div className="user"><span style={{fontSize:"20px"}}><b>{data.username}</b></span>:<span style={{fontFamily:"cursive"}}>{data.message}</span></div>
       ))}
-    </div>:<div></div>
+    </div>:<div>No Messages</div>
   }
 
-
+  </div>
 
 
 
@@ -303,6 +306,8 @@ aperson?
  
 ))}
 </div>
+
+
 }
 
 
@@ -315,7 +320,11 @@ aperson?
         ))}
 
     </div>
-    </div> */}
+    </div> */
+    
+  
+    
+    }
   
     </>
   )
