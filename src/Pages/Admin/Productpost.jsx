@@ -59,7 +59,10 @@ const handleSubmit = async (e) => {
       const filename =file.name;
       data.append("name", filename);
       data.append("file", file);
-      
+      for (var pair of data.entries()) {
+        console.log(pair[0]+ ' - ' + pair[1]); 
+    }
+      console.log(newProduct)
       try {
         await axios.post("/upload", data ,
         {
@@ -109,7 +112,7 @@ const handleSubmit = async (e) => {
             <input
               type="file"
               id="fileInput"
-              style={{ display: "none" }}
+              
               onChange={(e) => setFile(e.target.files[0])}
             />
  </div>

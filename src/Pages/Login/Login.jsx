@@ -40,40 +40,53 @@ console.log(props)
 
 
   return (
-    <div className="login"style={{color: "red",position:"relative",fontFamily:"fantasy"}}>
-      <div className="top">
-        <div className="wrapper">
-          
+
+
+
+  <div className="login wrapper fadeInDown">
+      <div className="formContent">
+        <div className="fadeIn first">
+        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> 
         </div>
-      </div>
-<div className="container" style={{alignItems:"center",width:"auto",height:"auto"}}>
+     
         <form>
-          <h1>Sign In</h1>
+          <h1>Login</h1>
           <input
             type="email"
-            placeholder="Email or phone number"
+            placeholder="Email or phone number"class="fadeIn second"name="login"
             onChange={(e) => setEmail(e.target.value)}
           />
+          <br></br>
+          <br></br>
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Password" class="fadeIn third"name="login"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="loginButton" onClick={handleLogin}>
+
+<br></br>
+          <br></br>
+          <button className="loginButton"class="fadeIn fourth" onClick={handleLogin}>
             Sign In
           </button>
           
-          <small>
-            This page is protected by Google reCAPTCHA to ensure you're not a
-            bot. <b>Learn more</b>.
-          </small>
+         
         </form>
-
+        <br></br>
+          <br></br>
         <p>if not user </p>
         <p>
       <Link to= "/Register"className='ml-5'>Regsiter</Link>
       </p>
-      </div>
+      <br></br>
+          <br></br>
+      <br></br>
+       
+      <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+    </div>
+
     </div>
   );
 }

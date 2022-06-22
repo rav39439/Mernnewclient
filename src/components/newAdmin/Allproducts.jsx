@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { createproduct, deleteproduct, getproduct } from '../ProductContext/productapicalls'
 import { ProductContext } from '../ProductContext/ProductContext'
+import {useRef} from 'react';
 
 import { useNavigate } from 'react-router';
+import axios from "axios";
 
 
 
 const Allproducts = (props) => {
+
 
 
   useEffect(() => {
@@ -28,16 +31,6 @@ useEffect(()=>{
   getproduct(dispatch)
 },[dispatch])
 
-//console.log(products[0]?.image)
-//if(typeof(products[0].images!='undefined')){
-
- //var mylink="https://localhost:8800/api/images/"+products[0]?.image
-
-//}
-
- 
-
-
 
 const createnew=(e)=>{
 if(iscreate){
@@ -49,17 +42,8 @@ setiscreate(true)
 }
 }
 
-
-// const handleupdate=(e)=>{
-// if(isupdate){
-
-// setupdate(false)
-// }
-// else{
-// setupdate(true)
-// }
-// }
 //------------------------------------creating a new shop--------------------------------------------
+const product=[]
 const [file, setFile] = useState(null);
 const [productname, setProductname] = useState("");
 const [price, setPrice] = useState("");
@@ -70,12 +54,21 @@ const [sizes, setsizes] = useState([]);
 const [productdetails, setproductdetails] = useState("");
 const [shopcode, setshopcode] = useState("");
 const [creator, setcreator] = useState("");
+const [image, setimage] = useState("");
+
+// const handleChange = event => {
+//   setimage(event.target.value);
+//   const mylink="https://mernnewproject.herokuapp.com/api/images/"+image
+
+// }
 const [shoplocation, setshoplocation] = useState("");
+
 const handleSubmit = async (e) => {
 
   e.preventDefault();
   let filename=""
   if(file){
+    
     filename=file.name
   }
 
@@ -90,7 +83,7 @@ const handleSubmit = async (e) => {
     productdetails,
     creator,
    
-    products,
+    product,
     shopcode,
     shoplocation
     
@@ -98,10 +91,13 @@ const handleSubmit = async (e) => {
   if (file) {
     const data = new FormData();
     const filename =file.name;
-    data.append("name", filename);
+    data.append("name", file.name);
     data.append("file", file);
-    console.log(file)
+    for (var pair of data.entries()) {
+      console.log(pair[0]+ ' - ' + pair[1]); 
+  }
     try {
+      console.log("newadfagsdddddddddddddddddddddddd")
       await axios.post("/upload", data ,
       {
          headers: {
@@ -126,55 +122,35 @@ function handleupdate(product){
 
 
   navigate("/updateproduct",{state:product})
-//   e.preventDefault();
-//   let filename=""
-//   if(file){
-//     filename=file.name
-//   }
-
-// const updateProduct = {
-    
-//   productname,
-//   price,
-//   filename,
-//   company,
-//   category,
-//   sizes,
-//   productdetails,
-//   creator,
- 
-//   products,
-//   shopcode,
-//   shoplocation
-  
-// };
-// if (file) {
-//   const data = new FormData();
-//   const filename =file.name;
-//   data.append("name", filename);
-//   data.append("file", file);
- 
-//   try {
-//     await axios.post("/upload", data ,
-//     {
-//        headers: {
-//           token:
-//           "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
-//         },
-//       });
-//   } catch (err) {}
-// }
-
-
-// updateproduct(updateProduct,dispatch)
 
 
 };
 
   
-const handledelete=(id)=>{
+const handledelete=async(id,image)=>{
+  console.log(image)
+
 
   deleteproduct(id,dispatch)
+
+
+  try {
+    console.log("newadfagsdddddddddddddddddddddddd")
+    await axios.post(`/images/${image}`,
+    {
+       headers: {
+          token:
+          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+        },
+      });
+
+      console.log("deleted")
+  } catch (err) {
+
+    console.log(err)
+  }
+
+
 }
 
 //----------------------------------------------------updating a shop---------------------------------
@@ -200,13 +176,17 @@ const handledelete=(id)=>{
       
       products.map((product,index) => (
         <div className="bg-light border mt-4">
-{/* 
+{
+
+
+/* 
           {
 typeof(products[0].images)!='undefined'&&
 <img src={mylink} className="card-img-top"style={{height:"300px",width:"300px",paddingRight:"30px",paddingTop:"10px"}} alt="..."/>
 
           } */}
-
+ 
+          
           <p>{product.category}</p>
           <p>{product.company}</p>
           <p>{product.createdAt}</p>
@@ -214,83 +194,12 @@ typeof(products[0].images)!='undefined'&&
           <p>{product.productdetails}</p>
 
           <button className='btn btn-primary' value={product}onClick={()=>handleupdate(product)}>updateproduct</button>
-          <button className='btn btn-primary' value={product}onClick={()=>handledelete(product._id)}>deleteproduct</button>
+          <button className='btn btn-primary' value={product}onClick={()=>handledelete(product._id,product.image)}>deleteproduct</button>
 
         
 
 {/* isupdate?
 <form onClick={handlechange}>
-
-<label htmlFor="fileInput">
-              <i className="settingsPPIcon far fa-user-circle"></i>
-            </label>
-            <input
-              type="file"
-              id="fileInput"
-              style={{ display: "none" }}
-              onChange={(e) => setFile(e.target.files[0])}
-            />
-
-<label>Productname</label>
-          <input
-            type="text"
-           
-            onChange={(e) => setProductname(e.target.value)}
-          />
-<label>Productid</label>
-          <input
-            type="text"
-           readOnly
-           value={products._id}
-            onChange={(e) => setProductname(e.target.value)}
-          />
-
-<label>Company</label>
-          <input
-            type="company"
-           
-            onChange={(e) => setcompany(e.target.value)}
-          />
-
-
-<label>Creator</label>
-          <input
-            type="text"
-           
-            onChange={(e) => setcreator(e.target.value)}
-          />
-          <label>details</label>
-          <input
-            type="text"
-         
-            onChange={(e) => setproductdetails(e.target.value)}
-          />
-
-<label>Category</label>
-          <input
-            type="text"
-            
-            onChange={(e) => setcategory(e.target.value)}
-          />
-
-          <label>Price</label>
-          <input
-            type="number"
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          <label>shopcode</label>
-          <input
-            type="text"
-            onChange={(e) => setshopcode(e.target.value)}
-          />
-          <label>shoplocation</label>
-          <input
-            type="text"
-            onChange={(e) => setshoplocation(e.target.value)}
-          />
-<button className="btn btn-primary" style={{width:"200px"}} type="submit">
-            update
-          </button>
 
 </form>
 :"" */}
@@ -325,7 +234,7 @@ typeof(products[0].images)!='undefined'&&
             <input
               type="file"
               id="fileInput"
-              style={{ display: "none" }}
+             
               onChange={(e) => setFile(e.target.files[0])}
             />
  </div>
