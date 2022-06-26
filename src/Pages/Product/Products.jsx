@@ -3,6 +3,7 @@ import React from 'react'
 import Sidebar from '../../components/sidbar/Sidebar';
 import { useEffect, useState } from "react";
 import Product from '../../components/Products/Product'
+import styled from "styled-components"; 
 
 import axios from "axios";
 
@@ -12,6 +13,21 @@ import axios from "axios";
 const Products = (props) => {
  
 const [products,setproducts]=useState([])
+
+const Container=styled.div `
+width:300px;
+margin-left:-40px;
+margin-top:10px;
+
+@media only screen and (max-width: 600px) {
+
+  width:100px;
+  margin-left:-20px;
+  margin-top:20px;
+
+  }
+`;
+
 
   useEffect(() => {
 props.setIsproduct(true)
@@ -54,7 +70,7 @@ getRandomLists()
    
     <>
     <h1>products</h1>
-    <div className='container' style={{marginLeft:"-30px"}} >
+    <Container >
 
       <div className="row">
       
@@ -72,7 +88,7 @@ getRandomLists()
 
       
 </div>
-</div>    
+</Container>    
       </>
   )
 }

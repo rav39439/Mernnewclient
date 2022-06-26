@@ -1,0 +1,23 @@
+#Inimage{
+
+  width:"600px";
+  height:"700px";
+
+ @media (max-width: 600px) {
+    height:"200px";
+ width:"300px";
+ }
+}
+
+
+
+
+ #productdiv{
+    width:300px;
+    height:700px;
+    @media (max-width: 600px) {
+      width:200px;
+   height:300px;
+   }
+
+ }

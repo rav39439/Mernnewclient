@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import { useState,useContext } from 'react'
 import { AuthContext } from "../AuthContext/AuthContext";
 import io, { Socket } from "socket.io-client";
+import useMediaquery from '../../Hooks/useMediaquery';
+import styled from "styled-components"; 
+
 import {Link} from "react-router-dom"
 import { getrestaurant, updaterestaurant } from '../RestaurantContext/Restaurantapicalls';
 import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
@@ -10,6 +13,21 @@ import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
 const Foodorder = ({itemname,itemprice,itemimage,restaurantid,newdata,socket,setrestaurantorders,setpostedby}) => {
 const {restaurants,dispatch}=useContext(RestaurantContext)
     const mylink="https://mernnewproject.herokuapp.com/api/images/"+itemimage
+
+    const Container=styled.div `
+    width:600px;
+    margin-left:-70px;
+    height:700px;
+    
+    @media only screen and (max-width: 600px) {
+    margin-top:20px;
+      width:300px;
+      margin-left:5px;
+      height:250;
+    
+      }
+    `;
+
 
     const { user } = useContext(AuthContext);
 
@@ -130,6 +148,8 @@ catch(err){
 
 
 }
+const matches = useMediaquery('(max-width: 600px)')
+console.log(matches)
 
 
   return (
@@ -138,16 +158,31 @@ catch(err){
 
 
 {newstyle?
-<div className='border bg-light'>
 
-    <div style={{display:'flex'}}>
 
-    <img src={mylink} className="card-img-top" style={{height:"30px",width:"40px",borderRadius:'30px'}} alt="..."/>
-<span>{itemname}</span><br></br>
-<span className='ml-5' style={{marginLeft:"300px"}}>{itemprice}</span>
+<div className='border bg-light'style={matches?{width:'250px',overflow:'initial',fontSize:"12px"}:{width:'700px',height:"80px"}}>
+
+    <div style={matches?{width:'300px',display:'block',flexDirection:'row'}:{width:'500px',display:'inline-flex',flexDirection:'row'}}>
+<img src={mylink} className="card-img-top" style={matches?{height:"60px",width:"60px",borderRadius:'30px',paddingBottom:"20px"}:{height:"80px",width:"70px",borderRadius:'10px',paddingBottom:"8px",fontSize:"12px"}} alt="..."/>
+<label style={matches?{fontSize:"16px"}:{fontSize:"16px"}}><b>itemname:</b></label>
+
+<span>{itemname}</span>
+
+
+
+<p className='' style={matches?{}:{paddingLeft:"40px"}}><b>price(per item):</b>{itemprice}</p>
+
+
+<button style={matches?{width:"55px",height:"50px"}:{width:"100px",height:"50px",marginLeft:"120px"}} class="btn btn-primary"onClick={enterquantity}><span style={matches?{fontSize:"8px"}:{fontSize:"16px"}}>quantity</span></button>
+<button style={matches?{width:"55px",height:"50px"}:{width:"80px",height:"50px",marginLeft:"80px"}} className="btn btn-primary" onClick={handleSubmit}><span style={matches?{fontSize:"8px"}:{fontSize:"16px"}}>order</span></button>
 </div>
 
-<label style={{display:ready?'block':'none'}}>quantiity</label>
+
+
+
+
+
+<label style={{display:ready?'block':'none'}}>quantity</label>
 
 <input type="number" 
 style={{display:ready?'block':'none'}}
@@ -184,17 +219,6 @@ onChange={(e)=>{
 
 
 
-<button onClick={enterquantity}>enterquantity</button>
-<button className='btn btn-primary' onClick={handleSubmit}>order</button>
-
-
-
-
-
-
-
-
-
 
 
 </div>:
@@ -204,9 +228,15 @@ onChange={(e)=>{
 </p>
 <p> <Link to= "/notification"className='mt-5'>Notification</Link></p>
 </div>
-}
-</>
-  )
+
+
 }
 
+<br></br>
+
+</>
+
+
+  )
+}
 export default Foodorder

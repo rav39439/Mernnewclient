@@ -4,10 +4,41 @@ import Singleitem from '../../Pages/Singleitem/Singleitem'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+import styled from "styled-components"; 
 
 import { useNavigate } from 'react-router';
 
 const Product = (props) => {
+
+  const Container=styled.div `
+  margin-left:-70px;
+  margin-top:100px;
+  
+  @media only screen and (max-width: 600px) {
+  margin-left:20px;
+  margin-top:30px;
+  
+    }
+  `;
+
+  const Image=styled.image`
+  width:300px;
+  height:300px;
+  margin-left:20px;
+  margin-top:30px;
+  
+  @media only screen and (max-width: 600px) {
+  
+    width:200px;
+    height:200px;
+    margin-left:20px;
+    margin-top:20px;
+  
+    }
+  `;
+
+
+
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -15,39 +46,42 @@ const Product = (props) => {
   }
   const newproduct=props.product.image
   console.log(typeof(newproduct))
+
+
 const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
 
-//const image=props.product.image?"../../../../api/images/"+props.product.image:""
-//console.log(props)
+
 
   return (
 
     <>
    
-    <div className="card"style={{width:"300px",height:"auto",marginLeft:"20px",marginTop:"100px"}}>
-    <img src={mylink} className="card-img-top"style={{height:"300px",width:"300px",paddingRight:"30px",paddingTop:"10px"}} alt="..."/>
-    <div className="card-body">
-      <h5 className="card-title">{props.product.productname}</h5>
-      <p className="card-text">{props.product.productdetails}</p>
+    <Container>
+    <img src={mylink} className="card-img-top border"style={{height:"300px",width:"300px",paddingRight:"30px",paddingTop:"10px"}} alt="..."/>
+    <div className="card-body border "style={{width:"300px"}}>
+      <h5 className="card-title"><p style={{fontFamily:"monospace",width:"230px",fontSize:"16px"}}><b>Product</b>:{props.product.productname}</p></h5>
+      <p className="card-text" style={{display:"none"}}>{props.product.productdetails}</p>
     </div>
-    <ul className="list-group list-group-flush">
+    <ul className="list-group list-group-flush border" style={{width:"300px"}}>
 
         
-      <li className="list-group-item">{props.product.category}</li>
-      <li className="list-group-item">{props.product.price}</li>
-      <li className="list-group-item">{props.product.company}</li>
-      <li className="list-group-item">{props.product.shoplocation?props.product.shoplocation:""}</li>
-      <li className="list-group-item"style={{display:"none"}}>{props.product.shopcode}</li>
+      <li className="list-group-item" style={{width:"230px"}}><span style={{fontFamily:"monospace",width:"230px"}}><b>Category</b> : {props.product.category}</span></li>
+      <li className="list-group-item" style={{width:"230px"}}><span style={{fontFamily:"monospace",width:"230px"}}><b>Price</b> : {props.product.price}</span></li>
+      <li className="list-group-item" style={{width:"230px"}}><span style={{fontFamily:"monospace",width:"230px"}}><b>Company</b> : {props.product.company}</span></li>
+      <li className="list-group-item" style={{display:"none"}}><span><b></b></span> : {props.product.shoplocation?props.product.shoplocation:""}</li>
+      <li className="list-group-item"style={{display:"none"}}><span><b></b></span> : {props.product.shopcode}</li>
+      <button onClick={handleClick} className="btn btn-primary" >details</button>
+
     </ul>
+
     <div className="card-body">
 
     
-    <button onClick={handleClick} className="btn btn-primary" >details</button>
 
     </div>
    
 
-  </div>
+  </Container>
   </>
   )
 }

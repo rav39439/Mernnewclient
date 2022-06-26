@@ -142,11 +142,13 @@ display:none;
             onChange={(e) => setchildcompany(e.target.value)}
           >
             <option></option>
-            <option value="colgate">colgate</option>
-            <option value="allout">allout</option>
-            <option value="Lux">Lux</option>
-            <option value="nivea">nivea</option>
-            <option value="New company">New company</option>
+            <option value="Calvin Klein">colgate</option>
+            <option value="Arrow">allout</option>
+            <option value="Adidas">Lux</option>
+            <option value="Nike">nivea</option>
+            <option value="Lee">New company</option>
+            <option value="Vehicles">New company</option>
+            <option value="Bike">New company</option>
            
          
           </select>

@@ -3,7 +3,9 @@ import { useLocation ,useParams} from 'react-router-dom'
 import { useState,useContext } from 'react'
 import { AuthContext } from '../../components/AuthContext/AuthContext';
 import {Link} from "react-router-dom"
-
+import styled from "styled-components"; 
+import './singlerest.css'
+import useMediaquery from '../../Hooks/useMediaquery';
 import { useNavigate } from 'react-router';
 import Foodorder from '../../components/Foodorders/Foodorder';
 import io, { Socket } from "socket.io-client";
@@ -13,9 +15,24 @@ import { getrestaurant } from '../../components/RestaurantContext/Restaurantapic
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const SingleRestaurant = (props) => {
+  const matches = useMediaquery('(max-width: 600px)')
 
-
-
+  const Container=styled.div `
+  border:1px solid black;
+  margin-top:100px;
+  background-color:#87CEFA;
+  width:600px;
+  margin-left:-70px;
+  height:750px;
+  
+  @media only screen and (max-width: 600px) {
+  margin-top:20px;
+    width:300px;
+    margin-left:5px;
+    height:250;
+  
+    }
+  `;
   const {restaurants,dispatch}=useContext(RestaurantContext)
 
   useEffect(() => {
@@ -29,6 +46,7 @@ const SingleRestaurant = (props) => {
   const [fooditems,setfooditems]=useState([])
   const { user } = useContext(AuthContext);
     const location = useLocation();
+    console.log(location)
     const navigate = useNavigate();
     const newproduct=location.state.image
     const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
@@ -47,44 +65,26 @@ const SingleRestaurant = (props) => {
 
           useEffect(()=>{
             getrestaurant(dispatch)
-            console.log(restaurants)
+            //console.log(restaurants)
         },[dispatch])
     
-        console.log(restaurants)
+       // console.log(restaurants)
     
-         
-
-    //const product = location;
-    ///const data=JSON.stringify(location.state)
-    //setfooditems([...fooditems,location.state.fooditems])
-   //console.log(location)
-
 
     const handleClick=()=>{
 
-// location.state.fooditems.map(({itemname,itemprice},index)=>{
-// obj={
-//   itemname:itemname,
-//   itemprice:itemprice
-// }
-// arr.push(obj)
-// })
-
 location.state.fooditems.map(function(item,index){
   arraynew.push(item)
- 
-
 
 })
 
 setarr(arraynew)
 
-//console.log(arraynew)
 }
 
 
 
-
+//console.log(matches)
 
   return (
 
@@ -93,21 +93,23 @@ setarr(arraynew)
 
 
 
-    <div className="card mb-3" style={{width:"600px", height:"700px",marginLeft:"-80px",marginTop:"5px"}}>
-  <img src={mylink} className="card-img-top" style={{height:"500px",width:"600px"}} alt="..."/>
+    <Container>
+  <img src={mylink} className="card-img-top" style={ matches?{height:"300px",width:"300px"}:{height:"500px",width:"600px"}} id="Iimage"alt="..."/>
   <div className="card-body">
-    <h5 className="card-title">{location.state.name}</h5>
-    <p className="card-text">{location.state.details}</p>
-    <p className="card-text">{location.state.city}</p>
-    <p className="card-text">{location.state.staff}</p>
-    <p className="card-text">{location.state.rating}</p>
-    <p className="card-text">{location.state.location}</p>
+    <h5 className="card-title"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Restaurantname :</b></span>{location.state.name}</h5>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Details :</b></span>{location.state.details}</p>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>City :</b></span>{location.state.city}</p>
+    <p className="card-text" style={{display:"none"}}><span><b></b></span>{location.state.staff}</p>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Rating :</b></span>{location.state.rating}</p>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Location :</b></span>{location.state.location}</p>
 
   </div>
+  </Container>
+ 
 
-  <div>
-  <button type='submit' className='btn btn-primary'onClick={handleClick}>see orders</button> 
-
+  
+  <div style={matches?{}:{marginLeft:"-70px"}}>
+  <button type='submit' className='btn btn-primary mt-4'onClick={handleClick}>see Fooditems</button> 
 <h3>Fooditems offered</h3>
 {arr.map((data,index) => (
        <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state._id} newdata={index} socket={socket} setrestaurantorders={props.setrestaurantorders} setpostedby={props.setpostedby} />
@@ -115,7 +117,7 @@ setarr(arraynew)
 
 </div>
 
-</div>
+
 
 
 

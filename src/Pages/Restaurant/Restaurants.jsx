@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
+import useMediaquery from '../../Hooks/useMediaquery';
 import Restaurant from '../../components/Restaurants/Restaurant';
 
 const Restaurants = (props) => {
@@ -42,19 +42,20 @@ const [restaurants,setrestaurant]=useState([])
   getRandomLists()
 }, [props.City,props.Rating]);
 
-
+const matches = useMediaquery('(max-width: 600px)')
+//console.log(matches)
 
   return (
     <>
 <h1>Restaurants</h1>
-<div className='container' style={{marginLeft:"-100px"}} >
+<div className='container'  >
 
-<div className="row">
+<div className="row"style={matches?{marginLeft:"-30px"}:{marginLeft:"-100px"}}>
 
       
 
     {restaurants?.map((restaurant,index) => (
-        <Restaurant restaurant={restaurant} key={index} />
+        <Restaurant restaurant={restaurant} mymatches={matches} key={index} />
       ))}
 
       </div>

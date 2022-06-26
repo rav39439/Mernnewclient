@@ -9,10 +9,83 @@ import Post from "../../components/post/Post"
 import { AuthContext } from "../../components/AuthContext/AuthContext";
 import Messagetab from '../../components/Message/Messagetab';
 import "./home.css"
+import styled from "styled-components"; 
 
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
+
+
 export default function Home(props) {
+  const Container=styled.div `
+  width:678px;
+  margin-right:180px;
+margin-top:30px;
+  
+  @media only screen and (max-width: 600px) {
+  
+    width:200px;
+    margin-left:40px;
+    margin-top:20px;
+
+    }
+  `;
+
+
+  const Label=styled.label `
+
+
+  margin-left:180px;
+font-family:initial;
+  
+  @media only screen and (max-width: 600px) {
+  
+    
+    margin-left:20px;
+    width:150px;
+font-family:initial;
+font-size:9px;
+    }
+  `;
+
+  const Header=styled.header `
+
+
+  font-size:60px;
+font-family:cursive;
+  
+  @media only screen and (max-width: 600px) {
+  
+    width:250px;
+  font-size:32px;
+font-family:cursive;
+    }
+  `;
+
+
+  const Input=styled.input `
+
+width:350px;
+font-family:cursive;
+  
+  @media only screen and (max-width: 600px) {
+  
+    width:200px;
+font-family:cursive;
+    }
+  `;
+
+
+  const Button=styled.button `
+
+width:200px;
+margin-left:150px;  
+  @media only screen and (max-width: 600px) {
+    margin-left:15px;  
+    width:100px;
+
+  }
+  `;
+
   const arr=[]
   const arrnew=[]
   const pr=[]
@@ -38,37 +111,15 @@ const [file,setfile]=useState("")
   props.setisother(true)
 }, [props.Type]);
 
-// useEffect(()=>{
-//   const fetchPosts=async()=>{
-
-//     const res = await axios.get("/post/")
-    
-   
-//     setPosts(res.data)
-//     console.log(res.data)
-//   };
-  
- 
-//   fetchPosts()
-// },[]);
-
-
 const ontextchange=(e)=>{
   setstate({...state,[e.target.name]:e.target.value})
   
 }
 
 
-
-
-
-
 useEffect(()=>{
 
 socket.emit("online",user)
-
-
-
 
 },[user])
 
@@ -80,10 +131,6 @@ socket.emit("online",user)
   })
    },[user])
   
-
-
-
-
    const handleForm=(e)=>{
     e.preventDefault()
    
@@ -105,11 +152,7 @@ console.log(person)
 console.log(name)
       socket.emit("message",{name,message,person})
     
-  
-
   }
-
-
 
 
 useEffect(()=>{
@@ -117,7 +160,7 @@ useEffect(()=>{
   socket.on("personal message",(name,message,person)=>{
     console.log(message)
     setprivchat([...privchat,{name,message,person}])
-    //pr.push({name,message,person})
+  
     console.log(privchat)
   })
 
@@ -127,104 +170,49 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-//if(person){
 
-  
-  
-  //
-    //setchat([...chat,{name,message,person}])
-    //console.log(pr)
-   
-   // if(isMounted){
-  // console.log(message)
-//message.map(function(elem){
- // pr.push(elem)
-//})
-
-     // setmessage(message)
-  ///console.log(pr)
- //   }
-
-//}
-
-//else{
-//if(aperson==""){
   socket.on("public message",({name,message})=>{
-  // allmessage.map(function(elem){
-  //   arr.push(elem)
-  // })
-  
-
-//  console.log("the chat name"+name)
- // console.log("the message is"+message)
 
 setchat([...chat,{name,message}])
-//arr.push({name,message})
 console.log(chat)
-  //console.log(arr)
-    //console.log(allmessage)
-    //setmessage(...mymessage,message)
-  //setmessage(allmessage)
- // console.log(arr)
+  
   })
-//}
-//}
-
 })
 
 const renderchat=()=>{
 
-  //<h1>hgkjgjgkjg</h1>
   console.log(chat)
  chat.map((data,index)=>{
 arrnew.push(data)
-  //console.log("sdfasdfasfdasf")
+  
   console.log(data.name)
   console.log(data.message)
-  // return(
-  //   <>
-  //   <h1>allmessagees</h1>
-  //   <div key={index}>
-  //     {name}:<span>{message}</span>
-  //   </div>
-  //   </>
-
-    //)
+  
   })
   setarr(arrnew)
-//   console.log(myarray)
   
   
 }
 
 
-
-
-
-
-
-
   return (
-
-
-
 
     <>
   
-<div className='border bg-light' style={{marginTop:"40px",marginRight:"180px"}}>
+<Container>
 
 <form className="settingsForm"style={{padding:"50px"}} onSubmit={handleForm}>
-         <h1 style={{fontFamily:"cursive",fontSize:"60px"}}>Chat With Users</h1>
+         <Header>Chat With Users</Header>
 
-<label style={{fontFamily:"initial",marginLeft:'150px'}}><b>Send Message to Person</b></label>
-          <input
+<Label><b>Send Message to Person</b></Label>
+          <Input
             type="text"
             placeholder="enter person name"
             name='person'
             onChange={(e) => ontextchange(e)}
           />
- <label style={{fontFamily:"initial",marginLeft:'200px'}}><b>Your Name</b></label>
-          <input
+ <Label><b>Your Name</b></Label>
+          <Input
             type="text"
             placeholder="enter person name"
             name='name'
@@ -232,8 +220,8 @@ arrnew.push(data)
            value={user.username}
 
           />
- <label style={{fontFamily:"initial",marginLeft:'200px'}}><b>Message</b></label>
-          <input
+ <Label><b>Message</b></Label>
+          <Input
             type="text"
             placeholder="enter information"
             name='message'
@@ -252,23 +240,23 @@ arrnew.push(data)
             />
  </div>
 
-<button type='submit'className="btn btn-primary" style={{width:"200px",marginLeft:'150px'}}>post</button>
+<Button type='submit'className="btn btn-primary" >post</Button>
 
 
  </form>
 
- </div>
+ </Container>
 
 
 <hr />
 
-<button className="btn btn-primary" onClick={renderchat} style={{width:"200px",display:'none'}}>show</button>
+<button className="btn btn-primary" style={{display:"none"}} onClick={renderchat} >show</button>
 
 
 
 
 <div className='border bg-light' style={{width:'678px'}}>
-<h1 style={{fontFamily:"cursive",fontSize:"60px",marginLeft:'55px'}}>Your messages</h1>
+<Header>Your messages</Header>
 <div className="users">
 {chat.map(({name,message},index) => (
  <Messagetab name={name} message={message} newdata={index}/>
@@ -278,7 +266,7 @@ arrnew.push(data)
 
 
 <div className='border bg-light' style={{width:'678px',marginTop:'30px'}}>
-<h1 style={{fontFamily:"cursive",fontSize:"60px"}}>Your private messages</h1>
+<Header>Your private messages</Header>
 
 {
 aperson?

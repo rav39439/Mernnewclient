@@ -2,17 +2,53 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useContext, useState,useEffect } from "react";
 import io, { Socket } from "socket.io-client";
-import {Link} from "react-router-dom"
-
+import {Link} from "react-router-dom";
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { AuthContext } from "../../components/AuthContext/AuthContext"
+import styled from "styled-components"; 
+import "./singlestyle.css";
 
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Singleitem = (props) => {
 
+  const [matches,setmatches]=useState(false)
+  
+    
 
+
+
+
+
+  const Container=styled.div `
+  width:600px;
+  margin-left:-5px;
+  height:700px;
+  
+  @media only screen and (max-width: 600px) {
+  margin-top:20px;
+    width:300px;
+    margin-left:5px;
+    height:300;
+  
+    }
+  `;
+  const Montainer=styled.div `
+  margin-top:100px;
+  margin-left:-70px;
+ 
+  
+  @media only screen and (max-width: 600px) {
+  margin-top:20px;
+  
+    margin-left:5px;
+   
+  
+    }
+  `;
+
+  
 
 
   useEffect(() => {
@@ -21,6 +57,7 @@ const Singleitem = (props) => {
     props.setisother(false)
   }, [props.Type]);
 
+//const match=UseMediaquery();
 
 const myusers=[]
     const location = useLocation();
@@ -44,6 +81,8 @@ const email=user.email
 let shoporderid=''
 let shopid=''
 let status="pending"
+
+
     //const product = location;
     ///const data=JSON.stringify(location.state)
     //console.log(location)
@@ -69,6 +108,14 @@ else{
               socket.emit('online',user)
       
           })
+
+
+        
+
+
+
+
+
 
     const handleClick = () => {
 
@@ -172,8 +219,8 @@ console.log(err)
 <>
 
 
-<div className="card"style={{width:"600px", height:"700px",marginLeft:"-80px",marginTop:"5px"}}>
-    <img src= {mylink} className="card-img-top"style={{height:"500px",width:"600px"}} alt="..."/>
+<Container>
+    <img src= {mylink} className="card-img-top" id="Inimage" alt="..."/>
     <div className="card-body">
       <h5 className="card-title">{location.state.productname}</h5>
       <p className="card-text">{location.state.productdetails}</p>
@@ -189,12 +236,12 @@ console.log(err)
       <button onClick={handleClick}style={mystyle} className="btn btn-primary">goback</button>
     </ul>
     
-    </div>
+    </Container>
 
   
 
     { newstyle?
-    <div className='mt-5' style={{marginLeft:"-70px",marginTop:"100px"}}>
+    <div className='productdiv'  id="productdiv">
 
 <button className='btn btn-primary' onClick={handlestyle}>Place order</button>
 
