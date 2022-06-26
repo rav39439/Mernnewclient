@@ -22,7 +22,7 @@ position:relative;
 `;
 
 const Montainer=styled.div `
-width:1000px;
+width:550px;
 height:100px;
 background-color: black;
 font-size: 12px;
