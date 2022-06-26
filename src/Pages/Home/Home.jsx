@@ -1,7 +1,8 @@
 import React from 'react'
 
 import axios from "axios";
-
+import styled from "styled-components"; 
+import useMediaquery from '../../Hooks/useMediaquery';
 import io, { Socket } from "socket.io-client";
 import { useContext, useEffect, useState } from "react";
 import { Privatemess } from '../../components/Message/Privatemess';
@@ -9,13 +10,11 @@ import Post from "../../components/post/Post"
 import { AuthContext } from "../../components/AuthContext/AuthContext";
 import Messagetab from '../../components/Message/Messagetab';
 import "./home.css"
-import styled from "styled-components"; 
 
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
-
-
 export default function Home(props) {
+
   const Container=styled.div `
   width:678px;
   margin-right:180px;
@@ -86,6 +85,7 @@ margin-left:150px;
   }
   `;
 
+
   const arr=[]
   const arrnew=[]
   const pr=[]
@@ -152,15 +152,15 @@ console.log(person)
 console.log(name)
       socket.emit("message",{name,message,person})
     
-  }
 
+  }
 
 useEffect(()=>{
 
   socket.on("personal message",(name,message,person)=>{
     console.log(message)
     setprivchat([...privchat,{name,message,person}])
-  
+    //pr.push({name,message,person})
     console.log(privchat)
   })
 
@@ -172,47 +172,54 @@ useEffect(()=>{
 useEffect(()=>{
 
   socket.on("public message",({name,message})=>{
-
-setchat([...chat,{name,message}])
-console.log(chat)
   
+setchat([...chat,{name,message}])
+//arr.push({name,message})
+console.log(chat)
+ 
   })
 })
 
 const renderchat=()=>{
 
+  //<h1>hgkjgjgkjg</h1>
   console.log(chat)
  chat.map((data,index)=>{
 arrnew.push(data)
-  
+  //console.log("sdfasdfasfdasf")
   console.log(data.name)
   console.log(data.message)
-  
+ 
   })
   setarr(arrnew)
-  
-  
+   
 }
 
+
+const matches=useMediaquery();
 
   return (
 
     <>
   
-<Container>
+<h1 style={matches?{fontSize:"60px",
+fontFamily:"cursive"
+  }:{fontSize:"32px",
+    fontFamily:"cursive"}} >Chat With Users</h1>
 
-<form className="settingsForm"style={{padding:"50px"}} onSubmit={handleForm}>
-         <Header>Chat With Users</Header>
+<div></div>
+<form className="settingsForm" style={{padding:"50px"}} onSubmit={handleForm}>
+         
 
-<Label><b>Send Message to Person</b></Label>
-          <Input
+ <label><span style={{fontFamily:"inherit"}}><b>Send Message to Person</b></span></label>
+          <input
             type="text"
             placeholder="enter person name"
             name='person'
             onChange={(e) => ontextchange(e)}
           />
- <Label><b>Your Name</b></Label>
-          <Input
+ <label><span style={{fontFamily:"inherit"}}><b>Name</b></span></label>
+          <input
             type="text"
             placeholder="enter person name"
             name='name'
@@ -220,66 +227,51 @@ arrnew.push(data)
            value={user.username}
 
           />
- <Label><b>Message</b></Label>
-          <Input
+ <label><span style={{fontFamily:"inherit"}}><b>Message</b></span></label>
+          <input
             type="text"
             placeholder="enter information"
             name='message'
             onChange={(e) =>  ontextchange(e)}
           />
 
-          <div className="settingsPP">
-           
-<label htmlFor="fileInput">
-            </label>
-            <input
-              type="file"
-              id="fileInput"
-              style={{ display: "none" }}
-              onChange={(e) => setfile(e.target.files[0])}
-            />
- </div>
 
-<Button type='submit'className="btn btn-primary" >post</Button>
+<button type='submit'className="Submit" style={{width:"200px"}}>post</button>
 
 
  </form>
 
- </Container>
 
 
 <hr />
 
-<button className="btn btn-primary" style={{display:"none"}} onClick={renderchat} >show</button>
+<button className="btn btn-primary"style={{display:"none"}} onClick={renderchat} >show</button>
 
 
 
 
-<div className='border bg-light' style={{width:'678px'}}>
-<Header>Your messages</Header>
+
+<h1>Your messages</h1>
 <div className="users">
 {chat.map(({name,message},index) => (
  <Messagetab name={name} message={message} newdata={index}/>
 ))}
 </div>
-</div>
 
 
-<div className='border bg-light' style={{width:'678px',marginTop:'30px'}}>
-<Header>Your private messages</Header>
 
+
+<h1>Your private messages</h1>
 {
 aperson?
-
-
 <div className="users">
       {yourchat.map((data) => (
-        <div className="user"><span style={{fontSize:"20px"}}><b>{data.username}</b></span>:<span style={{fontFamily:"cursive"}}>{data.message}</span></div>
+        <div className="user"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>{data.username}</b></span>:<span style={{fontFamily:"inherit"}}>{data.message}</span></div>
       ))}
-    </div>:<div>No Messages</div>
+    </div>:<div></div>
   }
 
-  </div>
+
 
 
 
@@ -294,8 +286,6 @@ aperson?
  
 ))}
 </div>
-
-
 }
 
 
@@ -308,11 +298,7 @@ aperson?
         ))}
 
     </div>
-    </div> */
-    
-  
-    
-    }
+    </div> */}
   
     </>
   )
