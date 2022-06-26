@@ -4,6 +4,7 @@ import axios from 'axios';
 import { RestaurantContext } from './components/RestaurantContext/RestaurantContext';
 import { getrestaurant } from './components/RestaurantContext/Restaurantapicalls';
 import './App.css';
+import useMediaquery from './Hooks/useMediaquery';
 import Topbar from './components/topbar/Topbar';
 import Productpost from './Pages/Admin/Productpost';
 import Restaurantpost from './Pages/Admin/Restaurantpost';
@@ -35,8 +36,8 @@ const App = () => {
 const [postedby,setpostedby]=useState("")
 const [price,setprice]=useState(0)
 const [myuser,setmyuser]=useState(user)
-console.log(myuser)
-
+//console.log(myuser)
+const matches=useMediaquery('(max-width: 600px)');
 const [orderrec,setorderrec]=useState(0)
 const [neworders,setneworders]=useState(0)
 const [restaurantorders,setrestaurantorders]=useState(0)
@@ -220,7 +221,7 @@ const myparentcall=(childcity,childrating)=>{
 
    <Route exact path= "/Home"element={user?<Home Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} />: <Login/>}/>
 
-   <Route exact path= "/Restaurants"element={user?<Restaurants City={city} Rating={rating} Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:<Login/>}/>
+   <Route exact path= "/Restaurants"element={user?<Restaurants City={city} Rating={rating} Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother} hmatches={matches}/>:<Login/>}/>
    
    <Route exact path= "/Products"element={user?<Products Price={price} Company={company} Category={category}  Type={type}  setIsproduct={setisproduct} setIsrestaurant={setisrestaurant} setisother={setisother}/>:<Login/>}/>
    <Route exact path= "/Productpost"element={user?<Productpost Type={type} setIsrestaurant={setisrestaurant} setIsproduct={setisproduct} setisother={setisother}/>:<Login/>}/>

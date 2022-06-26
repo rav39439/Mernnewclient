@@ -28,7 +28,7 @@ const SingleRestaurant = (props) => {
   @media only screen and (max-width: 600px) {
   margin-top:20px;
     width:300px;
-    margin-left:5px;
+    margin-left:0px;
     height:250;
   
     }
@@ -48,7 +48,7 @@ const SingleRestaurant = (props) => {
     const location = useLocation();
     console.log(location)
     const navigate = useNavigate();
-    const newproduct=location.state.image
+    const newproduct=location.state.data.image
     const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
     const[arr,setarr]=useState([])
     let obj={}
@@ -73,7 +73,7 @@ const SingleRestaurant = (props) => {
 
     const handleClick=()=>{
 
-location.state.fooditems.map(function(item,index){
+location.state.data.fooditems.map(function(item,index){
   arraynew.push(item)
 
 })
@@ -94,25 +94,25 @@ setarr(arraynew)
 
 
     <Container>
-  <img src={mylink} className="card-img-top" style={ matches?{height:"300px",width:"300px"}:{height:"500px",width:"600px"}} id="Iimage"alt="..."/>
+  <img src={mylink} className="card-img-top" style={location.state.amatches?{height:"300px",width:"295px"}:{height:"500px",width:"600px"}} id="Iimage"alt="..."/>
   <div className="card-body">
-    <h5 className="card-title"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Restaurantname :</b></span>{location.state.name}</h5>
-    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Details :</b></span>{location.state.details}</p>
-    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>City :</b></span>{location.state.city}</p>
+    <h5 className="card-title"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Restaurantname :</b></span>{location.state.data.name}</h5>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Details :</b></span>{location.state.data.details}</p>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>City :</b></span>{location.state.data.city}</p>
     <p className="card-text" style={{display:"none"}}><span><b></b></span>{location.state.staff}</p>
-    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Rating :</b></span>{location.state.rating}</p>
-    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Location :</b></span>{location.state.location}</p>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Rating :</b></span>{location.state.data.rating}</p>
+    <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Location :</b></span>{location.state.data.location}</p>
 
   </div>
   </Container>
  
 
   
-  <div style={matches?{}:{marginLeft:"-70px"}}>
+  <div style={location.state.amatches?{}:{marginLeft:"-70px"}}>
   <button type='submit' className='btn btn-primary mt-4'onClick={handleClick}>see Fooditems</button> 
 <h3>Fooditems offered</h3>
 {arr.map((data,index) => (
-       <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state._id} newdata={index} socket={socket} setrestaurantorders={props.setrestaurantorders} setpostedby={props.setpostedby} />
+       <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state._id} newdata={index} socket={socket} setrestaurantorders={props.setrestaurantorders} setpostedby={props.setpostedby} jmatches={location.state.amatches} />
       ))}
 
 </div>

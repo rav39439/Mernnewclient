@@ -66,11 +66,12 @@ display:none;
             onChange={(e) => setchildcategory(e.target.value)}
           >
             <option></option>
-            <option value="soap">soap</option>
-            <option value="drgg">drgg</option>
-            <option value="vim">vim</option>
-            <option value="Toothpaste">Toothpaste</option>
-            <option value="Chair">Chair</option>
+            <option value="T-shirt">T-shirt</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Shorts">Shorts</option>
+            <option value="FMCG">FMCG</option>
+            <option value="Shirts">Shirts</option>
+            <option value="Vehicles">Vehicles</option>
            
          
           </select><br></br><br></br><br></br>
@@ -80,11 +81,11 @@ display:none;
             onChange={(e) => setchildcompany(e.target.value)}
           >
             <option></option>
-            <option value="colgate">colgate</option>
-            <option value="allout">allout</option>
-            <option value="Lux">Lux</option>
-            <option value="nivea">nivea</option>
-            <option value="New company">New company</option>
+            <option value="Hero Honda">Hero Honda</option>
+            <option value="Arrow">Arrow</option>
+            <option value="Nike">Nike</option>
+            <option value="Adidas">Adidas</option>
+            <option value="New Company">New company</option>
            
          
           </select><br></br><br></br><br></br>
@@ -124,11 +125,12 @@ display:none;
             onChange={(e) => setchildcategory(e.target.value)}
           >
             <option></option>
-            <option value="soap">soap</option>
-            <option value="drgg">drgg</option>
-            <option value="vim">vim</option>
-            <option value="Toothpaste">Toothpaste</option>
-            <option value="Chair">Chair</option>
+            <option value="T-shirt">T-shirt</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Shorts">Shorts</option>
+            <option value="FMCG">FMCG</option>
+            <option value="Shirts">Shirts</option>
+            <option value="Vehicles">Vehicles</option>
            
          
           </select>
@@ -142,13 +144,12 @@ display:none;
             onChange={(e) => setchildcompany(e.target.value)}
           >
             <option></option>
-            <option value="Calvin Klein">colgate</option>
-            <option value="Arrow">allout</option>
-            <option value="Adidas">Lux</option>
-            <option value="Nike">nivea</option>
-            <option value="Lee">New company</option>
-            <option value="Vehicles">New company</option>
-            <option value="Bike">New company</option>
+            <option></option>
+            <option value="Hero Honda">Hero Honda</option>
+            <option value="Arrow">Arrow</option>
+            <option value="Nike">Nike</option>
+            <option value="Adidas">Adidas</option>
+            <option value="New Company">New company</option>
            
          
           </select>

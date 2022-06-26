@@ -43,19 +43,19 @@ const [restaurants,setrestaurant]=useState([])
 }, [props.City,props.Rating]);
 
 const matches = useMediaquery('(max-width: 600px)')
-//console.log(matches)
+console.log("the sadfffffffffffffffffffffffffffffffffffffffffffffffffffffff"+props.hmatches)
 
   return (
     <>
 <h1>Restaurants</h1>
 <div className='container'  >
 
-<div className="row"style={matches?{marginLeft:"-30px"}:{marginLeft:"-100px"}}>
+<div className="row"style={props.hmatches?{marginLeft:"-30px"}:{marginLeft:"-100px"}}>
 
       
 
     {restaurants?.map((restaurant,index) => (
-        <Restaurant restaurant={restaurant} mymatches={matches} key={index} />
+        <Restaurant restaurant={restaurant} mymatches={props.hmatches} key={index} />
       ))}
 
       </div>

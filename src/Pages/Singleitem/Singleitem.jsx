@@ -248,36 +248,40 @@ console.log(err)
 <form className="settingsForm" onSubmit={handleSubmit} style={{display:style?"none":"block"}}>
 
 
-<label>productname</label>
+<label>productname</label><br></br>
           <input
             type="text"
             defaultValue={productname}
-          />
+          /><br></br>
 
 
-          <label>email</label>
+          <label>email</label><br></br>
           <input
             type="text"
 
             defaultValue={email}
-          />
+          /><br></br>
 
 
-          <label>quantity</label>
+          <label>quantity</label><br></br>
           <input
             type="number"
             onChange={(e) => setquantity(e.target.value)}
-          />
-          <label>address</label>
+          /><br></br>
+
+
+          <label>address</label><br></br>
           <input
             type="text"
             onChange={(e) => setaddress(e.target.value)}
-          />
-          <label>Phoneno</label>
+          /><br></br>
+
+
+          <label>Phoneno</label><br></br>
           <input
             type="tel"
             onChange={(e) => setphone(e.target.value)}
-          />
+          /><br></br>
 
 <button className="btn btn-primary" type="submit">order</button>
 

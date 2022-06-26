@@ -10,8 +10,17 @@ import {Link} from "react-router-dom"
 import { getrestaurant, updaterestaurant } from '../RestaurantContext/Restaurantapicalls';
 import { RestaurantContext } from '../RestaurantContext/RestaurantContext';
 ///const socket=io.connect("http://localhost:8800")
-const Foodorder = ({itemname,itemprice,itemimage,restaurantid,newdata,socket,setrestaurantorders,setpostedby}) => {
+const Foodorder = ({itemname,itemprice,itemimage,restaurantid,newdata,socket,setrestaurantorders,setpostedby,jmatches}) => {
+
+
+    //const  matches= useMediaquery('(max-width: 600px)')
+//console.log(matches)
+
 const {restaurants,dispatch}=useContext(RestaurantContext)
+
+
+
+
     const mylink="https://mernnewproject.herokuapp.com/api/images/"+itemimage
 
     const Container=styled.div `
@@ -148,8 +157,6 @@ catch(err){
 
 
 }
-const matches = useMediaquery('(max-width: 600px)')
-console.log(matches)
 
 
   return (
@@ -160,21 +167,21 @@ console.log(matches)
 {newstyle?
 
 
-<div className='border bg-light'style={matches?{width:'250px',overflow:'initial',fontSize:"12px"}:{width:'700px',height:"80px"}}>
+<div className='border bg-light'style={jmatches?{width:'250px',overflow:'initial',fontSize:"12px"}:{width:'700px',height:"80px"}}>
 
-    <div style={matches?{width:'300px',display:'block',flexDirection:'row'}:{width:'500px',display:'inline-flex',flexDirection:'row'}}>
-<img src={mylink} className="card-img-top" style={matches?{height:"60px",width:"60px",borderRadius:'30px',paddingBottom:"20px"}:{height:"80px",width:"70px",borderRadius:'10px',paddingBottom:"8px",fontSize:"12px"}} alt="..."/>
-<label style={matches?{fontSize:"16px"}:{fontSize:"16px"}}><b>itemname:</b></label>
+    <div style={jmatches?{width:'300px',display:'block',flexDirection:'row'}:{width:'500px',display:'inline-flex',flexDirection:'row'}}>
+<img src={mylink} className="card-img-top" style={jmatches?{height:"60px",width:"60px",borderRadius:'30px',paddingBottom:"20px"}:{height:"80px",width:"70px",borderRadius:'10px',paddingBottom:"8px",fontSize:"12px"}} alt="..."/>
+<label style={jmatches?{fontSize:"16px"}:{fontSize:"16px"}}><b>itemname:</b></label>
 
 <span>{itemname}</span>
 
 
 
-<p className='' style={matches?{}:{paddingLeft:"40px"}}><b>price(per item):</b>{itemprice}</p>
+<p className='' style={jmatches?{}:{paddingLeft:"40px"}}><b>price(per item):</b>{itemprice}</p>
 
 
-<button style={matches?{width:"55px",height:"50px"}:{width:"100px",height:"50px",marginLeft:"120px"}} class="btn btn-primary"onClick={enterquantity}><span style={matches?{fontSize:"8px"}:{fontSize:"16px"}}>quantity</span></button>
-<button style={matches?{width:"55px",height:"50px"}:{width:"80px",height:"50px",marginLeft:"80px"}} className="btn btn-primary" onClick={handleSubmit}><span style={matches?{fontSize:"8px"}:{fontSize:"16px"}}>order</span></button>
+<button style={jmatches?{width:"55px",height:"50px"}:{width:"100px",height:"50px",marginLeft:"120px"}} class="btn btn-primary"onClick={enterquantity}><span style={jmatches?{fontSize:"9px"}:{fontSize:"16px"}}>quantity</span></button>
+<button style={jmatches?{width:"55px",height:"50px",marginLeft:"20px"}:{width:"80px",height:"50px",marginLeft:"80px"}} className="btn btn-primary" onClick={handleSubmit}><span style={jmatches?{fontSize:"9px"}:{fontSize:"16px"}}>order</span></button>
 </div>
 
 

@@ -11,7 +11,8 @@ const Restaurant = (props) => {
 
   const handleClick = () => {
 
-      navigate("/Restaurantitem",{state:props.restaurant,amatches:props.mymatches})
+      //navigate("/Restaurantitem",{state:props.restaurant,amatches:props.mymatches})
+      navigate("/Restaurantitem",{state:{data:props.restaurant,amatches:props.mymatches}})
   }
 
 
