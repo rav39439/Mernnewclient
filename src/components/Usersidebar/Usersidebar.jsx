@@ -41,7 +41,7 @@ const Usersidebar = (props) => {
   `;
   
   const Montainer=styled.div `
-  width:1000px;
+  width:550px;
   height:60px;
   background-color: black;
   font-size: 12px;
