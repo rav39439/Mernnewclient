@@ -98,10 +98,15 @@ const handleSubmit = async (e) => {
 
   return (
       <>
-    <div className="settings">
+
+
+
+    <div className="settings bg-light border mt-4">
     <div className="settingsWrapper">
     <form className="settingsForm" onSubmit={handleSubmit}>
-          <label>Productimage Picture</label>
+    <h1 style={{fontFamily:"initial",fontSize:"50px"}}>Add Product to your Shop Here</h1>
+
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Productimage Picture</label>
           <div className="settingsPP">
             <img
               src={file ? URL.createObjectURL(file) : ""}
@@ -116,53 +121,53 @@ const handleSubmit = async (e) => {
               onChange={(e) => setFile(e.target.files[0])}
             />
  </div>
-          <label>Productname</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Productname</label>
           <input
             type="text"
            
             onChange={(e) => setProductname(e.target.value)}
           />
-          <label>Company</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Company</label>
           <input
             type="company"
            
             onChange={(e) => setcompany(e.target.value)}
           />
-          <label>Category</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Category</label>
           <input
             type="text"
             
             onChange={(e) => setcategory(e.target.value)}
           />
         
-          <label>Creator</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Creator</label>
           <input
             type="text"
            
             onChange={(e) => setcreator(e.target.value)}
           />
-          <label>details</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>details</label>
           <input
             type="text"
          
             onChange={(e) => setproductdetails(e.target.value)}
           />
-          <label>Price</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Price</label>
           <input
             type="number"
             onChange={(e) => setPrice(e.target.value)}
           />
-          <label>shopcode</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>shopcode</label>
           <input
             type="text"
             onChange={(e) => setshopcode(e.target.value)}
           />
-          <label>shoplocation</label>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>shoplocation</label>
           <input
             type="text"
             onChange={(e) => setshoplocation(e.target.value)}
           />
- <button className="Submit" style={{width:"200px"}} type="submit">
+ <button className="Submit btn btn-primary" style={{width:"200px"}} type="submit">
             add
           </button>
 

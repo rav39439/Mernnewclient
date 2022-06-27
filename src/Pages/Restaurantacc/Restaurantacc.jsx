@@ -113,10 +113,10 @@ setdata(res.data)
   return (
 <>
 
-
-<h1>Access Your Restaurant orders here</h1>
+<div className=" bg-light border mt-4">
+<h1 style={{fontFamily:"initial",fontSize:"50px"}}>Access Your Restaurant orders here</h1>
 <form className="settingsForm" onSubmit={handleSubmit}>
-<label>Enter your restaurant name</label>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Enter your Restaurant Name</label>
 
 
     <input type="text" 
@@ -126,19 +126,19 @@ setdata(res.data)
     }}
     />
 
-    <label>Enter your restaurant code</label>
+    <label style={{fontFamily:"initial",fontSize:"22px"}}>Enter your Restaurant Code</label>
 <input type="text" 
  onChange={(e)=>{
      setrestcode(e.target.value)
  }}
 />
-<button className="Submit" style={{width:"200px",height:"50px"}} type="submit">order</button>
+<button className="Submit btn btn-primary" style={{width:"200px",height:"50px"}} type="submit">order</button>
     </form>
 
 
 <hr />
 
-
+</div>
 {isdata? <div>
 
 
@@ -171,7 +171,7 @@ setdata(res.data)
 
 </div>
 
-</div>:<div><h1>No Data</h1></div>}
+</div>:<div className='bg-light border'><h1>No Data</h1></div>}
 
 
 <h1>Notification</h1>

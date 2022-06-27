@@ -123,18 +123,25 @@ const handleSubmit = async (e) => {
 
   return (
       <>
-    <div className="settings">
+
+
+
+
+    <div className="settings bg-light border mt-4">
     <div className="settingsWrapper">
     <form className="settingsForm" onSubmit={handleSubmit}>
-          <label>Profile Picture</label>
+
+    <h1 style={{fontFamily:"initial",fontSize:"50px"}}>Add Your Shop Here</h1>
+
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Profile Picture</label>
           <div className="settingsPP">
             <img
               src={file ? URL.createObjectURL(file) : ""}
               alt=""
             />
 <label htmlFor="fileInput">
-              <i className="settingsPPIcon far fa-user-circle"></i>
-            </label>
+           
+            </label >
             <input
               type="file"
               id="fileInput"
@@ -142,29 +149,25 @@ const handleSubmit = async (e) => {
               onChange={(e) => setFile(e.target.files[0])}
             />
  </div>
-          <label>Name</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Name</label>
           <input
             type="text"
             onChange={(e) => setname(e.target.value)}
           />
          
          
-          <label>shoppercode</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Shoppercode</label>
           <input
             type="text"
             onChange={(e) => setcode(e.target.value)}
           />
-          <label>orderrec</label>
-          <input
-            type="text"
-            onChange={(e) => setorderrec(e.target.value)}
-          />
-          <label>city</label>
+       
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>City</label>
           <input
             type="text"
             onChange={(e) => setcity(e.target.value)}
           />
-          <label>creator</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Creator</label>
           <input
             type="text"
             onChange={(e) => setcreator(e.target.value)}
@@ -172,7 +175,7 @@ const handleSubmit = async (e) => {
           
         
          
- <button className="Submit" style={{width:"200px"}} type="submit">
+ <button className="submit btn btn-primary" style={{width:"200px"}}  type="submit">
             add
           </button>
 
@@ -186,47 +189,54 @@ const handleSubmit = async (e) => {
     </div>
     </div>
 
-    <h3>Add items to your productlist</h3>
+
+    <div className=" bg-light border mt-4" style={{height:"450px"}}>
+
+    <div style={{marginLeft:"20px"}}>
+
+    <h1 style={{fontFamily:"initial",fontSize:"40px"}}>Add Products to Your Shop</h1>
 
 
 
 <form onSubmit={handleitems}>
 
-<label>model of your product</label>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Model of your Product</label><br></br>
   <input type="text" 
   placeholder='model'
   onChange={(e)=>{
     setmodel(e.target.value)
   }}
-  />
+  /><br></br><br></br>
 
-<label>code of your product</label>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Code of your Shop</label><br></br>
   <input type="text" 
   placeholder='code'
   onChange={(e)=>{
     setmycode(e.target.value)
   }}
-  />
-<label>name of the item</label>
+  /><br></br><br></br>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Name of the Item</label><br></br>
   <input type="text" 
   placeholder='itemname'
   onChange={(e)=>{
     setitem(e.target.value)
   }}
-  />
+  /><br></br><br></br>
 
-<label>price of the item</label>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Price of the Item</label><br></br>
 
   <input type="number" 
   placeholder='itemprice'
   onChange={(e)=>{
     setitemprice(e.target.value)
   }}
-  />
+  /><br></br><br></br>
   <button className='btn btn-primary' type="submit">Add item</button>
   
 </form>
 
+</div>
+</div>
 
 
 

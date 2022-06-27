@@ -21,11 +21,11 @@ const SingleRestaurant = (props) => {
   border:1px solid black;
   margin-top:100px;
   background-color:#87CEFA;
-  width:600px;
+  width:400px;
   margin-left:-70px;
   height:750px;
   
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 560px) {
   margin-top:20px;
     width:300px;
     margin-left:0px;
@@ -94,7 +94,7 @@ setarr(arraynew)
 
 
     <Container>
-  <img src={mylink} className="card-img-top" style={location.state.amatches?{height:"300px",width:"295px"}:{height:"500px",width:"600px"}} id="Iimage"alt="..."/>
+  <img src={mylink} className="card-img-top" style={{height:"470px",width:"400px"}} id="Iimage"alt="..."/>
   <div className="card-body">
     <h5 className="card-title"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Restaurantname :</b></span>{location.state.data.name}</h5>
     <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Details :</b></span>{location.state.data.details}</p>
@@ -108,7 +108,7 @@ setarr(arraynew)
  
 
   
-  <div style={location.state.amatches?{}:{marginLeft:"-70px"}}>
+  <div style={location.state.amatches?{}:{marginLeft:"-50px"}}>
   <button type='submit' className='btn btn-primary mt-4'onClick={handleClick}>see Fooditems</button> 
 <h3>Fooditems offered</h3>
 {arr.map((data,index) => (

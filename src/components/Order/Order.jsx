@@ -208,21 +208,21 @@ catch(err){
 
 
 <form onSubmit={handlemyClick}>
-orderid<input type='text' readOnly name="orderid"value={ordernew._id}/>
-<input type='text' readOnly name="quantity"value={ordernew.quantity}/>
-<input type='text' readOnly name="address"value={ordernew.address}/>
-<input type='text' readOnly name="username"value={ordernew.username}/>
-<input type='text' readOnly name="email"value={ordernew.email}/>
-<input type='text' readOnly name="phone"value={ordernew.phone}/>
-<input type='text' readOnly name="userid"value={ordernew.userid?ordernew.userid:""}/>
-<input type='text' readOnly name="productname"value={ordernew.productname}/>
-<input type='text' readOnly name="status"value={ordernew.status}/>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Orderid : </span><input type='text' readOnly name="orderid"value={ordernew._id}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Quantity : </span><input type='text' readOnly name="quantity"value={ordernew.quantity}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Address : </span><input type='text' readOnly name="address"value={ordernew.address}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Username : </span><input type='text' readOnly name="username"value={ordernew.username}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Email : </span><input type='text' readOnly name="email"value={ordernew.email}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Phone : </span><input type='text' readOnly name="phone"value={ordernew.phone}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Userid : </span><input type='text' readOnly name="userid"value={ordernew.userid?ordernew.userid:""}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Productname : </span><input type='text' readOnly name="productname"value={ordernew.productname}/><br></br>
+<span  style={{fontFamily:"initial",fontSize:"22px"}}>Status : </span><input type='text' readOnly name="status"value={ordernew.status}/><br></br>
 
 
-<button type='submit' className='btn btn-primary'>Accept</button> 
+<button type='submit' className='btn btn-primary'>Accept</button> <br></br>
 </form>
 <form onSubmit={handledelete}>
-<input type='text'style={{display:"none"}} name="username"value={username}/>
+<input type='text'style={{display:"none"}} name="username"value={username}/><br></br>
 
 <input type='text'style={{display:"none"}} readOnly name="orderid"defaultValue={orderid?orderid:""}/>
 <input type='text' style={{display:"none"}} readOnly name="shopid"defaultValue={shopid?shopid:""}/>
@@ -231,12 +231,12 @@ orderid<input type='text' readOnly name="orderid"value={ordernew._id}/>
 <input type='text' style={{display:"none"}} readOnly name="userid"defaultValue={userid?userid:""}/>
 
 
-<button type='submit' className='btn btn-primary'>Delete</button> 
+<button type='submit' className='btn btn-primary'>Delete</button> <br></br>
 </form>
 
 
 <form onSubmit={handleclear}>
-<input type='text'style={{display:"none"}} name="username"value={username}/>
+<input type='text'style={{display:"none"}} name="username"value={username}/><br></br>
 
 <input type='text'style={{display:"none"}} readOnly name="orderid"defaultValue={orderid?orderid:""}/>
 <input type='text' style={{display:"none"}} readOnly name="shopid"defaultValue={shopid?shopid:""}/>
@@ -245,7 +245,7 @@ orderid<input type='text' readOnly name="orderid"value={ordernew._id}/>
 <input type='text' style={{display:"none"}} readOnly name="userid"defaultValue={userid?userid:""}/>
 
 
-<button type='submit' className='btn btn-primary'>clear</button> 
+<button type='submit' className='btn btn-primary'>clear</button> <br></br>
 </form>
 
 

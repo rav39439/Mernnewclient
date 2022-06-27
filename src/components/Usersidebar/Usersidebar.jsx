@@ -41,6 +41,7 @@ const Usersidebar = (props) => {
   `;
   
   const Montainer=styled.div `
+  width:500px;
   height:60px;
   background-color: black;
   font-size: 12px;
@@ -148,7 +149,7 @@ props.setrestaurantorders(m)
 
       <li className="nav-item mt-5">
 
-<Link to= "/Allproducts"className='mt-5'>Allproducts</Link>
+      { user.isAdmin?<Link to= "/Allproducts"className='mt-5'>Allproducts</Link>:""}
 
 </li>
     
@@ -184,7 +185,7 @@ props.setrestaurantorders(m)
 
  <div className="nav-item" >
 
-<Link to= "/Allproducts">Allproducts</Link>
+ { user.isAdmin?<Link to= "/Allproducts">Allproducts</Link>:""}
 
 </div>
 

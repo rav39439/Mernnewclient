@@ -222,16 +222,16 @@ console.log(err)
 <Container>
     <img src= {mylink} className="card-img-top" id="Inimage" alt="..."/>
     <div className="card-body">
-      <h5 className="card-title">{location.state.productname}</h5>
-      <p className="card-text">{location.state.productdetails}</p>
+     <span style={{fontFamily:"initial",fontSize:"22px"}}>Productname</span> <p  className="card-title"><strong>{location.state.productname}</strong></p>
+     <span style={{fontFamily:"initial",fontSize:"22px"}}>ProductDetails</span> <p className="card-text"><strong>{location.state.productdetails}</strong></p>
     </div>
     <ul className="list-group list-group-flush">
 
         
-      <li className="list-group-item">{location.state.category}</li>
-      <li className="list-group-item">{location.state._id}</li>
-      <li className="list-group-item">{location.state.price}</li>
-      <li className="list-group-item">{location.state.shoplocation?location.state.shoplocation:""}</li>
+      <span  style={{fontFamily:"initial",fontSize:"22px"}}>Category</span><li className="list-group-item">{location.state.category}</li>
+       <span style={{fontFamily:"initial",fontSize:"22px"}}>Id</span><li className="list-group-item">{location.state._id}</li>
+       <span style={{fontFamily:"initial",fontSize:"22px"}}>Price</span><li className="list-group-item">{location.state.price}</li>
+       <span style={{fontFamily:"initial",fontSize:"22px"}}>Location</span><li className="list-group-item">{location.state.shoplocation?location.state.shoplocation:""}</li>
       <li className="list-group-item" style={{display:"none"}}>{location.state.shopcode}</li>
       <button onClick={handleClick}style={mystyle} className="btn btn-primary">goback</button>
     </ul>
@@ -241,7 +241,7 @@ console.log(err)
   
 
     { newstyle?
-    <div className='productdiv'  id="productdiv">
+    <div className='productdiv'  id="productdiv" style={{marginTop:"80px"}}>
 
 <button className='btn btn-primary' onClick={handlestyle}>Place order</button>
 

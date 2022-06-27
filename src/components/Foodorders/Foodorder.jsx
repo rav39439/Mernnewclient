@@ -167,21 +167,21 @@ catch(err){
 {newstyle?
 
 
-<div className='border bg-light'style={jmatches?{width:'250px',overflow:'initial',fontSize:"12px"}:{width:'700px',height:"80px"}}>
+<div className='border bg-light'style={{width:'300px',overflow:'initial',fontSize:"16px",marginLeft:"70px"}}>
 
-    <div style={jmatches?{width:'300px',display:'block',flexDirection:'row'}:{width:'500px',display:'inline-flex',flexDirection:'row'}}>
-<img src={mylink} className="card-img-top" style={jmatches?{height:"60px",width:"60px",borderRadius:'30px',paddingBottom:"20px"}:{height:"80px",width:"70px",borderRadius:'10px',paddingBottom:"8px",fontSize:"12px"}} alt="..."/>
-<label style={jmatches?{fontSize:"16px"}:{fontSize:"16px"}}><b>itemname:</b></label>
+    <div style={{width:'300px',display:'block',flexDirection:'row'}}>
+<img src={mylink} className="card-img-top" style={jmatches?{height:"70px",width:"80px",borderRadius:'20px',paddingBottom:"20px"}:{height:"80px",width:"70px",borderRadius:'10px',paddingBottom:"8px",fontSize:"12px"}} alt="..."/>
+<label style={jmatches?{fontSize:"16px"}:{fontSize:"16px",paddingLeft:"10px"}}><b>itemname:</b></label>
 
-<span>{itemname}</span>
-
-
-
-<p className='' style={jmatches?{}:{paddingLeft:"40px"}}><b>price(per item):</b>{itemprice}</p>
+<span style={{paddingLeft:"10px"}}>{itemname}</span>
 
 
-<button style={jmatches?{width:"55px",height:"50px"}:{width:"100px",height:"50px",marginLeft:"120px"}} class="btn btn-primary"onClick={enterquantity}><span style={jmatches?{fontSize:"9px"}:{fontSize:"16px"}}>quantity</span></button>
-<button style={jmatches?{width:"55px",height:"50px",marginLeft:"20px"}:{width:"80px",height:"50px",marginLeft:"80px"}} className="btn btn-primary" onClick={handleSubmit}><span style={jmatches?{fontSize:"9px"}:{fontSize:"16px"}}>order</span></button>
+
+<p className='' style={{paddingLeft:"80px"}}><b>price(per item):</b>{itemprice}</p>
+
+
+<button style={{width:"80px",height:"50px"}} class="btn btn-primary"onClick={enterquantity}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>quantity</span></button>
+<button style={{width:"60px",height:"50px",marginLeft:"30px"}} className="btn btn-primary" onClick={handleSubmit}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>order</span></button>
 </div>
 
 

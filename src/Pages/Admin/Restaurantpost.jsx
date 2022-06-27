@@ -26,6 +26,10 @@ const [mycode, setmycode] = useState("");
 const [orders, setorders] = useState([]);
 const [mydata, setmydata] = useState({});
 
+
+
+
+
 useEffect(() => {
   props.setIsrestaurant(false)
   props.setIsproduct(false)
@@ -153,65 +157,73 @@ const handleSubmit = async (e) => {
 
   return (
       <>
-    <div className="settings">
+    <div className="settings bg-light border mt-4">
     <div className="settingsWrapper">
     <form className="settingsForm" onSubmit={handleSubmit}>
-          <label>Restaurant Picture</label>
+          <h1 style={{fontFamily:"initial",fontSize:"50px"}}>Add Your Restaurant Here</h1>
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Restaurant Picture</label>
           <div className="settingsPP">
             <img
               src={file ? URL.createObjectURL(file) : ""}
               alt=""
             />
 <label htmlFor="fileInput">
-            </label>
+            </label >
             <input
               type="file"
               id="fileInput"
               onChange={(e) => setFile(e.target.files[0])}
             />
  </div>
-          <label>name</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Name</label>
           <input
             type="text"
             placeholder={name}
             onChange={(e) => setname(e.target.value)}
           />
-          <label>location</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Location</label>
           <input
             type="location"
             placeholder={location}
             onChange={(e) => setlocation(e.target.value)}
           />
          
-          <label>details</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Details</label>
           <input
             type="details"
             placeholder={details}
             onChange={(e) => setdetails(e.target.value)}
           />
-          <label>category</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Category</label>
           <input
             type="text"
             placeholder={categories}
             onChange={(e) => setcategories(e.target.value)}
           />
-          <label>city</label>
-          <input
-            type="text"
-            placeholder={city}
-            onChange={(e) => setcity(e.target.value)}
-          />
-          <label>code</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>City</label>
+          <select    onChange={(e) => setcity(e.target.value)}>            
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+
+          <label  style={{fontFamily:"initial",fontSize:"22px"}}>Code</label>
           <input
             type="text"
             onChange={(e) => setcode(e.target.value)}
           />
-          <label>rating</label>
-          <input
-            type="text"
-            onChange={(e) => setrating(e.target.value)}
-          />
-          <label>postedby</label>
+          <label style={{fontFamily:"initial",fontSize:"22px"}}>Rating</label>
+          <select    onChange={(e) => setcity(e.target.value)}>            
+            <option value="1 star">1 star</option>
+            <option value="2 star">2 star</option>
+            <option value="3 star">3 star</option>
+            <option value="4 star">4 star</option>
+            <option value="5 star">5 star</option>
+          </select>
+
+          <label>Postedby</label>
           <input
             type="text"
             onChange={(e) => setpostedby(e.target.value)}
@@ -233,48 +245,50 @@ const handleSubmit = async (e) => {
     </div>
 
 
-<h3>Add items to your fooditems</h3>
 
 
+    <div className=" bg-light border mt-4" style={{height:"400px"}}>
+    <h1 style={{fontFamily:"initial",fontSize:"40px"}}>Add FoodItems to Your Restaurant</h1>
 
-<form onSubmit={handleitems}>
+    <div style={{marginLeft:"20px"}}>
+<form onSubmit={handleitems}><br></br>
 
-<label>code of your restuarnt</label>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Code of Your Restuarnt</label><br></br>
   <input type="text" 
   placeholder='code'
   onChange={(e)=>{
     setmycode(e.target.value)
   }}
-  />
-<label htmlFor="fileInput">
+  /><br></br><br></br>
+<label htmlFor="fileInput"style={{fontFamily:"initial",fontSize:"22px"}}><br></br>
             </label>
             <input
               type="file"
               id="fileInput"
               onChange={(e) => setfile(e.target.files[0])}
-            />
+            /><br></br><br></br>
 
-<label>name of the product</label>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Name Of the Product</label><br></br>
   <input type="text" 
   placeholder='itemname'
   onChange={(e)=>{
     setitem(e.target.value)
   }}
-  />
+  /><br></br><br></br>
 
-<label>price of the product</label>
+<label style={{fontFamily:"initial",fontSize:"22px"}}>Price of the Product</label><br></br>
 
   <input type="number" 
   placeholder='itemprice'
   onChange={(e)=>{
     setitemprice(e.target.value)
   }}
-  />
-  <button className='btn btn-primary' type="submit">Add item</button>
+  /><br></br><br></br>
+  <button className='btn btn-primary' type="submit">Add Item</button>
   
 </form>
-
-
+</div>
+</div>
 
 
 

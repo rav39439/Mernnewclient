@@ -224,18 +224,18 @@ setneworder(ordernew => ({
 
    <form onSubmit={handleSubmit}>
     <div className='border bg-light mt-3'>
-    <input type="text"readOnly name="address"defaultValue={ordernew.address}/><br />
-    <input type="text" readOnly name="email"defaultValue={ordernew.email}/><br />
-    <input type="text" readOnly name="name"defaultValue={ordernew.name}/><br />
-    <input type="text" readOnly name="phone"defaultValue={ordernew.phone}/><br />
-    <input type="text" readOnly name="price"value={ordernew.price}/><br />
-    <input type="text" readOnly name="productname"defaultValue={ordernew.productname}/><br /><br />
-    <input type="text" readOnly name="quantity"defaultValue={ordernew.quantity}/><br /><br />
-    <input type="text" readOnly name="restaurantid"defaultValue={ordernew.restaurantid}/><br /><br/>
-    <input type="text" readOnly name="status" value={ordernew.status}/><br /><br />
-    <input type="text" readOnly name="userid" defaultValue={ordernew.userid}/><br /><br />
-    <input type="text" readOnly name="orderid" defaultValue={ordernew._id}/><br /><br />
-    <button type='submit' className='btn btn-primary'>Accept</button> 
+    <span  style={{fontFamily:"initial",fontSize:"22px"}}>Address : </span><input type="text"readOnly name="address"defaultValue={ordernew.address}/><br />
+    <span  style={{fontFamily:"initial",fontSize:"22px"}}>Email : </span> <input type="text" readOnly name="email"defaultValue={ordernew.email}/><br></br>
+    <span  style={{fontFamily:"initial",fontSize:"22px"}}>Name : </span><input type="text" readOnly name="name"defaultValue={ordernew.name}/><br />
+    <span  style={{fontFamily:"initial",fontSize:"22px"}}>Phoneno : </span><input type="text" readOnly name="phone"defaultValue={ordernew.phone}/><br />
+    <span  style={{fontFamily:"initial",fontSize:"22px"}}>Price : </span><input type="text" readOnly name="price"value={ordernew.price}/><br />
+    <input type="hidden"  readOnly name="productname"defaultValue={ordernew.productname}/>
+    <span  style={{fontFamily:"initial",fontSize:"22px"}}>Quantity : </span><input type="text" readOnly name="quantity"defaultValue={ordernew.quantity}/><br /><br />
+   <input type="hidden"  readOnly name="restaurantid"defaultValue={ordernew.restaurantid}/>
+    <span  style={{fontFamily:"initial",fontSize:"22px"}} >Status : </span><input type="text" readOnly name="status" value={ordernew.status}/><br /><br />
+    <span  style={{fontFamily:"initial",fontSize:"22px"}} >Userid : </span><input type="text" readOnly name="userid" defaultValue={ordernew.userid}/><br /><br />
+    <input type="hidden" readOnly name="orderid" defaultValue={ordernew._id}/><br /><br />
+   <button type='submit' className='btn btn-primary'>Accept</button> 
 
    </div>
     </form>
@@ -253,7 +253,7 @@ setneworder(ordernew => ({
 <input type='text' style={{display:"none"}}  readOnly name="productname"defaultValue={productname?productname:""}/>
 
 
-<button type='submit' className='btn btn-primary'>Delete</button> 
+<button type='submit' className='btn btn-primary'>Decline</button> 
 </form>
 
 

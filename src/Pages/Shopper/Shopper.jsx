@@ -137,25 +137,28 @@ catch (err) {
   return (
   
 <>
-<h1>Access Your shop orders here</h1>
+
+<div className=" bg-light border mt-4">
+<h1 style={{fontFamily:"initial",fontSize:"50px"}}>Access Your Shop orders here</h1>
+
 <form className="settingsForm" onSubmit={handleSubmit}>
 
-    <label>name</label>
+    <label style={{fontFamily:"initial",fontSize:"22px"}}>name</label>
     <input
       type="text"
       onChange={(e) => setname(e.target.value)}
     />
-    <label>code</label>
+    <label style={{fontFamily:"initial",fontSize:"22px"}}>code</label>
     <input
       type="tel"
       onChange={(e) => setcode(e.target.value)}
     />
 
-<button className="Submit" style={{width:"200px"}} type="submit">getdata</button>
+<button className="Submit btn btn-primary" style={{width:"200px"}} type="submit">getdata</button>
 
 </form>
 
-
+</div>
 
 
 <hr></hr>
