@@ -215,7 +215,7 @@ const handleSubmit = async (e) => {
             onChange={(e) => setcode(e.target.value)}
           />
           <label style={{fontFamily:"initial",fontSize:"22px"}}>Rating</label>
-          <select    onChange={(e) => setcity(e.target.value)}>            
+          <select    onChange={(e) => setrating(e.target.value)}>            
             <option value="1 star">1 star</option>
             <option value="2 star">2 star</option>
             <option value="3 star">3 star</option>

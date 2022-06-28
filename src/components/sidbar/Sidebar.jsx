@@ -64,6 +64,23 @@ float:"right",
   },
 }
 
+
+const style4={
+
+
+  fontSize:"20px",
+  marginTop:"10px",
+  color:"blue",
+
+  '@media (max-width: 500px)': {
+
+   
+marginLeft:"100px"
+    
+   
+  },
+}
+
   const [childprice,setchildprice]=useState(0)
   const [childcompany,setchildcompany]=useState("")
   const [childcategory,setchildcategory]=useState("")
@@ -124,7 +141,7 @@ display:none;
 
 <StyleRoot>
  <div className="sidebar" style={style} >
-<a className="active" href="/" style={{fontSize:"20px",marginTop:"10px",color:"blue"}}>Home</a><br></br><br></br>
+<a className="active" href="/" style={style4}>Home</a><br></br><br></br>
 
 <h3>Filters</h3>
 <div><br></br><br></br>

@@ -8,6 +8,7 @@ import axios from 'axios';
 import { AuthContext } from "../../components/AuthContext/AuthContext"
 import styled from "styled-components"; 
 import "./singlestyle.css";
+import Radium, { StyleRoot } from 'radium';
 
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
@@ -16,6 +17,32 @@ const Singleitem = (props) => {
   const [matches,setmatches]=useState(false)
   
     
+  const style1={
+
+
+    height:"500px",
+    width:"600px",
+    '@media (max-width: 500px)': {
+  
+     
+  height:"250px",
+  width:"330px"
+      
+     
+    },
+  }
+  const style2={
+
+
+  marginTop:"350px",
+    '@media (max-width: 500px)': {
+  
+     
+  marginTop:"-30px",
+      
+     
+    },
+  }
 
 
 
@@ -28,7 +55,7 @@ const Singleitem = (props) => {
   
   @media only screen and (max-width: 600px) {
   margin-top:20px;
-    width:300px;
+    width:330px;
     margin-left:5px;
     height:300;
   
@@ -219,8 +246,10 @@ console.log(err)
 <>
 
 
+<StyleRoot>
+
 <Container>
-    <img src= {mylink} className="card-img-top" id="Inimage" alt="..."/>
+    <img src= {mylink} className="card-img-top" style={style1} alt="..."/>
     <div className="card-body">
      <span style={{fontFamily:"initial",fontSize:"22px"}}>Productname</span> <p  className="card-title"><strong>{location.state.productname}</strong></p>
      <span style={{fontFamily:"initial",fontSize:"22px"}}>ProductDetails</span> <p className="card-text"><strong>{location.state.productdetails}</strong></p>
@@ -238,10 +267,10 @@ console.log(err)
     
     </Container>
 
-  
+  </StyleRoot>
 
     { newstyle?
-    <div className='productdiv'  id="productdiv" style={{marginTop:"80px"}}>
+    <div className='productdiv'  id="productdiv" style={style2}>
 
 <button className='btn btn-primary' onClick={handlestyle}>Place order</button>
 

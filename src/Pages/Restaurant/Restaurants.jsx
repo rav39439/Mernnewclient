@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Radium, { StyleRoot } from 'radium';
 
 import useMediaquery from '../../Hooks/useMediaquery';
 import Restaurant from '../../components/Restaurants/Restaurant';
@@ -10,7 +11,23 @@ const Restaurants = (props) => {
 
 const [restaurants,setrestaurant]=useState([])
 
-
+const style={
+  width:"900px",
+marginLeft:"-250px",
+marginTop:"10px",
+display:"inline-flex",
+  '@media (max-width: 500px)': {
+  
+  
+  display:"block",
+   width:"200px",
+    marginLeft:"-40px",
+    marginLop:"20px",
+ 
+  
+    },
+    }
+  
 
   useEffect(() => {
   props.setIsrestaurant(true)
@@ -47,10 +64,14 @@ console.log("the sadfffffffffffffffffffffffffffffffffffffffffffffffffffffff"+pro
 
   return (
     <>
-<h1>Restaurants</h1>
-<div className='container'  >
 
-<div className="row"style={props.hmatches?{marginLeft:"-30px"}:{marginLeft:"-100px"}}>
+
+<center><h1>Restaurants</h1></center>
+
+
+<StyleRoot>
+<div className="container" style={style} >
+
 
       
 
@@ -59,7 +80,10 @@ console.log("the sadfffffffffffffffffffffffffffffffffffffffffffffffffffffff"+pro
       ))}
 
       </div>
-      </div>
+    
+
+      
+</StyleRoot>
       </>
   )
 }

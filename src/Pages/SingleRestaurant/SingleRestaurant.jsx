@@ -9,7 +9,8 @@ import useMediaquery from '../../Hooks/useMediaquery';
 import { useNavigate } from 'react-router';
 import Foodorder from '../../components/Foodorders/Foodorder';
 import io, { Socket } from "socket.io-client";
-
+import Radium, { StyleRoot } from 'radium';
+ 
 import { RestaurantContext } from '../../components/RestaurantContext/RestaurantContext'
 import { getrestaurant } from '../../components/RestaurantContext/Restaurantapicalls'
 const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
@@ -17,17 +18,35 @@ const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocke
 const SingleRestaurant = (props) => {
   const matches = useMediaquery('(max-width: 600px)')
 
+
+  const style={
+
+
+    height:"500px",
+    width:"600px",
+    '@media (max-width: 500px)': {
+  
+     
+  height:"250px",
+  width:"330px"
+      
+     
+    },
+  }
+
+
+
   const Container=styled.div `
   border:1px solid black;
   margin-top:100px;
   background-color:#87CEFA;
-  width:400px;
+  width:600px;
   margin-left:-70px;
   height:750px;
   
   @media only screen and (max-width: 560px) {
   margin-top:20px;
-    width:300px;
+    width:330px;
     margin-left:0px;
     height:250;
   
@@ -91,10 +110,9 @@ setarr(arraynew)
 <>
  
 
-
-
+<StyleRoot>
     <Container>
-  <img src={mylink} className="card-img-top" style={{height:"470px",width:"400px"}} id="Iimage"alt="..."/>
+  <img src={mylink} className="card-img-top" style={style}alt="..."/>
   <div className="card-body">
     <h5 className="card-title"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Restaurantname :</b></span>{location.state.data.name}</h5>
     <p className="card-text"><span style={{fontFamily:"inherit",fontSize:"20px"}}><b>Details :</b></span>{location.state.data.details}</p>
@@ -105,7 +123,7 @@ setarr(arraynew)
 
   </div>
   </Container>
- 
+  </StyleRoot>
 
   
   <div style={location.state.amatches?{}:{marginLeft:"-50px"}}>

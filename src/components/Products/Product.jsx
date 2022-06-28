@@ -5,14 +5,32 @@ import Singleitem from '../../Pages/Singleitem/Singleitem'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import styled from "styled-components"; 
+import Radium, { StyleRoot } from 'radium';
 
 import { useNavigate } from 'react-router';
 
 const Product = (props) => {
 
+  const style={
+
+
+    marginLeft:"120px",
+    marginTop:"50px",
+      '@media (max-width: 500px)': {
+    
+       
+        marginLeft:"20px",
+        marginTop:"30px",
+        
+       
+      },
+    }
+
+
+
   const Container=styled.div `
-  margin-left:-70px;
-  margin-top:100px;
+  margin-left:-90px;
+  margin-top:50px;
   
   @media only screen and (max-width: 600px) {
   margin-left:20px;
@@ -21,21 +39,7 @@ const Product = (props) => {
     }
   `;
 
-  const Image=styled.image`
-  width:300px;
-  height:300px;
-  margin-left:20px;
-  margin-top:30px;
-  
-  @media only screen and (max-width: 600px) {
-  
-    width:200px;
-    height:200px;
-    margin-left:20px;
-    margin-top:20px;
-  
-    }
-  `;
+ 
 
 
 
@@ -55,8 +59,8 @@ const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
   return (
 
     <>
-   
-    <Container>
+   <div className='col-md-4'style={style}>
+    
     <img src={mylink} className="card-img-top border"style={{height:"300px",width:"300px",paddingRight:"30px",paddingTop:"10px"}} alt="..."/>
     <div className="card-body border "style={{width:"300px"}}>
       <h5 className="card-title"><p style={{fontFamily:"monospace",width:"230px",fontSize:"16px"}}><b>Product</b>:{props.product.productname}</p></h5>
@@ -74,14 +78,10 @@ const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
 
     </ul>
 
-    <div className="card-body">
+  
 
-    
 
-    </div>
-   
-
-  </Container>
+  </div>
   </>
   )
 }
