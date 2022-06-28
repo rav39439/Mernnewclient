@@ -310,14 +310,14 @@ catch(err){
     <div className='user'>
 
       {arr.map((data) => (
-        <div className='border bg-light mt-3'>
+        <div className='border bg-light mt-3'style={{borderRadius:"10px"}}>
           <form onSubmit={handledelete}>
-          <p>{data._id}</p>
-          <p>{data.userid?data.userid:"not defined"}</p>
-          <p>{data.quantity}</p>
+          <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Id : </span>{data._id}</p>
+          <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>userid : </span>{data.userid?data.userid:"not defined"}</p>
+          <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Quantity : </span>{data.quantity}</p>
           
-         <p>{data.message}</p> 
-         <p>{data.read=='unread'?'unread':'read'}</p> 
+         <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Message : </span>{data.message}</p> 
+         <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Unread : </span>{data.read=='unread'?'unread':'read'}</p> 
 
          <button className='btn btn-primary' >delete</button>
          </form>

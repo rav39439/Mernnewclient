@@ -112,7 +112,7 @@ setarr(arraynew)
   <button type='submit' className='btn btn-primary mt-4'onClick={handleClick}>see Fooditems</button> 
 <h3>Fooditems offered</h3>
 {arr.map((data,index) => (
-       <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state._id} newdata={index} socket={socket} setrestaurantorders={props.setrestaurantorders} setpostedby={props.setpostedby} jmatches={location.state.amatches} />
+       <Foodorder itemname={data.itemname} itemprice={data.itemprice} itemimage={data.itemimage} restaurantid={location.state.data._id} newdata={index} socket={socket} setrestaurantorders={props.setrestaurantorders} setpostedby={props.setpostedby} jmatches={location.state.amatches} />
       ))}
 
 </div>

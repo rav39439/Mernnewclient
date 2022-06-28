@@ -106,6 +106,7 @@ status,
 orderid
 }
 
+console.log("sdaffffffffffffffffffffffffffffffffffffffffffffff"+restaurantid);
 
 try{
 
@@ -119,8 +120,8 @@ try{
      // updaterestaurant(res.data.restaurant,dispatch)
       console.log(res.data.restaurant)
 
-    //console.log(res.data.restaurant.postedby)
-   // console.log(res.data.id)
+    console.log(res.data.restaurant.postedby)
+   console.log(res.data.id)
     setnewstyle(false)
    /// html=`<p>You have an order of item costing ${price} by ${name} have to deliverd at address ${address}</p>`
     socket.emit("orderpassed",data,res.data.restaurant.postedby,res.data.id)
@@ -170,6 +171,10 @@ catch(err){
 <div className='border bg-light'style={{width:'300px',overflow:'initial',fontSize:"16px",marginLeft:"70px"}}>
 
     <div style={{width:'300px',display:'block',flexDirection:'row'}}>
+
+
+
+        
 <img src={mylink} className="card-img-top" style={jmatches?{height:"70px",width:"80px",borderRadius:'20px',paddingBottom:"20px"}:{height:"80px",width:"70px",borderRadius:'10px',paddingBottom:"8px",fontSize:"12px"}} alt="..."/>
 <label style={jmatches?{fontSize:"16px"}:{fontSize:"16px",paddingLeft:"10px"}}><b>itemname:</b></label>
 
@@ -180,7 +185,7 @@ catch(err){
 <p className='' style={{paddingLeft:"80px"}}><b>price(per item):</b>{itemprice}</p>
 
 
-<button style={{width:"80px",height:"50px"}} class="btn btn-primary"onClick={enterquantity}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>quantity</span></button>
+<button style={{width:"80px",height:"50px"}} className="btn btn-primary"onClick={enterquantity}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>quantity</span></button>
 <button style={{width:"60px",height:"50px",marginLeft:"30px"}} className="btn btn-primary" onClick={handleSubmit}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>order</span></button>
 </div>
 

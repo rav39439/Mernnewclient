@@ -83,23 +83,23 @@ window.onload()
 
 
   return (
-  <div className='border'>
+  <div className='border'style={{textAlign:"left"}}>
 
 Your orders
-<form onSubmit={handlemyClick}>
-<input type='text' readOnly name="orderid"value={shoporderid}/>
-<input type='text' readOnly name="shopid"value={shopid}/>
-<input type='text' readOnly name="quantity"value={quantity}/>
-<input type='text' readOnly name="address"value={address}/>
-<input type='text' readOnly name="username"value={username}/>
-<input type='text' readOnly name="email"value={email}/>
-<input type='text' readOnly name="phone"value={phone}/>
-<input type='text' readOnly name="productname"value={productname}/>
-<input type='text' readOnly name="price"value={price}/>
-<input type='text' readOnly name="userid"value={userid}/>
+<form onSubmit={handlemyClick}><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}></span><input type='hidden' readOnly name="orderid"value={shoporderid}/>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}></span><input type='hidden' readOnly name="shopid"value={shopid}/>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Quantity : </span><input type='text' readOnly name="quantity"value={quantity}/><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Address : </span><input type='text' readOnly name="address"value={address}/><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Username : </span><input type='text' readOnly name="username"value={username}/><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Email : </span><input type='text' readOnly name="email"value={email}/><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Phone : </span><input type='text' readOnly name="phone"value={phone}/><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Productname : </span><input type='text' readOnly name="productname"value={productname}/><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Price : </span><input type='text' readOnly name="price"value={price}/><br></br>
+ <span style={{fontFamily:"initial",fontSize:"22px"}}>Userid : </span><input type='text' readOnly name="userid"value={userid}/><br></br>
 
 
-<button type='submit' className='btn btn-primary'>Accept</button> 
+<button type='submit' style={{display:"none"}}className='btn btn-primary'>Accept</button> 
 </form>
 
 

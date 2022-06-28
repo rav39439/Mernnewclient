@@ -150,7 +150,7 @@ catch (err) {
     />
     <label style={{fontFamily:"initial",fontSize:"22px"}}>code</label>
     <input
-      type="tel"
+      type="text"
       onChange={(e) => setcode(e.target.value)}
     />
 

@@ -121,16 +121,16 @@ console.log(err)
   <div className='border bg-light mt-3'>
 
     <form onSubmit={handleclear}>
-      <p>{data._id}</p>
-    <p>{data.price?data.price:"not defined"}</p>
-    <p>{data.name}</p>
+      <p><span></span>{data._id}</p>
+    <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Price : </span>{data.price?data.price:"not defined"}</p>
+    <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Name : </span>{data.productname}</p>
     
-   <p>{data.quantity}</p> 
-   <p>{data.address}</p> 
-   <p>{data.email}</p> 
-   <p>{data.restaurantid}</p> 
-   <p>{data.phone}</p> 
-   <p>{data.status}</p> 
+   <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Quantity : </span>{data.quantity}</p> 
+   <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Address : </span>{data.address}</p> 
+   <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Email : </span>{data.email}</p> 
+   <p><span style={{fontFamily:"inherit",fontSize:"20px",display:"none"}}>Restaurantid : </span>{data.restaurantid}</p> 
+   <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Phone : </span>{data.phone}</p> 
+   <p><span style={{fontFamily:"inherit",fontSize:"20px",display:"none"}}>Status : </span>{data.status}</p> 
 
    <button className='btn btn-primary'>clear</button>
    </form>

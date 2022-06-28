@@ -128,17 +128,37 @@ const handleSubmit = async (e) => {
             onChange={(e) => setProductname(e.target.value)}
           />
           <label  style={{fontFamily:"initial",fontSize:"22px"}}>Company</label>
-          <input
-            type="company"
+          <select onChange={(e) => setcompany(e.target.value)}>          
+           <option value="Hero Honda">Hero Honda</option>
+            <option value="Arrow">Arrow</option>
+            <option value="Nike">Nike</option>
+            <option value="Adidas">Adidas</option>
+            <option value="Peter England">Peter England</option>
+            <option value="Van Heusen">Van Heusen</option>
            
-            onChange={(e) => setcompany(e.target.value)}
-          />
+          </select>
+
+
+
+         
           <label  style={{fontFamily:"initial",fontSize:"22px"}}>Category</label>
-          <input
+
+          <select onChange={(e) => setcategory(e.target.value)}>          
+          <option value="T-shirt">T-shirt</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Shorts">Shorts</option>
+            <option value="FMCG">FMCG</option>
+            <option value="Shirts">Shirts</option>
+            <option value="Vehicles">Vehicles</option>
+           
+          </select>
+
+          
+          {/* <input
             type="text"
             
             onChange={(e) => setcategory(e.target.value)}
-          />
+          /> */}
         
           <label  style={{fontFamily:"initial",fontSize:"22px"}}>Creator</label>
           <input

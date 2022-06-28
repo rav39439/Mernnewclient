@@ -78,17 +78,17 @@ const Newrestorders = ({price,name,address,quantity,email,restaurantid,phone,use
       <>
     <form onSubmit={handleSubmit}>
     <div className='border bg-light mt-3'>
-    <input type="text"readOnly name="price"value={price}/><br />
-    <input type="text" readOnly name="email"value={email}/><br />
-    <input type="text" readOnly name="productname"value={productname}/><br />
-    <input type="text" readOnly name="userid"value={userid}/><br />
-    <input type="text" readOnly name="name"value={name}/><br />
-    <input type="text" readOnly name="restaurantid"value={restaurantid}/><br />
-    <input type="text" readOnly name="quantity"value={quantity}/><br /><br />
-    <input type="text" readOnly name="address"value={address}/><br /><br />
-    <input type="text" readOnly name="phone"value={phone}/><br /><br/>
-    <input type="text" readOnly name="status" value={ordernew.status?ordernew.status:status}/><br /><br />
-    <input type="text" readOnly name="orderid" value={orderid}/><br /><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Price</span><input type="text"readOnly name="price"value={price}/><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Email</span><input type="text" readOnly name="email"value={email}/><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Productname</span><input type="text" readOnly name="productname"value={productname}/><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Userid</span><input type="text" readOnly name="userid"value={userid}/><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Name</span><input type="text" readOnly name="name"value={name}/><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>restaurantid</span><input type="hidden" readOnly name="restaurantid"value={restaurantid}/><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Quantity</span><input type="text" readOnly name="quantity"value={quantity}/><br /><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Address</span><input type="text" readOnly name="address"value={address}/><br /><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Phone</span><input type="text" readOnly name="phone"value={phone}/><br /><br/>
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Status</span><input type="text" readOnly name="status" value={ordernew.status?ordernew.status:status}/><br /><br />
+    <span style={{fontFamily:"initial",fontSize:"22px"}}>Orderid</span><input type="text" readOnly name="orderid" value={orderid}/><br /><br />
     <button type='submit' className='btn btn-primary'>Accept</button> 
 
     </div>
