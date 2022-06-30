@@ -16,6 +16,7 @@ const Product = (props) => {
 
     marginLeft:"120px",
     marginTop:"50px",
+    
       '@media (max-width: 500px)': {
     
        

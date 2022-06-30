@@ -185,7 +185,7 @@ catch(err){
 <p className='' style={{paddingLeft:"80px"}}><b>price(per item):</b>{itemprice}</p>
 
 
-<button style={{width:"80px",height:"50px"}} className="btn btn-primary"onClick={enterquantity}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>quantity</span></button>
+<button style={{width:"95px",height:"50px"}} className="btn btn-primary"onClick={enterquantity}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>Setquantity</span></button>
 <button style={{width:"60px",height:"50px",marginLeft:"30px"}} className="btn btn-primary" onClick={handleSubmit}><span style={jmatches?{fontSize:"14px"}:{fontSize:"16px"}}>order</span></button>
 </div>
 
@@ -194,7 +194,7 @@ catch(err){
 
 
 
-<label style={{display:ready?'block':'none'}}>quantity</label>
+<label style={{display:ready?'block':'none'}}>Setquantity</label>
 
 <input type="number" 
 style={{display:ready?'block':'none'}}

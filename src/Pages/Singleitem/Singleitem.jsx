@@ -261,7 +261,7 @@ console.log(err)
        <span style={{fontFamily:"initial",fontSize:"22px"}}>Id</span><li className="list-group-item">{location.state._id}</li>
        <span style={{fontFamily:"initial",fontSize:"22px"}}>Price</span><li className="list-group-item">{location.state.price}</li>
        <span style={{fontFamily:"initial",fontSize:"22px"}}>Location</span><li className="list-group-item">{location.state.shoplocation?location.state.shoplocation:""}</li>
-      <li className="list-group-item" >{location.state.shopcode}</li>
+      <li className="list-group-item" style={{display:"none"}} >{location.state.shopcode}</li>
       <button onClick={handleClick}style={mystyle} className="btn btn-primary">goback</button>
     </ul>
     

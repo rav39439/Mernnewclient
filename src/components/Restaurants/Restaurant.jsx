@@ -9,7 +9,7 @@ const Restaurant = (props) => {
 
   const style={
    width:"300px",
-   height:"450px",
+   height:"485px",
     marginLeft:"70px",
     marginTop:"50px",
     '@media (max-width: 500px)': {
