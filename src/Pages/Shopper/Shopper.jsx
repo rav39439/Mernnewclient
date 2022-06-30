@@ -47,8 +47,8 @@ useEffect(()=>{
 
 useEffect(()=>{
   socket.on('newshoporder',function(data,shoporderid,shopid){
-      console.log(shoporderid)
-      console.log(data)
+     // console.log(shoporderid)
+    //  console.log(data)
      
  data['shoporderid']=shoporderid
  data['shopid']=shopid
@@ -117,11 +117,7 @@ catch (err) {
 //setbutton("true")
   data.Orderrec.map(function(order,index){
     arraynew.push(order)
-    // console.log(index)
-    // console.log(order.address)
-    // console.log(order.quantity)
-    // console.log(order.email)
-    // console.log(order.phone)
+    
 
 
   })
@@ -182,10 +178,10 @@ catch (err) {
 
 <button type='submit' className='btn btn-primary'onClick={handleClick}>see orders</button> 
 <h1> Your orders</h1>
-{ arr.map(({_id,username,quantity,address,productname,phone,email,userid,status},index) => (
+{ arr.map(({_id,username,quantity,Address,productname,phone,email,userid,status},index) => (
          
 
-         <Order username={username} quantity={quantity} address={address} productname={productname} status={status}
+         <Order username={username} quantity={quantity} address={Address} productname={productname} status={status}
          phone={phone} email={email} shopid={data?._id} key={index} orderid={_id} setarr={setarr} arr={arr} userid={userid} />
        ))
        
