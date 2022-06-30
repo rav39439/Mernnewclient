@@ -76,7 +76,7 @@ let p=0
 
 //-----------------------------------------------------------------------------------------------------
 //-------------------------------------asssinging object as state variable to usestate---------------
-  const [shopCart, setShopCart] = useState({item1:"Juice",item2:"water",mya:[{name:"rikishi"},{name:"runner"}]});
+  //const [shopCart, setShopCart] = useState({item1:"Juice",item2:"water",mya:[{name:"rikishi"},{name:"runner"}]});
   //--------------------------------------------------------------------------------------------------
 
 
@@ -185,10 +185,10 @@ useEffect(async()=>{
 
 const handledelete=async(e)=>{
   e.preventDefault()
-  console.log(e.target.children[0].innerText)
   console.log(e.target.children[1].innerText)
+  console.log(e.target.children[3].innerText)
   const mybody={
-    notid:e.target.children[0].innerText,
+    notid:e.target.children[1].innerText,
     userid:user._id
   }
 
@@ -312,12 +312,12 @@ catch(err){
       {arr.map((data) => (
         <div className='border bg-light mt-3'style={{borderRadius:"10px"}}>
           <form onSubmit={handledelete}>
-          <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Id : </span>{data._id}</p>
-          <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>userid : </span>{data.userid?data.userid:"not defined"}</p>
-          <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Quantity : </span>{data.quantity}</p>
+          <span style={{fontFamily:"inherit",fontSize:"20px"}}>Id :</span><p>{data?._id}</p>
+          <span style={{fontFamily:"inherit",fontSize:"20px"}}>userid :</span><p>{data.userid?data.userid:"not defined"}</p>
+          <span style={{fontFamily:"inherit",fontSize:"20px"}}>Quantity : </span><p>{data.quantity}</p>
           
-         <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Message : </span>{data.message}</p> 
-         <p><span style={{fontFamily:"inherit",fontSize:"20px"}}>Unread : </span>{data.read=='unread'?'unread':'read'}</p> 
+          <span style={{fontFamily:"inherit",fontSize:"20px"}}>Message : </span><p>{data.message}</p> 
+          <span style={{fontFamily:"inherit",fontSize:"20px"}}>Unread : </span><p>{data.read=='unread'?'unread':'read'}</p> 
 
          <button className='btn btn-primary' >delete</button>
          </form>
