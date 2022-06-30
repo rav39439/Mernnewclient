@@ -19,7 +19,7 @@ width:"900px",
 marginLeft:"-320px",
 marginTop:"10px",
 display:"inline-flex",
-height:"200px",
+height:"300px",
 flexDirection:"row",
 
 '@media (max-width: 500px)': {
