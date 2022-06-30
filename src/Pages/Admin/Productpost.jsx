@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext, useState,useEffect } from "react";
 import axios from "axios";
 import "./productpost.css"
+import Select from "react-select";
 
 
 
@@ -9,12 +10,51 @@ import "./productpost.css"
 
 
 const Productpost = (props) => {
+
+
+  const [company, setcompany] = useState("");
+  const [category, setcategory] = useState("");
+
+  const optionList = [
+    { value: "Hero Honda", label: "Hero Honda" },
+    { value: "Nike", label: "Nike" },
+    { value: "Adidas", label: "Adidas" },
+    { value: "Peter England", label: "Peter England" },
+    { value: "Van Heusen", label: "Van Heusen" }
+  ];
+
+
+  const optionList1 = [
+    { value: "T-shirts", label: "T-shirts" },
+    { value: "Shoes", label: "Shoes" },
+    { value: "Shorts", label: "Shorts" },
+    { value: "FMCG", label: "FMCG" },
+    { value: "Shirts", label: "Shirts" },
+    { value: "Vehicles", label: "Vehicles" }
+  ];
+
+
+  function handleSelect(data) {
+    setcategory(data[0].value);
+  }
+
+  function handleSelect1(data) {
+    setcompany(data[0].value);
+  }
+
+
+
+
+
+
+
+
+
   const products=[]
 const [file, setFile] = useState(null);
 const [productname, setProductname] = useState("");
 const [price, setPrice] = useState("");
-const [company, setcompany] = useState("");
-const [category, setcategory] = useState("");
+
 const [sizes, setsizes] = useState([]);
 const [productdetails, setproductdetails] = useState("");
 const [shopcode, setshopcode] = useState("");
@@ -128,30 +168,28 @@ const handleSubmit = async (e) => {
             onChange={(e) => setProductname(e.target.value)}
           />
           <label  style={{fontFamily:"initial",fontSize:"22px"}}>Company</label>
-          <select onChange={(e) => setcompany(e.target.value)}>          
-           <option value="Hero Honda">Hero Honda</option>
-            <option value="Arrow">Arrow</option>
-            <option value="Nike">Nike</option>
-            <option value="Adidas">Adidas</option>
-            <option value="Peter England">Peter England</option>
-            <option value="Van Heusen">Van Heusen</option>
-           
-          </select>
+          <Select
+          options={optionList}
+          placeholder="Select company"
+          value={company}
+          onChange={handleSelect1}
+          isSearchable={true}
+          isMulti
+        />
 
 
 
          
           <label  style={{fontFamily:"initial",fontSize:"22px"}}>Category</label>
 
-          <select onChange={(e) => setcategory(e.target.value)}>          
-          <option value="T-shirt">T-shirt</option>
-            <option value="Shoes">Shoes</option>
-            <option value="Shorts">Shorts</option>
-            <option value="FMCG">FMCG</option>
-            <option value="Shirts">Shirts</option>
-            <option value="Vehicles">Vehicles</option>
-           
-          </select>
+          <Select
+          options={optionList1}
+          placeholder="Select category"
+          value={category}
+          onChange={handleSelect}
+          isSearchable={true}
+          isMulti
+        />
 
           
           {/* <input

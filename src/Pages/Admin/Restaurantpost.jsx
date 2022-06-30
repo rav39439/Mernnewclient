@@ -1,5 +1,6 @@
 import React from 'react'
 import { useContext, useState,useEffect } from "react";
+import Select from "react-select";
 
 import axios from "axios";
 import "./restaurantpost.css"
@@ -9,6 +10,46 @@ import "./restaurantpost.css"
 
 
 const Restaurantpost = (props) => {
+
+
+  const [city, setcity] = useState("");
+  const [rating, setrating] = useState("");
+
+  const optionList = [
+    { value: "Mumbai", label: "Mumbai" },
+    { value: "Bangalore", label: "Bangalore" },
+    { value: "Hyderabad", label: "Hyderabad" },
+    { value: "Delhi", label: "Delhi" },
+    { value: "Chennai", label: "Chennai" }
+  ];
+
+
+  const optionList1 = [
+    { value: "1 star", label: "1 star" },
+    { value: "2 star", label: "2 star" },
+    { value: "3 star", label: "3 star" },
+    { value: "4 star", label: "4 star" },
+    { value: "5 star", label: "5 star" }
+  ];
+
+
+  function handleSelect(data) {
+    setcity(data[0].value);
+  }
+
+  function handleSelect1(data) {
+    setrating(data[0].value);
+  }
+
+
+
+
+
+
+
+
+
+
 const [file, setFile] = useState(null);
 const [myfile, setfile] = useState(null);
 const [name, setname] = useState("");
@@ -16,8 +57,8 @@ const [postedby, setpostedby] = useState("");
 const [location, setlocation] = useState("");
 const [categories, setcategories] = useState(['veg','nonveg','breakfast','dessert']);
 const [details, setdetails] = useState("");
-const [city, setcity] = useState("");
-const [rating, setrating] = useState("");
+//const [city, setcity] = useState("");
+//const [rating, setrating] = useState("");
 const [fooditems, setfooditems] = useState([]);
 const [item, setitem] = useState("");
 const [itemprice, setitemprice] = useState(0);
@@ -79,7 +120,7 @@ if(myfile){
 
 
 try{
-  const res = await axios.put("/restaurants/fooditem",newitem ,
+  const res = await axios.put("restaurants/fooditem",newitem ,
   {
      headers: {
         token:
@@ -98,11 +139,13 @@ catch(err){
 const handleSubmit = async (e) => {
 
     e.preventDefault();
+
+  
     let filename=""
     if(file){
       filename=file.name
     }
-  
+    
   
     const newRestaurant = {
     
@@ -119,12 +162,16 @@ const handleSubmit = async (e) => {
       postedby
       
     };
+    console.log("asdgfffffffffffffffffffffffffffff")
+   console.log(newRestaurant)
     if (file) {
       const data = new FormData();
       const filename =file.name;
       data.append("name", filename);
       data.append("file", file);
      
+
+     // 
       try {
         await axios.post("/upload", data ,
         {
@@ -136,13 +183,16 @@ const handleSubmit = async (e) => {
       } catch (err) {}
     }
     try {
-      const res = await axios.post("/restaurants/",newRestaurant ,
+      const res = await axios.post("restaurants/",newRestaurant ,
       {
          headers: {
             token:
             "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
+
+
+        console.log("request is send")
      
     } catch (err) {
      console.log(err)
@@ -201,13 +251,14 @@ const handleSubmit = async (e) => {
             onChange={(e) => setcategories(e.target.value)}
           />
           <label style={{fontFamily:"initial",fontSize:"22px"}}>City</label>
-          <select    onChange={(e) => setcity(e.target.value)}>            
-            <option value="Mumbai">Mumbai</option>
-            <option value="Bangalore">Bangalore</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Chennai">Chennai</option>
-          </select>
+          <Select
+          options={optionList}
+          placeholder="Select city"
+          value={city}
+          onChange={handleSelect}
+          isSearchable={true}
+          isMulti
+        />
 
           <label  style={{fontFamily:"initial",fontSize:"22px"}}>Code</label>
           <input
@@ -215,14 +266,14 @@ const handleSubmit = async (e) => {
             onChange={(e) => setcode(e.target.value)}
           />
           <label style={{fontFamily:"initial",fontSize:"22px"}}>Rating</label>
-          <select    onChange={(e) => setrating(e.target.value)}>            
-            <option value="1 star">1 star</option>
-            <option value="2 star">2 star</option>
-            <option value="3 star">3 star</option>
-            <option value="4 star">4 star</option>
-            <option value="5 star">5 star</option>
-          </select>
-
+          <Select
+          options={optionList1}
+          placeholder="Select rating"
+          value={rating}
+          onChange={handleSelect1}
+          isSearchable={true}
+          isMulti
+        />
           <label>Postedby</label>
           <input
             type="text"
@@ -230,8 +281,8 @@ const handleSubmit = async (e) => {
           />
         
          
- <button className="Submit" style={{width:"200px"}} type="submit">
-            add
+ <button className="btn btn-primary" style={{width:"200px"}} type="submit">
+            Submit
           </button>
 
          
