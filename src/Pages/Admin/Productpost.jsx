@@ -25,7 +25,7 @@ const Productpost = (props) => {
 
 
   const optionList1 = [
-    { value: "T-shirts", label: "T-shirts" },
+    { value: "T-shirt", label: "T-shirts" },
     { value: "Shoes", label: "Shoes" },
     { value: "Shorts", label: "Shorts" },
     { value: "FMCG", label: "FMCG" },

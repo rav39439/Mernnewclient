@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Radium, { StyleRoot } from 'radium';
+import styled from "styled-components"; 
 
 import { useState,useEffect } from 'react'
 
@@ -9,6 +11,47 @@ import axios from 'axios'
 
 const Order = ({username,quantity,address,productname,phone,email,orderid,shopid,setarr,arr,status,userid}) => {
   const arra=[]
+
+  const style={
+    backgroundColor:'blue',
+    border:"2px solid black",
+    width:"300px",
+    height:"530px",
+     marginLeft:"70px",
+     marginTop:"50px",
+     '@media (max-width: 500px)': {
+      backgroundColor:'light',
+      border:"2px solid black",
+       marginTop:"80px",
+       height:"530px",
+       width: "300px"
+       },
+       }
+ 
+       const Montainer=styled.div `
+
+       width:500px;
+       margin-left:70px;
+     margin-top:50px;
+     height:530px;
+       background-color:blue;
+       border:2px solid black;
+       
+       @media only screen and (max-width: 600px) {
+     
+        background-color:blue;
+        border:2px solid black";
+         margin-top:80px;
+         height:530px;
+         width: 300px;
+          
+         }
+       `;
+     
+
+
+
+
   var [ordernew,setneworder]=useState({
     _id:orderid,
 
@@ -83,10 +126,7 @@ const handleclear=async(e)=>{
           let alldata=newres.data.Orderrec
          console.log(alldata)
          console.log(arr)
-          //  datac = {
-          //   ...datac,
-          //    Orderrec: alldata,
-          //  };
+       
           setarr(alldata);
         console.log(arr)
           
@@ -104,25 +144,8 @@ const handleclear=async(e)=>{
           console.log(err)
       }
 
-
-
-
-
-
-
          }
-        
-
-
-
-
-//console.log(username)
-//const [productname,setproductname] =useState(order.productname)
-//const [orderid,setorderid]=useState(order._id)
-
-///const [data,setdata]=useState({})
-
-
+      
 
     const handlemyClick=async(e)=>{
         e.preventDefault()
@@ -134,11 +157,7 @@ const handleclear=async(e)=>{
         }
 
  
-        // console.log(e.target.shopid.value)
-        // console.log(e.target.orderid.value)
-        // console.log(e.target.productname.value)
-        // console.log(e.target.username.value)
-        // console.log(e.target.email.value)
+       
         const message={
             username:e.target.username.value,
             productname:e.target.productname.value,
@@ -178,8 +197,7 @@ elem._id===newdata.orderid&&
 arra.push(elem)
 })
 
-console.log("newupdated array")
-console.log(arra[0])
+
 
 setneworder(ordernew => ({
        ...ordernew,
@@ -203,8 +221,9 @@ catch(err){
     
   return (
    <>
-  
-<div className="mybar bg-light"style={{backgroundColor:'light',border:"2px solid black"}}>
+
+<StyleRoot>
+<div style={{backgroundColor:"blue",width:"250px"}}>
 
 
 <form onSubmit={handlemyClick}>
@@ -250,6 +269,7 @@ catch(err){
 
 
 </div>
+</StyleRoot>
 <br></br>
 <br></br>
 </>

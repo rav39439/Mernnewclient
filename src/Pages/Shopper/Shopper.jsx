@@ -178,6 +178,7 @@ catch (err) {
 
 <button type='submit' className='btn btn-primary'onClick={handleClick}>see orders</button> 
 <h1> Your orders</h1>
+<div style={{width:"400px",height:"auto"}}>
 { arr.map(({_id,username,quantity,Address,productname,phone,email,userid,status},index) => (
          
 
@@ -186,7 +187,7 @@ catch (err) {
        ))
        
        } 
- 
+ </div>
 </div>
 
 </div>:<div><h1>No Data</h1></div>}

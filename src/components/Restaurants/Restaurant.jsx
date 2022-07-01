@@ -14,7 +14,8 @@ const Restaurant = (props) => {
     marginTop:"50px",
     '@media (max-width: 500px)': {
       marginLeft:"20px",
-      marginTop:"30px",
+      marginTop:"80px",
+      height:"500px",
       
       },
       }
@@ -43,10 +44,10 @@ const Restaurant = (props) => {
 
     <div className='card mb-3 col-md-4'style={style}>
 
-      <div style={{height:"300px"}}>
+      <div style={{height:"400px"}}>
   <img src={mylink} className="card-img-top border"style={{height:"300px",width:"300px"}} alt="..."/>
   </div>
-  <div className="card-body"style={{height:"250px",lineHeight:"5px"}}>
+  <div className="card-body"style={{height:"auto",lineHeight:"0px",border:"1px solid black"}}>
     <h5 className="card-title"><span style={{fontFamily:"inherit"}}><b>Name : </b></span><span style={{fontFamily:"san-serif",fontSize:'24px'}}><b>{props.restaurant.name}</b></span></h5>
     <hr></hr>
     <p className="card-text" style={{display:"none"}}><b>Details : </b><span style={{fontFamily:"san-serif"}}>{props.restaurant.details}</span></p>
@@ -57,12 +58,15 @@ const Restaurant = (props) => {
     <hr></hr>
     <p className="card-text"><span style={{fontFamily:"inherit"}}><b>Rating :</b></span><span style={{fontFamily:"san-serif"}}>{props.restaurant.rating}</span></p>
     <hr></hr>
-    <p className="card-text"><span style={{fontFamily:"inherit"}}><b>Location : </b></span><span style={{fontFamily:"san-serif"}}>{props.restaurant.location}</span></p>
-    <hr></hr>
+    <p className="card-text"><span style={{fontFamily:"inherit",lineHeight:"27px"}}><b>Location : </b></span><span style={{fontFamily:"san-serif"}}>{props.restaurant.location}</span></p>
+
+    <button onClick={handleClick}className="btn btn-primary">details</button>
+
   </div>
-  <button onClick={handleClick}className="btn btn-primary">details</button>
 
 </div>
+
+
 
 </StyleRoot>
 
