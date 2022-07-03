@@ -11,10 +11,10 @@ const Restaurant = (props) => {
    width:"300px",
    height:"485px",
     marginLeft:"70px",
-    marginTop:"50px",
+    marginTop:"95px",
     '@media (max-width: 500px)': {
       marginLeft:"20px",
-      marginTop:"80px",
+      marginTop:"90px",
       height:"500px",
       
       },
@@ -41,8 +41,8 @@ const Restaurant = (props) => {
 
 <StyleRoot>
 
-
-    <div className='card mb-3 col-md-4'style={style}>
+<div className='col-md-2'>
+    <div className='card mb-3'style={style}>
 
       <div style={{height:"400px"}}>
   <img src={mylink} className="card-img-top border"style={{height:"300px",width:"300px"}} alt="..."/>
@@ -66,7 +66,7 @@ const Restaurant = (props) => {
 
 </div>
 
-
+</div>
 
 </StyleRoot>
 

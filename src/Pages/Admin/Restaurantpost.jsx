@@ -20,7 +20,8 @@ const Restaurantpost = (props) => {
     { value: "Bangalore", label: "Bangalore" },
     { value: "Hyderabad", label: "Hyderabad" },
     { value: "Delhi", label: "Delhi" },
-    { value: "Chennai", label: "Chennai" }
+    { value: "Chennai", label: "Chennai" },
+    { value: "Kolkata", label: "Kolkata" }
   ];
 
 

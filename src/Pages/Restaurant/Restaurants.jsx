@@ -12,10 +12,12 @@ const Restaurants = (props) => {
 const [restaurants,setrestaurant]=useState([])
 
 const style={
-  width:"900px",
-marginLeft:"-250px",
-marginTop:"10px",
-display:"inline-flex",
+  width:"1000px",
+  marginLeft:"-200px",
+  marginTop:"10px",
+  display:"inline-flex",
+  height:"auto",
+  flexWrap:"wrap",
   '@media (max-width: 500px)': {
   
   
@@ -74,13 +76,14 @@ console.log("the sadfffffffffffffffffffffffffffffffffffffffffffffffffffffff"+pro
 
 
       
+      
 
     {restaurants?.map((restaurant,index) => (
         <Restaurant restaurant={restaurant} mymatches={props.hmatches} key={index} />
       ))}
 
       </div>
-    
+
 
       
 </StyleRoot>
