@@ -221,7 +221,7 @@ useEffect(()=>{
             <option value="Chennai">Chennai</option>
             <option value="Bangalore">Bangalore</option>
             <option value="Hyderabad">Hyderabad</option>
-            <option value="Hyderabad">Kolkata</option>
+            <option value="Kolkata">Kolkata</option>
            
          
           </select><br></br><br></br><br></br>
