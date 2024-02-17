@@ -8,7 +8,7 @@ import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 import io, { Socket } from "socket.io-client";
 
-const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewclientapi.onrender.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Shopper = (props) => {
   const { user } = useContext(AuthContext);

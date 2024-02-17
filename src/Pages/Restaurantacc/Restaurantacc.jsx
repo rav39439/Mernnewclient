@@ -9,7 +9,7 @@ import io, { Socket } from "socket.io-client";
 import Newrestorders from '../../components/Newrestorders/Newrestorders'
 
 
-const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewclientapi.onrender.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Restaurantacc = (props) => {
     const arri=[]
@@ -28,7 +28,7 @@ const[arrival,setarrival]=useState([])
 const [data,setdata]=useState({})
 //const newproduct=location.state.image
 
-const mylink="https://mernnewproject.herokuapp.com/api/images/"+data?.image
+const mylink="https://mernnewclientapi.onrender.com/api/images/"+data?.image
 
 useEffect(() => {
     props.setIsrestaurant(false)

@@ -22,7 +22,7 @@ const Restaurant = (props) => {
 
 
   const newproduct=props.restaurant.image
-  const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
+  const mylink="https://mernnewclientapi.onrender.com/api/images/"+newproduct
   const navigate = useNavigate();
 
   const handleClick = () => {

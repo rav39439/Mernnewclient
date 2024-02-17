@@ -13,7 +13,7 @@ import Radium, { StyleRoot } from 'radium';
  
 import { RestaurantContext } from '../../components/RestaurantContext/RestaurantContext'
 import { getrestaurant } from '../../components/RestaurantContext/Restaurantapicalls'
-const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewclientapi.onrender.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const SingleRestaurant = (props) => {
   const matches = useMediaquery('(max-width: 600px)')
@@ -68,7 +68,7 @@ const SingleRestaurant = (props) => {
     console.log(location)
     const navigate = useNavigate();
     const newproduct=location.state.data.image
-    const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
+    const mylink="https://mernnewclientapi.onrender.com/api/images/"+newproduct
     const[arr,setarr]=useState([])
     let obj={}
     const arraynew=[]

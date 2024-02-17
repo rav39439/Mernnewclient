@@ -154,22 +154,6 @@ useEffect(()=>{
       })
 
 
-
-      
-      
-     
-
-
-
-
-
-
-
-
-
-
-
-
 const myparentcall=(childcity,childrating)=>{
 
    setcity(childcity)
@@ -177,10 +161,6 @@ const myparentcall=(childcity,childrating)=>{
    settype('restaurant')
   
 }
-
-
-
-
 
   return (
 <>

@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 import "./usersidebar.css";
 
-const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewclientapi.onrender.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 const Usersidebar = (props) => {
   const { user } = useContext(AuthContext);
   const { restaurants,dispatch } = useContext(RestaurantContext);

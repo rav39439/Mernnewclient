@@ -53,7 +53,7 @@ const Product = (props) => {
   console.log(typeof(newproduct))
 
 
-const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
+const mylink="https://mernnewclientapi.onrender.com/api/images/"+newproduct
 
 
 

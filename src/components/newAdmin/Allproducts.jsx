@@ -58,7 +58,7 @@ const [image, setimage] = useState("");
 
 // const handleChange = event => {
 //   setimage(event.target.value);
-//   const mylink="https://mernnewproject.herokuapp.com/api/images/"+image
+//   const mylink="https://mernnewclientapi.onrender.com/api/images/"+image
 
 // }
 const [shoplocation, setshoplocation] = useState("");

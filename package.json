@@ -34,5 +34,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"https://mernnewproject.herokuapp.com/api"
+  "proxy":"https://mernnewclientapi.onrender.com/api"
 }

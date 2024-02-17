@@ -10,7 +10,7 @@ import styled from "styled-components";
 import "./singlestyle.css";
 import Radium, { StyleRoot } from 'radium';
 
-const socket=io("https://mernnewproject.herokuapp.com", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://mernnewclientapi.onrender.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Singleitem = (props) => {
 
@@ -129,7 +129,7 @@ else{
 
 
 
-    const mylink="https://mernnewproject.herokuapp.com/api/images/"+newproduct
+    const mylink="https://mernnewclientapi.onrender.com/api/images/"+newproduct
     useEffect(()=>{
       //console.log("SADfasfafdsaf")
               socket.emit('online',user)
